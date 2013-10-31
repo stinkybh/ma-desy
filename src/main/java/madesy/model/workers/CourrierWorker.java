@@ -11,25 +11,22 @@ import madesy.storage.PickingStorage;
  */
 public class CourrierWorker extends BaseWorker {
 	private PickingService pickingService;
-	private String id;
 
-	public CourrierWorker(String id, PickingStorage pickingStorage, EventLog eventLog, int sleepTime) {
-		super(sleepTime);
-		this.id = id;
+	public CourrierWorker(String id, PickingStorage pickingStorage,
+			EventLog eventLog, int sleepTime) {
+		super(id, sleepTime);
 		this.pickingService = new PickingService(eventLog, pickingStorage);
 	}
 
 	@Override
 	public void doWork() {
-		System.out.println("Couurrier with id " + this.id + " is now working!");
-		Picking p = pickingService.getPickingByCourierId(id);
-		
-		if(p != null) {
-			pickingService.setTaken(p.getId());
+		Picking picking = pickingService.getPickingByCourierId(id);
+		if (picking != null) {
+			String pickingId = picking.getId();
+			pickingService.setTaken(id, pickingId);
 		}
-		System.out.println("I'm finished " + id);
 	}
-	
+
 	public String getId() {
 		return this.id;
 	}

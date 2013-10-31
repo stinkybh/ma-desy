@@ -62,6 +62,6 @@ public class Event {
 	@Override
 	public String toString() {
 		return "Event [eventId=" + eventId + ", eventType=" + eventType + ", date="
-				+ date + ", metaData=" + metaData + "]";
+				+ date + ", metaData=" + metaData + "]\n";
 	}
 }

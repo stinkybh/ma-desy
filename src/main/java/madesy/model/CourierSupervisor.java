@@ -1,6 +1,7 @@
 package madesy.model;
 
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -11,13 +12,23 @@ import java.util.concurrent.ConcurrentHashMap;
 public class CourierSupervisor {
 	private static Map<String, Integer> couriers = new ConcurrentHashMap<String, Integer>();
 	
-	public CourierSupervisor() {
+	static {
 		for(User u : Users.getCouriers()) {
 			couriers.put(u.getId(), 0);
 		}
 	}
 	
-	// TODO: fix method name
+	public CourierSupervisor() {}
+	
+	
+	/**
+	 * Returns all couriers ID
+	 * @return
+	 */
+	public Set<String> getCouriers() {
+		return couriers.keySet();
+	}
+	
 	/**
 	 * Increases the current number of carried pickings of
 	 * the courier, specified by his id.
@@ -43,7 +54,7 @@ public class CourierSupervisor {
 	 * @return courierId
 	 */
 	public String getCourierWithLowestPickingsNumber() {
-		int courierPickings = (Integer)couriers.values().toArray()[0];
+		int courierPickings = (int)couriers.values().toArray()[0];
 		String courierId = (String)couriers.keySet().toArray()[0];
 		for(String id : couriers.keySet()) {
 			if(couriers.get(id) < courierPickings) {
@@ -53,6 +64,15 @@ public class CourierSupervisor {
 		}
 		
 		return courierId;
+	}
+	
+	/**
+	 * Returns the number of dispatched pickings to the specified courier
+	 * @param courierId
+	 * @return
+	 */
+	public int getPickingsNumber(String courierId) {
+		return couriers.get(courierId);
 	}
 	
 	/**

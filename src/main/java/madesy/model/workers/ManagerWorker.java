@@ -2,9 +2,13 @@ package madesy.model.workers;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import madesy.EventLogAnalyzer;
+import madesy.model.CourierSupervisor;
 import madesy.model.Events;
 import madesy.model.Report;
 import madesy.model.types.ReportType;
@@ -14,7 +18,7 @@ import madesy.storage.EventLog;
  * Class used to generate reports, based on status of all available in
  * PickingStorage pickings
  * 
- * @author Krasimir Atanasov
+ * @author Trimata glupaci
  * 
  */
 public class ManagerWorker extends BaseWorker {
@@ -22,9 +26,10 @@ public class ManagerWorker extends BaseWorker {
 	private Date fromDate;
 	private Date toDate;
 	private EventLogAnalyzer analyzer;
+	private CourierSupervisor courierSupervisor = new CourierSupervisor();
 
-	public ManagerWorker(EventLog eventLog, int sleepTime) {
-		super(sleepTime);
+	public ManagerWorker(String id, EventLog eventLog, int sleepTime) {
+		super(id, sleepTime);
 		this.eventLog = eventLog;
 		fromDate = new Date();
 		analyzer = new EventLogAnalyzer(eventLog, fromDate, toDate);
@@ -33,18 +38,16 @@ public class ManagerWorker extends BaseWorker {
 	@Override
 	public void doWork() {
 		toDate = new Date();
-		System.out.println();
-		System.out.println(eventLog);
 		Report report = new Report(fromDate,
 				toDate);
 		analyzer.setFromDate(fromDate);
 		analyzer.setToDate(toDate);
 		report.getPickingsReport().addAll(makeReportForPickings());
-		//report.getCourrierPickings().putAll(makeReportForCourriers());
 		
+		report.getCourrierPickings().putAll(makeReportForCourriers());
 		addToEventLog(report);
 		
-		System.out.println(report);
+		System.out.println(eventLog);
 		fromDate = toDate;
 	}
 
@@ -74,15 +77,14 @@ public class ManagerWorker extends BaseWorker {
 	 * @return Map, where key is the id of each courier and value
 	 * the number of pickings delivered.
 	 */
-	/*private Map<String, Integer> makeReportForCourriers() {
+	private Map<String, Integer> makeReportForCourriers() {
 		Map<String, Integer> countCourrierPickings = new HashMap<String, Integer>();
-		Set<String> courierIds = eventLog.getCouriersId();
+		Set<String> courierIds = courierSupervisor.getCouriers();
 		for(String id : courierIds) {
 			countCourrierPickings.put(id, analyzer.getTakenPickings(id));
 		}
-
 		return countCourrierPickings;
-	}*/
+	}
 	
 	/**
 	 * Adds the report creation event to the event log.

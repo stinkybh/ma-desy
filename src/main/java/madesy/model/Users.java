@@ -6,6 +6,10 @@ import java.util.UUID;
 
 import madesy.model.types.UserTypes;
 
+/**
+ * Contains a list of users, able to log in
+ * 
+ */
 public class Users {
 	private static List<User> users = new ArrayList<User>();
 
@@ -30,7 +34,7 @@ public class Users {
 
 		return couriers;
 	}
-	
+
 	public List<User> getUsers() {
 		return Users.users;
 	}

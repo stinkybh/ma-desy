@@ -14,11 +14,9 @@ import madesy.storage.PickingStorage;
  */
 public class ClientWorker extends BaseWorker {
 	private PickingService pickingService;
-	private String id;
 	
 	public ClientWorker(String id, PickingStorage pickingStorage, EventLog eventLog, int sleepTime) {
-		super(sleepTime);
-		this.id = id;
+		super(id, sleepTime);
 		this.pickingService = new PickingService(eventLog, pickingStorage);
 	}
 

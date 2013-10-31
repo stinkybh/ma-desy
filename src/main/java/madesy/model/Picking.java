@@ -6,6 +6,13 @@ import java.util.UUID;
 
 import madesy.model.types.PickingStatus;
 
+/**
+ * Represents a new picking for delivering and contains of
+ * ID of the sender, ID of the courier who has taken the
+ * delivery, current status and meta info.
+ * @author hristo
+ *
+ */
 public class Picking {
 	private String id;
 	private List<Integer> barcodes = new ArrayList<Integer>();

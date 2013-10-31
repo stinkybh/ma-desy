@@ -1,13 +1,13 @@
 package madesy.model.workers;
 
-import java.util.UUID;
 
 public abstract class BaseWorker implements Runnable {
-	protected String id = UUID.randomUUID().toString();
+	protected String id;
 	protected int sleepTime;
 	
-	public BaseWorker(int sleepTime) {
+	public BaseWorker(String id, int sleepTime) {
 		this.sleepTime = sleepTime;
+		this.id = id;
 	}
 	
 	public abstract void  doWork();
@@ -18,11 +18,12 @@ public abstract class BaseWorker implements Runnable {
 			doWork();
 			threadToSleep();
 		}
+		System.out.println("Error on wake up " + id);
 	}
 
 	protected void threadToSleep() {
 		try {
-			Thread.sleep(1000 + sleepTime);
+			Thread.sleep(5000 + sleepTime);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 		}

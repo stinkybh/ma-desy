@@ -18,9 +18,9 @@ public class SimulationSupervisor extends BaseWorker {
 	private int terminationCount;
 	private ExecutorService service;
 
-	public SimulationSupervisor(ExecutorService service, EventLog eventLog,
+	public SimulationSupervisor(String id, ExecutorService service, EventLog eventLog,
 			int terminationCount, int sleepTime) {
-		super(sleepTime);
+		super(id, sleepTime);
 		this.eventLog = eventLog;
 		this.terminationCount = terminationCount;
 		this.service = service;

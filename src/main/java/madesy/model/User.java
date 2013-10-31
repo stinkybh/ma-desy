@@ -2,16 +2,19 @@ package madesy.model;
 
 import madesy.model.types.UserTypes;
 
+/**
+ * Represents a user, able to log with a username and password
+ * 
+ */
 public class User {
 	private String id;
 	private String username;
 	private String password;
 	private UserTypes type;
-	
+
 	public User() {
-		
 	}
-	
+
 	public User(String id, String username, String password, UserTypes type) {
 		this.id = id;
 		this.username = username;
@@ -62,5 +65,5 @@ public class User {
 	public UserTypes getType() {
 		return type;
 	}
-	
+
 }

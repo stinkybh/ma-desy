@@ -15,36 +15,43 @@ import madesy.model.types.EventType;
 public class EventLog {
 	private List<Event> eventLog = new CopyOnWriteArrayList<Event>();
 
-	public EventLog() {
-	}
+	public EventLog() {}
 
 	public void add(Event event) {
 		this.eventLog.add(event);
 	}
 
 	/**
-	 * Returns a list of events based on the arguments for from and to dates.
+	 * Returns a list of events, specified by the EventType parameter and based
+	 * on the arguments for from and to dates.
 	 * 
+	 * @param type
+	 *            - The type of the event {@link madesy.model.types.EventType}
 	 * @param fromDate
 	 * @param toDate
 	 * @return List of {@link madesy.model.Event}
 	 */
-	public List<Event> getEvents(Date fromDate, Date toDate) {
+	public List<Event> getEvents(EventType type, Date fromDate, Date toDate) {
 		List<Event> eventsForPeriod = new ArrayList<Event>();
 
 		for (Event event : eventLog) {
-			if ((event.getDate().after(fromDate) && event.getDate().before(
-					toDate))
-					|| event.getDate().equals(fromDate)
-					|| event.getDate().equals(toDate)) {
+			if (event.getEventType() == type
+					&& ((event.getDate().after(fromDate) && event.getDate()
+							.before(toDate))
+							|| event.getDate().equals(fromDate) || event
+							.getDate().equals(toDate))) {
 				eventsForPeriod.add(event);
-
 			}
 		}
 
 		return eventsForPeriod;
 	}
 
+	/**
+	 * 
+	 * @param picikingId
+	 * @return
+	 */
 	public List<Event> getPickingInfo(String picikingId) {
 		List<Event> events = new ArrayList<Event>();
 
