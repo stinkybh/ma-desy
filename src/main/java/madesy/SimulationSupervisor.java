@@ -2,8 +2,6 @@ package madesy;
 
 import java.util.concurrent.ExecutorService;
 
-import madesy.model.Event;
-import madesy.model.types.EventType;
 import madesy.model.workers.BaseWorker;
 import madesy.storage.EventLog;
 
@@ -13,16 +11,14 @@ import madesy.storage.EventLog;
  * @author hristo
  * 
  */
-public class SimulationSupervisor extends BaseWorker {
-	private EventLog eventLog;
-	private int terminationCount;
+public abstract class SimulationSupervisor extends BaseWorker {
+	protected EventLog eventLog;
 	private ExecutorService service;
 
-	public SimulationSupervisor(String id, ExecutorService service, EventLog eventLog,
-			int terminationCount, int sleepTime) {
+	public SimulationSupervisor(String id, ExecutorService service,
+			EventLog eventLog, int sleepTime) {
 		super(id, sleepTime);
 		this.eventLog = eventLog;
-		this.terminationCount = terminationCount;
 		this.service = service;
 	}
 
@@ -32,17 +28,7 @@ public class SimulationSupervisor extends BaseWorker {
 	 * 
 	 * @return
 	 */
-	private boolean checkForTermination() {
-		int count = 0;
-		for (Event e : eventLog.getEvents()) {
-			if (e.getEventType() == EventType.MANAGER_REPORT) {
-				count++;
-			}
-		}
-
-		return count >= terminationCount;
-
-	}
+	public abstract boolean checkForTermination();
 
 	@Override
 	public void doWork() {

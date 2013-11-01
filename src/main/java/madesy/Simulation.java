@@ -4,8 +4,10 @@ import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import madesy.model.Event;
 import madesy.model.User;
 import madesy.model.Users;
+import madesy.model.types.EventType;
 import madesy.model.types.UserTypes;
 import madesy.model.workers.ClientWorker;
 import madesy.model.workers.CourrierWorker;
@@ -35,6 +37,20 @@ public class Simulation {
 			i++;
 		}
 		pool.submit(new SimulationSupervisor(UUID.randomUUID().toString(),
-				pool, eventLog, 5, 5000));
+				pool, eventLog, 5000) {
+
+					@Override
+					public boolean checkForTermination() {
+						int count = 0;
+						for (Event e : eventLog.getEvents()) {
+							if (e.getEventType() == EventType.MANAGER_REPORT) {
+								count++;
+							}
+						}
+
+						return count >= 5;
+					}
+			
+		});
 	}
 }
