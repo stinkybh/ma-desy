@@ -2,7 +2,6 @@ package madesy;
 
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import madesy.model.Event;
 import madesy.model.User;
@@ -17,9 +16,10 @@ import madesy.storage.PickingStorage;
 
 public class Simulation {
 	public static void main(String[] args) {
+		
 		EventLog eventLog = new EventLog();
 		PickingStorage pickingStorage = new PickingStorage();
-		ExecutorService pool = Executors.newFixedThreadPool(20);
+		ExecutorService pool = new DesyThreadPoolExecutor();
 		Users users = new Users();
 		int sleepTime = 1000, i = 1;
 		// Gets all users
