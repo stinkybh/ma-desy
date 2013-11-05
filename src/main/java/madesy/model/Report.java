@@ -22,6 +22,7 @@ public class Report {
 	private Date toDate;
 
 	public Report(Date fromDate, Date toDate) {
+		System.out.println();
 		this.id = UUID.randomUUID().toString();
 		this.fromDate = fromDate;
 		this.toDate = toDate;

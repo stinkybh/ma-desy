@@ -12,7 +12,10 @@ import java.util.concurrent.ConcurrentHashMap;
 public class CourierSupervisor {
 	private static Map<String, Integer> couriers = new ConcurrentHashMap<String, Integer>();
 	
-	public CourierSupervisor() {}
+	public CourierSupervisor() {
+		
+		System.out.println();
+	}
 	
 	
 	/**

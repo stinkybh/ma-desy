@@ -20,6 +20,7 @@ public abstract class SimulationSupervisor extends BaseWorker {
 		super(id, sleepTime);
 		this.eventLog = eventLog;
 		this.service = service;
+		System.out.println();
 	}
 
 	/**

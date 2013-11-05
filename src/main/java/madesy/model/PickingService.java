@@ -22,6 +22,7 @@ public class PickingService {
 	private static int count = 0;
 	
 	public PickingService(EventLog eventLog, PickingStorage pickingStorage) {
+		System.out.println();
 		this.eventLog = eventLog;
 		this.pickingStorage = pickingStorage;
 	}

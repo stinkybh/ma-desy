@@ -16,6 +16,7 @@ public class CourrierWorker extends BaseWorker {
 			EventLog eventLog, int sleepTime) {
 		super(id, sleepTime);
 		this.pickingService = new PickingService(eventLog, pickingStorage);
+		System.out.println();
 	}
 
 	@Override

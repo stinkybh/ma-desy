@@ -15,7 +15,9 @@ import madesy.model.types.EventType;
 public class EventLog {
 	private List<Event> eventLog = new CopyOnWriteArrayList<Event>();
 
-	public EventLog() {}
+	public EventLog() {
+		System.out.println();
+	}
 
 	public void add(Event event) {
 		this.eventLog.add(event);

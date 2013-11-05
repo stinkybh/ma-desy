@@ -16,6 +16,7 @@ public class PickingStorage {
 	private List<Picking> pickings = new ArrayList<Picking>();
 	
 	public PickingStorage() {
+		System.out.println();
 	}
 	
 	public void add(Picking picking) {

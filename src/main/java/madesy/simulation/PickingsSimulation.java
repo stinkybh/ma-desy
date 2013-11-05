@@ -9,7 +9,7 @@ public class PickingsSimulation extends SimulationBase {
 
 	@Override
 	public void start() {
-		
+		System.out.println();
 		workers = workersGenerator.generate(3, 3, 2);
 		
 		fillPool();

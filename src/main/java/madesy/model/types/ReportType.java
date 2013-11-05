@@ -1,6 +1,7 @@
 package madesy.model.types;
 
 public enum ReportType {
+	MORE("1"),
 	ENOUGH_NEW_PICKINGS("The new pickings are dispatched properly."),
 	TOO_MANY_NEW_PICKINGS("There are too many new pickings that the courriers have not dispatched yet."),
 	DISPATCH_PROPERLY("The dispatched pickings are taken properly."),

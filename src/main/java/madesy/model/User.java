@@ -16,6 +16,7 @@ public class User {
 	}
 
 	public User(String id, String username, String password, UserTypes type) {
+		System.out.println();
 		this.id = id;
 		this.username = username;
 		this.password = password;

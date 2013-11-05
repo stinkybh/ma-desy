@@ -21,6 +21,7 @@ public class Picking {
 	private String courierId;
 	
 	public Picking(String senderId) {
+		System.out.println();
 		this.id = UUID.randomUUID().toString();
 		this.pickingStatus = PickingStatus.NEW;
 		this.senderId = senderId;

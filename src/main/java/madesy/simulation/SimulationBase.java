@@ -17,6 +17,7 @@ public abstract class SimulationBase {
 	public abstract void start();
 	
 	protected void fillPool() {
+		System.out.println();
 		for(BaseWorker worker : workers) {
 			pool.submit(worker);
 		}

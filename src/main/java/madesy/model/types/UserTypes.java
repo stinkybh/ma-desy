@@ -1,5 +1,5 @@
 package madesy.model.types;
 
 public enum UserTypes {
-	CLIENT, COURIER, MANAGER;
+	CLIENT, COURIER, MANAGER, MORE;
 }

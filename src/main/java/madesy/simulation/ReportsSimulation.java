@@ -9,7 +9,7 @@ public class ReportsSimulation extends SimulationBase {
 
 	@Override
 	public void start() {
-		
+		System.out.println();
 		workers = workersGenerator.generate(8, 5, 1);
 		fillPool();
 		

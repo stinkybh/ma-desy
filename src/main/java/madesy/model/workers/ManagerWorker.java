@@ -33,6 +33,7 @@ public class ManagerWorker extends BaseWorker {
 		this.eventLog = eventLog;
 		fromDate = new Date();
 		analyzer = new EventLogAnalyzer(eventLog, fromDate, toDate);
+		System.out.println();
 	}
 
 	@Override

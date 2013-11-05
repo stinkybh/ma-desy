@@ -17,6 +17,7 @@ public class PickingDispatcher {
 	 *            - Picking to be dispatched
 	 */
 	public void dispatchNewPicking(Picking picking) {
+		System.out.println();
 		String courierId = courierSupervisor
 				.getCourierWithLowestPickingsNumber();
 		courierSupervisor.incrementCarriedPickings(courierId);
