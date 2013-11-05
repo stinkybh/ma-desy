@@ -16,7 +16,7 @@ public abstract class BaseWorker implements Runnable {
 	public void run() {
 		while (!Thread.currentThread().isInterrupted()) {
 			doWork();
-			threadToSleep();
+			//threadToSleep();
 		}
 	}
 
