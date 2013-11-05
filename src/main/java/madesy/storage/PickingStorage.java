@@ -34,12 +34,9 @@ public class PickingStorage {
 	public List<Picking> getPickings() {
 		return pickings;
 	}
-	
-	public void updatePicking(Picking picking) {
-		for(Picking p : pickings) {
-			if(p.equals(picking)) {
-				// TODO: update picking
-			}
-		}
+
+	@Override
+	public String toString() {
+		return "PickingStorage [pickings=" + pickings + "]\n";
 	}
 }

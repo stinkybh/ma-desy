@@ -18,14 +18,18 @@ public abstract class BaseWorker implements Runnable {
 			doWork();
 			threadToSleep();
 		}
-		System.out.println("Error on wake up " + id);
 	}
 
 	protected void threadToSleep() {
 		try {
-			Thread.sleep(5000 + sleepTime);
+			Thread.sleep(50 + sleepTime);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 		}
+	}
+	
+	@Override
+	public String toString() {
+		return "BaseWorker [id = " + id + ", sleepTime = " + sleepTime + "]\n";
 	}
 }

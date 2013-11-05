@@ -12,12 +12,6 @@ import java.util.concurrent.ConcurrentHashMap;
 public class CourierSupervisor {
 	private static Map<String, Integer> couriers = new ConcurrentHashMap<String, Integer>();
 	
-	static {
-		for(User u : Users.getCouriers()) {
-			couriers.put(u.getId(), 0);
-		}
-	}
-	
 	public CourierSupervisor() {}
 	
 	
@@ -27,6 +21,10 @@ public class CourierSupervisor {
 	 */
 	public Set<String> getCouriers() {
 		return couriers.keySet();
+	}
+	
+	public static void addCourier(String courierId) {
+		couriers.put(courierId, 0);
 	}
 	
 	/**

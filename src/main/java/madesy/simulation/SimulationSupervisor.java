@@ -1,4 +1,4 @@
-package madesy;
+package madesy.simulation;
 
 import java.util.concurrent.ExecutorService;
 

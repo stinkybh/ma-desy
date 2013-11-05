@@ -47,7 +47,7 @@ public class ManagerWorker extends BaseWorker {
 		report.getCourrierPickings().putAll(makeReportForCourriers());
 		addToEventLog(report);
 		
-		System.out.println(eventLog);
+		//System.out.println(eventLog);
 		fromDate = toDate;
 	}
 

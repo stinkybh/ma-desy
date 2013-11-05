@@ -19,7 +19,8 @@ public class PickingService {
 	private CourierSupervisor courierSupervisor = new CourierSupervisor();
 	private EventLog eventLog;
 	private static final Lock lock = new ReentrantLock();
-
+	private static int count = 0;
+	
 	public PickingService(EventLog eventLog, PickingStorage pickingStorage) {
 		this.eventLog = eventLog;
 		this.pickingStorage = pickingStorage;
@@ -41,6 +42,7 @@ public class PickingService {
 				pickingStorage.add(picking);
 				String data = picking.getId();
 				eventLog.add(new Event(EventType.NEW_PICKING, data));
+				System.out.println("New picking " + String.valueOf(++count));
 				pickingDispatcher.dispatchNewPicking(picking);
 				String metaData = picking.getId() + ", "
 						+ picking.getCourierId();
