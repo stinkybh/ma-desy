@@ -10,7 +10,6 @@ import madesy.model.types.EventType;
 public class Events {
 	
 	private Events() {
-		System.out.println();
 		//	This class cannot be initialized
 	}
 	

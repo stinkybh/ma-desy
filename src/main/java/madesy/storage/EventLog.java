@@ -16,7 +16,6 @@ public class EventLog {
 	private List<Event> eventLog = new CopyOnWriteArrayList<Event>();
 
 	public EventLog() {
-		System.out.println();
 	}
 
 	public void add(Event event) {

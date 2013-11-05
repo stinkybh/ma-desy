@@ -14,7 +14,6 @@ public class CourierSupervisor {
 	
 	public CourierSupervisor() {
 		
-		System.out.println();
 	}
 	
 	

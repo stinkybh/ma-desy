@@ -17,7 +17,6 @@ public class ClientWorker extends BaseWorker {
 	
 	public ClientWorker(String id, PickingStorage pickingStorage, EventLog eventLog, int sleepTime) {
 		super(id, sleepTime);
-		System.out.println();
 		this.pickingService = new PickingService(eventLog, pickingStorage);
 	}
 

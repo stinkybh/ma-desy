@@ -12,7 +12,6 @@ public class WorkerFactory {
 
 	public static BaseWorker createWorker(UserTypes type,
 			PickingStorage pickingStorage, EventLog eventLog) {
-		System.out.println();
 		Random rand = new Random();
 		if (type == UserTypes.CLIENT)
 			return new ClientWorker(UUID.randomUUID().toString(),

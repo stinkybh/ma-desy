@@ -16,7 +16,6 @@ public class EventLogAnalyzer {
 		this.eventLog = eventLog;
 		this.fromDate = fromDate;
 		this.toDate = toDate;
-		System.out.println();
 	}
 
 	public boolean compareNewToDispatched() {

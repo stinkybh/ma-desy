@@ -17,7 +17,6 @@ public class Event {
 	
 	public Event(EventType eventType) {
 		this.eventType = eventType;
-		System.out.println();
 	}
 	
 	public Event(EventType eventType, String metaData) {

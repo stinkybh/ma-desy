@@ -6,7 +6,6 @@ public abstract class BaseWorker implements Runnable {
 	protected int sleepTime;
 	
 	public BaseWorker(String id, int sleepTime) {
-		System.out.println();
 		this.sleepTime = sleepTime;
 		this.id = id;
 	}

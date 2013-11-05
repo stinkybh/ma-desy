@@ -16,7 +16,6 @@ public class WorkersGenerator {
 	public WorkersGenerator(PickingStorage pickingStorage, EventLog eventLog) {
 		this.pickingStorage = pickingStorage;
 		this.eventLog = eventLog;
-		System.out.println();
 	}
 
 	// TODO: Fix method body

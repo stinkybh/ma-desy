@@ -14,7 +14,6 @@ public class Users {
 	private static List<User> users = new ArrayList<User>();
 
 	public Users() {
-		System.out.println();
 		for (int i = 0; i < 8; i++) {
 			users.add(new User(UUID.randomUUID().toString(), "client" + i,
 					"client" + i, UserTypes.CLIENT));
