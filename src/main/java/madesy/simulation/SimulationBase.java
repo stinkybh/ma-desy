@@ -11,11 +11,12 @@ public abstract class SimulationBase {
 	protected PickingStorage pickingStorage;
 	protected ExecutorService pool = new DesyThreadPoolExecutor();
 	protected EventLog eventLog;
-	protected WorkersGenerator workersGenerator = new WorkersGenerator(pickingStorage, eventLog);
+	protected WorkersGenerator workersGenerator;
 	
 	public SimulationBase(PickingStorage pickingStorage, EventLog eventLog) {
 		this.pickingStorage = pickingStorage;
 		this.eventLog = eventLog;
+		this.workersGenerator = new WorkersGenerator(pickingStorage, eventLog);
 	}
 	
 	public abstract List<BaseWorker> process();
