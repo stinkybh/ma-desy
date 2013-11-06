@@ -26,6 +26,10 @@ public abstract class SimulationBase {
 		fillPool(workers);
 	}
 	
+	public void stop() {
+		pool.shutdownNow();
+	}
+	
 	private void fillPool(List<BaseWorker> workers) {
 		for(BaseWorker worker : workers) {
 			pool.submit(worker);

@@ -12,9 +12,9 @@ public abstract class BaseWorker implements Runnable {
 	
 	public abstract void  doWork();
 	
-	@Override
+	@Override 
 	public void run() {
-		while (!Thread.currentThread().isInterrupted()) {
+		while(!Thread.currentThread().isInterrupted()) {
 			doWork();
 			//threadToSleep();
 		}

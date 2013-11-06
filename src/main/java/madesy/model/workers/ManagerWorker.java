@@ -67,7 +67,7 @@ public class ManagerWorker extends BaseWorker {
 			reportList.add(ReportType.DISPATCH_DELAYED);
 		else
 			reportList.add(ReportType.DISPATCH_PROPERLY);
-
+		System.out.println(reportList);
 		return reportList;		
 }
 

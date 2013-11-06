@@ -24,6 +24,7 @@ public class CourrierWorker extends BaseWorker {
 		if (picking != null) {
 			String pickingId = picking.getId();
 			pickingService.setTaken(id, pickingId);
+			System.out.println("Picking taken");
 		}
 	}
 
