@@ -6,9 +6,15 @@ import java.util.UUID;
 import madesy.model.Event;
 import madesy.model.types.EventType;
 import madesy.model.workers.BaseWorker;
+import madesy.storage.EventLog;
+import madesy.storage.PickingStorage;
 
 public class PickingsSimulation extends SimulationBase {
-
+	
+	public PickingsSimulation(PickingStorage pickingStorage, EventLog eventLog) {
+		super(pickingStorage, eventLog);
+	}
+	
 	@Override
 	public List<BaseWorker> process() {
 

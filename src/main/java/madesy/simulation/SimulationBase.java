@@ -8,10 +8,15 @@ import madesy.storage.EventLog;
 import madesy.storage.PickingStorage;
 
 public abstract class SimulationBase {
-	protected EventLog eventLog = new EventLog();
-	protected PickingStorage pickingStorage = new PickingStorage();
+	protected PickingStorage pickingStorage;
 	protected ExecutorService pool = new DesyThreadPoolExecutor();
+	protected EventLog eventLog;
 	protected WorkersGenerator workersGenerator = new WorkersGenerator(pickingStorage, eventLog);
+	
+	public SimulationBase(PickingStorage pickingStorage, EventLog eventLog) {
+		this.pickingStorage = pickingStorage;
+		this.eventLog = eventLog;
+	}
 	
 	public abstract List<BaseWorker> process();
 	
