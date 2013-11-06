@@ -12,11 +12,15 @@ public abstract class SimulationBase {
 	protected PickingStorage pickingStorage = new PickingStorage();
 	protected ExecutorService pool = new DesyThreadPoolExecutor();
 	protected WorkersGenerator workersGenerator = new WorkersGenerator(pickingStorage, eventLog);
-	protected List<BaseWorker> workers;
 	
-	public abstract void start();
+	public abstract List<BaseWorker> process();
 	
-	protected void fillPool() {
+	public void run() {
+		List<BaseWorker> workers = process();
+		fillPool(workers);
+	}
+	
+	private void fillPool(List<BaseWorker> workers) {
 		for(BaseWorker worker : workers) {
 			pool.submit(worker);
 		}

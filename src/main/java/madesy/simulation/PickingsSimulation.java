@@ -1,20 +1,19 @@
 package madesy.simulation;
 
+import java.util.List;
 import java.util.UUID;
 
 import madesy.model.Event;
 import madesy.model.types.EventType;
+import madesy.model.workers.BaseWorker;
 
 public class PickingsSimulation extends SimulationBase {
 
 	@Override
-	public void start() {
+	public List<BaseWorker> process() {
 		
-		workers = workersGenerator.generate(3, 3, 2);
-		
-		fillPool();
-		
-		pool.submit(new SimulationSupervisor(UUID.randomUUID().toString(),
+		List<BaseWorker> workers = workersGenerator.generate(3, 3, 2);
+		workers.add(new SimulationSupervisor(UUID.randomUUID().toString(),
 				pool, eventLog, 50) {
 
 			@Override
@@ -26,11 +25,12 @@ public class PickingsSimulation extends SimulationBase {
 					}
 				}
 
-				return count >= 1000000;
+				return count >= 10000;
 			}
 
 		});
-
+		
+		return workers;
 	}
 
 }

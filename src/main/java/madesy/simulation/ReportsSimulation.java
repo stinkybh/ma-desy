@@ -1,20 +1,21 @@
 package madesy.simulation;
 
+import java.util.List;
 import java.util.UUID;
 
 import madesy.model.Event;
 import madesy.model.types.EventType;
+import madesy.model.workers.BaseWorker;
 
 public class ReportsSimulation extends SimulationBase {
 
 	@Override
-	public void start() {
+	public List<BaseWorker> process() {
 		
-		workers = workersGenerator.generate(8, 5, 1);
-		fillPool();
+		List<BaseWorker> workers = workersGenerator.generate(8, 5, 1);
 		
-		pool.submit(new SimulationSupervisor(UUID.randomUUID().toString(),
-				pool, eventLog, 5000) {
+		workers.add(new SimulationSupervisor(UUID.randomUUID().toString(),
+				pool, eventLog, 50) {
 
 			@Override
 			public boolean checkForTermination() {
@@ -25,10 +26,12 @@ public class ReportsSimulation extends SimulationBase {
 					}
 				}
 
-				return count >= 5;
+				return count >= 10;
 			}
 
 		});
+		
+		return workers;
 
 	}
 
