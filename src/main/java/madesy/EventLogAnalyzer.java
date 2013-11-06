@@ -11,7 +11,7 @@ public class EventLogAnalyzer {
 	private EventLog eventLog;
 	private Date fromDate;
 	private Date toDate;
-
+	
 	public EventLogAnalyzer(EventLog eventLog, Date fromDate, Date toDate) {
 		this.eventLog = eventLog;
 		this.fromDate = fromDate;

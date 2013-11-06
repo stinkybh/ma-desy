@@ -11,7 +11,7 @@ public class PickingsSimulation extends SimulationBase {
 
 	@Override
 	public List<BaseWorker> process() {
-		
+
 		List<BaseWorker> workers = workersGenerator.generate(3, 3, 2);
 		workers.add(new SimulationSupervisor(UUID.randomUUID().toString(),
 				pool, eventLog, 50) {
@@ -29,7 +29,7 @@ public class PickingsSimulation extends SimulationBase {
 			}
 
 		});
-		
+
 		return workers;
 	}
 
