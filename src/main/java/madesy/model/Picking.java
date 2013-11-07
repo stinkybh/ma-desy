@@ -1,43 +1,50 @@
 package madesy.model;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 import madesy.model.types.PickingStatus;
 
 /**
- * Represents a new picking for delivering and contains of
- * ID of the sender, ID of the courier who has taken the
- * delivery, current status and meta info.
+ * Represents a new picking for delivering and contains of ID of the sender, ID
+ * of the courier who has taken the delivery, current status and meta info.
+ * 
  * @author hristo
- *
+ * 
  */
 public class Picking {
-	private String id;
-	private List<Integer> barcodes = new ArrayList<Integer>();
-	private PickingStatus pickingStatus;
+	private String id = UUID.randomUUID().toString();
+	private PickingStatus pickingStatus = PickingStatus.NEW;
+
 	private String senderId;
 	private String courierId;
-	
-	public Picking(String senderId) {
-		this.id = UUID.randomUUID().toString();
-		this.pickingStatus = PickingStatus.NEW;
+
+	private Person sender;
+	private Person receiver;
+
+	private PickingSize size;
+
+	public Picking(String senderId, PickingSize size, Person sender,
+			Person receiver) {
+		validateParameters(senderId, size, sender, receiver);
+
 		this.senderId = senderId;
-	}
-	
-	@Override
-	public String toString() {
-		return "Picking [id=" + id + ", barcodes=" + barcodes
-				+ ", pickingStatus=" + pickingStatus + ", clientId=" + senderId
-				+ ", courierId" + courierId +"]" ;
+		this.size = size;
+		this.sender = sender;
+		this.receiver = receiver;
 	}
 
 	@Override
-	public int hashCode() {;
+	public String toString() {
+		return "Picking [id=" + id + ", pickingStatus=" + pickingStatus
+				+ ", clientId=" + senderId + ", courierId" + courierId + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		;
 		return id.hashCode();
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -51,40 +58,65 @@ public class Picking {
 			return false;
 		return true;
 	}
-	
+
 	public String getId() {
 		return id;
-	}
-	
-	public List<Integer> getBarcodes() {
-		return barcodes;
-	}
-	
-	public void setBarcodes(List<Integer> barcodes) {
-		this.barcodes = barcodes;
 	}
 	
 	public PickingStatus getPickingStates() {
 		return pickingStatus;
 	}
-	
+
 	public void setPickingStates(PickingStatus pickingStatus) {
 		this.pickingStatus = pickingStatus;
 	}
-	
+
 	public String getSenderId() {
 		return senderId;
 	}
-	
+
 	public void setSenderId(String senderId) {
 		this.senderId = senderId;
 	}
-	
+
 	public void setCourierId(String courierId) {
 		this.courierId = courierId;
 	}
-	
+
 	public String getCourierId() {
 		return this.courierId;
+	}
+
+	public PickingSize getSize() {
+		return this.size;
+	}
+
+	public Person getSender() {
+		return this.sender;
+	}
+
+	public Person getReceiver() {
+		return this.receiver;
+	}
+
+	private void validateParameters(String senderId, PickingSize size,
+			Person sender, Person receiver) {
+		if (senderId == null)
+			throw new NullPointerException("SenderId cannot be null");
+
+		if (size == null)
+			throw new NullPointerException("PickingSize cannot be null");
+
+		if (sender == null)
+			throw new NullPointerException("Sender cannot be null");
+
+		if (receiver == null)
+			throw new NullPointerException("Receiver cannot be null");
+
+		if (sender.getType() != PersonType.SENDER)
+			throw new IllegalArgumentException("Sender is from type RECEIVER");
+
+		if (receiver.getType() != PersonType.RECEIVER)
+			throw new IllegalArgumentException("Receiver is from type SENDER");
 	}
 }

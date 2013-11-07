@@ -4,4 +4,7 @@
 
 <web-app>
 	<display-name>Ma-DeSy</display-name>
+	<listener>
+		<listener-class>madesy.web.listeners.ContextListener</listener-class>
+	</listener>
 </web-app>

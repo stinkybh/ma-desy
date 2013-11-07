@@ -1,6 +1,5 @@
 package madesy.model;
 
-import java.util.List;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -32,18 +31,18 @@ public class PickingService {
 	 * @param senderIds
 	 * @param barcodes
 	 */
-	public void newPicking(final String senderId, final List<Integer> barcodes) {
+	public void newPicking(final Picking picking) {
+		if(picking == null)
+			throw new NullPointerException("Picking is null");
 		new Synchronizator<Void>() {
 
 			@Override
 			Void execute() {
-				Picking picking = new Picking(senderId);
-				picking.setBarcodes(barcodes);
 				pickingStorage.add(picking);
+				System.out.println(String.valueOf(++count) + " - New picking");
 				String data = picking.getId();
 				eventLog.add(new Event(EventType.NEW_PICKING, data));
 				PickingsQueue.add(picking);
-				System.out.println("New picking " + String.valueOf(++count) + " by " + senderId);
 				return null;
 			}
 
@@ -65,16 +64,12 @@ public class PickingService {
 						.getCourierWithLowestPickingsNumber();
 				courierSupervisor.incrementCarriedPickings(courierId);
 				
-				  System.out.println("Dispatched to: " + courierId +
-				  " Number of pickings:" +
-				  courierSupervisor.getPickingsNumber(courierId));
+//				  System.out.println("Dispatched to: " + courierId +
+//				  " Number of pickings:" +
+//				  courierSupervisor.getPickingsNumber(courierId));
 				 
 				picking.setPickingStates(PickingStatus.DISPATCHED);
 				picking.setCourierId(courierId);
-				
-				Picking pick = pickingStorage.getPicking(picking.getId());
-				System.out.println("Storage: courierId - " + pick.getCourierId() + " status- " + pick.getPickingStates());
-				
 				String metaData = picking.getId() + ", "
 						+ picking.getCourierId();
 				eventLog.add(new Event(EventType.DISPATCH_PICKING, metaData));
@@ -123,7 +118,7 @@ public class PickingService {
 						.getCourierId());
 				String metaData = pickingId + ", " + picking.getCourierId();
 				eventLog.add(new Event(EventType.TAKE_PICKING, metaData));
-				System.out.println("Picking with id: " + pickingId + " taken by courier: " + courierId);
+				//System.out.println("Courier with id: " + courierId + " deliver picking with id: " + pickingId);
 				return null;
 			}
 
