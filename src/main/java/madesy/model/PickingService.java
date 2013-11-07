@@ -32,13 +32,13 @@ public class PickingService {
 	 * @param senderIds
 	 * @param barcodes
 	 */
-	public void newPicking(final String senderId, final List<Integer> barcodes) {
+	public void newPicking(final Picking picking) {
+		if(picking == null)
+			throw new NullPointerException("Picking is null");
 		new Synchronizator<Void>() {
 
 			@Override
 			Void execute() {
-				Picking picking = new Picking(senderId);
-				picking.setBarcodes(barcodes);
 				pickingStorage.add(picking);
 				String data = picking.getId();
 				eventLog.add(new Event(EventType.NEW_PICKING, data));

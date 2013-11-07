@@ -30,7 +30,7 @@ public class PickingsSimulation extends SimulationBase {
 						count++;
 					}
 				}
-				return count >= 100000;
+				return count >= 10000;
 			}
 
 		});
