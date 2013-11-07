@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import madesy.model.PickingDispatcher;
+import madesy.model.pickings.PickingDispatcher;
 import madesy.model.types.UserTypes;
 import madesy.model.workers.BaseWorker;
 import madesy.model.workers.WorkerFactory;

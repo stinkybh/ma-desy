@@ -4,9 +4,9 @@ import java.util.Random;
 
 import madesy.model.Person;
 import madesy.model.PersonType;
-import madesy.model.Picking;
-import madesy.model.PickingService;
-import madesy.model.PickingSize;
+import madesy.model.pickings.Picking;
+import madesy.model.pickings.PickingService;
+import madesy.model.pickings.PickingSize;
 import madesy.storage.EventLog;
 import madesy.storage.PickingStorage;
 

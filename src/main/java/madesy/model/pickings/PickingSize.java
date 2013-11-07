@@ -1,4 +1,4 @@
-package madesy.model;
+package madesy.model.pickings;
 
 import java.util.Random;
 

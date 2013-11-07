@@ -3,7 +3,7 @@ package madesy.storage;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
-import madesy.model.Picking;
+import madesy.model.pickings.Picking;
 
 /**
  * Holds newly created pickings, waiting to be dispatched to the couriers
@@ -23,7 +23,7 @@ public class PickingsQueue {
 	
 	/**
 	 * Gets the first available picking.
-	 * @return {@link madesy.model.Picking} if the container is not empty, otherwise returns NULL.
+	 * @return {@link madesy.model.pickings.Picking} if the container is not empty, otherwise returns NULL.
 	 */
 	public static Picking getPicking() {
 		return newPickings.poll();

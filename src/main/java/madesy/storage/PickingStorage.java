@@ -3,7 +3,7 @@ package madesy.storage;
 import java.util.ArrayList;
 import java.util.List;
 
-import madesy.model.Picking;
+import madesy.model.pickings.Picking;
 
 /**
  * Container for all pickings of all clients, providing

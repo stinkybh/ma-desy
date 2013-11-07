@@ -1,7 +1,9 @@
-package madesy.model;
+package madesy.model.pickings;
 
 import java.util.UUID;
 
+import madesy.model.Person;
+import madesy.model.PersonType;
 import madesy.model.types.PickingStatus;
 
 /**

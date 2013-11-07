@@ -7,4 +7,98 @@
 	<listener>
 		<listener-class>madesy.web.listeners.ContextListener</listener-class>
 	</listener>
+	
+	<!-- 
+	<filter>
+		<filter-name>SessionFilter</filter-name>
+		<filter-class>madesy.web.filters.SessionFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>SessionFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	-->
+	
+	<servlet>
+		<servlet-name>MainServlet</servlet-name>
+		<display-name>MainServlet</display-name>
+		<servlet-class>madesy.web.servlets.MainServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<display-name>LoginServlet</display-name>
+		<servlet-class>madesy.web.servlets.session.LoginServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>LogoutServlet</servlet-name>
+		<display-name>LogoutServlet</display-name>
+		<servlet-class>madesy.web.servlets.session.LogoutServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>NewPickingServlet</servlet-name>
+		<display-name>NewPickingServlet</display-name>
+		<servlet-class>madesy.web.servlets.client.NewPickingServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>TrackPickingServlet</servlet-name>
+		<display-name>TrackPickingServlet</display-name>
+		<servlet-class>madesy.web.servlets.client.TrackPickingServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>ViewPickingsServlet</servlet-name>
+		<display-name>ViewPickingsServlet</display-name>
+		<servlet-class>madesy.web.servlets.client.ViewPickingsServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>DeliverServlet</servlet-name>
+		<display-name>DeliverServlet</display-name>
+		<servlet-class>madesy.web.servlets.courier.DeliverServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>MainServlet</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>LogoutServlet</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>NewPickingServlet</servlet-name>
+		<url-pattern>/client/new-picking</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>TrackPickingServlet</servlet-name>
+		<url-pattern>/client/track-picking</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ViewPickingsServlet</servlet-name>
+		<url-pattern>/client/view-pickings</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>DeliverServlet</servlet-name>
+		<url-pattern>/courier/deliver</url-pattern>
+	</servlet-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	
 </web-app>

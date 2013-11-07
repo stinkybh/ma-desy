@@ -1,8 +1,10 @@
-package madesy.model;
+package madesy.model.pickings;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import madesy.model.CourierSupervisor;
+import madesy.model.Event;
 import madesy.model.types.EventType;
 import madesy.model.types.PickingStatus;
 import madesy.storage.EventLog;
