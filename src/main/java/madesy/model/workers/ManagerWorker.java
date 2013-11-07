@@ -47,7 +47,7 @@ public class ManagerWorker extends BaseWorker {
 		report.getCourrierPickings().putAll(makeReportForCourriers());
 		addToEventLog(report);
 		
-		//System.out.println(eventLog);
+		System.out.println(report);
 		fromDate = toDate;
 	}
 
@@ -59,15 +59,14 @@ public class ManagerWorker extends BaseWorker {
 	private List<ReportType> makeReportForPickings() {
 		List<ReportType> reportList = new ArrayList<ReportType>();
 		if(analyzer.compareNewToDispatched())
-			reportList.add(ReportType.TOO_MANY_NEW_PICKINGS);
-		else
-			reportList.add(ReportType.ENOUGH_NEW_PICKINGS);
-			
-		if(analyzer.compareDispatchedToTaken())
 			reportList.add(ReportType.DISPATCH_DELAYED);
 		else
 			reportList.add(ReportType.DISPATCH_PROPERLY);
-		System.out.println(reportList);
+			
+		if(analyzer.compareDispatchedToTaken())
+			reportList.add(ReportType.TAKEN_DELAYED);
+		else
+			reportList.add(ReportType.TAKEN_PROPERLY);
 		return reportList;		
 }
 

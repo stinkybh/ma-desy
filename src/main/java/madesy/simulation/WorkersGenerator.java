@@ -2,7 +2,9 @@ package madesy.simulation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
+import madesy.model.PickingDispatcher;
 import madesy.model.types.UserTypes;
 import madesy.model.workers.BaseWorker;
 import madesy.model.workers.WorkerFactory;
@@ -37,6 +39,8 @@ public class WorkersGenerator {
 			workers.add(WorkerFactory.createWorker(UserTypes.MANAGER,
 					pickingStorage, eventLog));
 		}
+		
+		workers.add(new PickingDispatcher(UUID.randomUUID().toString(), 50, pickingStorage, eventLog));
 
 		return workers;
 	}

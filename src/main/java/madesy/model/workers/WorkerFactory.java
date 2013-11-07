@@ -15,12 +15,12 @@ public class WorkerFactory {
 		Random rand = new Random();
 		if (type == UserTypes.CLIENT)
 			return new ClientWorker(UUID.randomUUID().toString(),
-					pickingStorage, eventLog, rand.nextInt(30));
+					pickingStorage, eventLog, rand.nextInt(50));
 		else if (type == UserTypes.COURIER) {
 			String courierId = UUID.randomUUID().toString();
 			CourierSupervisor.addCourier(courierId);
 			return new CourrierWorker(courierId,
-					pickingStorage, eventLog, rand.nextInt(30));
+					pickingStorage, eventLog, rand.nextInt(50));
 		}
 
 		return new ManagerWorker(UUID.randomUUID().toString(), eventLog,

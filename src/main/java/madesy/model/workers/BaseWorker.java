@@ -16,13 +16,13 @@ public abstract class BaseWorker implements Runnable {
 	public void run() {
 		while(!Thread.currentThread().isInterrupted()) {
 			doWork();
-			//threadToSleep();
+			threadToSleep();
 		}
 	}
 
 	protected void threadToSleep() {
 		try {
-			Thread.sleep(50 + sleepTime);
+			Thread.sleep(sleepTime);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 		}

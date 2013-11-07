@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 public class DesyThreadPoolExecutor extends ThreadPoolExecutor {
 	public DesyThreadPoolExecutor() {
-		super(10, // core threads
+		super(20, // core threads
 				40, // max threads
 				1, // timeout
 				TimeUnit.MINUTES, // timeout units
