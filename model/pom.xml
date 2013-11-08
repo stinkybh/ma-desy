@@ -3,12 +3,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.omg</groupId>
-	<artifactId>ma-desy</artifactId>
+	<artifactId>model</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>ma-desy</name>
-	<url>http://ma-desy-maps.be</url>
+	<name>model</name>
+	<url>http://maven.apache.org</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
