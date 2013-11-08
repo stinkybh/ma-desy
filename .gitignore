@@ -7,3 +7,7 @@
 bin/
 /model/target
 /model/.project
+/web/.classpath
+/web/.project
+/web/.settings
+/web/target
