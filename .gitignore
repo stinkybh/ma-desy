@@ -1,9 +1,9 @@
-/src/META-INF/persistence.xml
-src/META-INF/persistence.xml
-/.settings
-/build
-/WebContent/WEB-INF/config.properties
-.classpath
+/model/src/META-INF/persistence.xml
+/model/src/META-INF/persistence.xml
+/model/.settings
+/model/build
+/model/WebContent/WEB-INF/config.properties
+/model/.classpath
 bin/
-/target
-.project
+/model/target
+/model/.project
