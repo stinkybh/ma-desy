@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 
 import madesy.model.workers.BaseWorker;
+import madesy.model.workers.WorkersGenerator;
 import madesy.storage.EventLog;
 import madesy.storage.PickingStorage;
 
