@@ -3,8 +3,8 @@
 <body>
 	<div id="pageheader">
 		<ul>
-			<li><a href="client/new-picking">New picking</a></li>
-			<li><a href="client/view-pickings">View pickings</a></li>
+			<li><a href="new-picking">New picking</a></li>
+			<li><a href="view-pickings">View pickings</a></li>
 		</ul>
 		<form method="POST" action="logout">
 			<input type="submit" value="Logout">

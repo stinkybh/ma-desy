@@ -3,12 +3,14 @@ package madesy.web.servlets.client;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import madesy.web.utils.RequestManager;
 
+@WebServlet("/new-picking")
 public class NewPickingServlet extends HttpServlet {
 	private static final long serialVersionUID = -8281953502188692277L;
 
@@ -23,7 +25,7 @@ public class NewPickingServlet extends HttpServlet {
 			
 			@Override
 			public String request() {
-				return "client.jsp";
+				return "client/client.jsp";
 			}
 		}.forward();
 	}
