@@ -11,3 +11,7 @@ bin/
 /web/.project
 /web/.settings
 /web/target
+/maps-widget
+/Servers
+/.metadata
+/RemoteSystemsTempFiles
