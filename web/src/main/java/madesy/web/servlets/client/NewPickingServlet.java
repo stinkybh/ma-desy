@@ -11,12 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import madesy.model.Client;
 import madesy.model.ClientType;
 import madesy.model.User;
-import madesy.web.dto.NewPickingRequest;
 import madesy.model.pickings.Picking;
 import madesy.model.pickings.PickingService;
 import madesy.model.pickings.PickingSize;
-import madesy.storage.EventLog;
-import madesy.storage.PickingStorage;
+import madesy.web.dto.NewPickingRequest;
 import madesy.web.utils.ParametersToBeanConverter;
 import madesy.web.utils.RequestManager;
 
@@ -37,11 +35,8 @@ public class NewPickingServlet extends HttpServlet {
 
 				User loggedUser = (User) request.getSession(false)
 						.getAttribute("user");
-				EventLog eventLog = (EventLog) request.getServletContext()
-						.getAttribute("eventLog");
-				PickingStorage pickingStorage = (PickingStorage) request
-						.getServletContext().getAttribute("pickingStorage");
-				pickingService = new PickingService(eventLog, pickingStorage);
+				
+				pickingService = (PickingService) request.getServletContext().getAttribute("pickingService");
 				PickingSize size = new PickingSize(
 						pickingRequest.getPickingWidth(),
 						pickingRequest.getPickingHeight(),
@@ -51,6 +46,7 @@ public class NewPickingServlet extends HttpServlet {
 				Client receiver = new Client(pickingRequest.getReceiverName(),
 						pickingRequest.getReceiverAddress(),
 						ClientType.RECEIVER);
+				
 				Picking picking = new Picking(loggedUser.getId(), size, sender,
 						receiver);
 				pickingService.newPicking(picking);
