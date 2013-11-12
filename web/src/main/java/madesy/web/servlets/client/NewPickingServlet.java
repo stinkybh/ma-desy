@@ -18,12 +18,12 @@ import madesy.model.pickings.PickingSize;
 import madesy.storage.EventLog;
 import madesy.storage.PickingStorage;
 import madesy.web.utils.ParametersToBeanConverter;
+import madesy.web.utils.PickingServiceManager;
 import madesy.web.utils.RequestManager;
 
 @WebServlet("/new-picking")
 public class NewPickingServlet extends HttpServlet {
 	private static final long serialVersionUID = -8281953502188692277L;
-	private PickingService pickingService;
 
 	public void doPost(final HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -32,28 +32,31 @@ public class NewPickingServlet extends HttpServlet {
 
 			@Override
 			public String request() {
-				NewPickingRequest pickingRequest = ParametersToBeanConverter
+				final NewPickingRequest pickingRequest = ParametersToBeanConverter
 						.populate(NewPickingRequest.class, request);
+				new PickingServiceManager(request) {
 
-				User loggedUser = (User) request.getSession(false)
-						.getAttribute("user");
-				EventLog eventLog = (EventLog) request.getServletContext()
-						.getAttribute("eventLog");
-				PickingStorage pickingStorage = (PickingStorage) request
-						.getServletContext().getAttribute("pickingStorage");
-				pickingService = new PickingService(eventLog, pickingStorage);
-				PickingSize size = new PickingSize(
-						pickingRequest.getPickingWidth(),
-						pickingRequest.getPickingHeight(),
-						pickingRequest.getPickingLength());
-				Client sender = new Client(pickingRequest.getSenderName(),
-						pickingRequest.getSenderAddress(), ClientType.SENDER);
-				Client receiver = new Client(pickingRequest.getReceiverName(),
-						pickingRequest.getReceiverAddress(),
-						ClientType.RECEIVER);
-				Picking picking = new Picking(loggedUser.getId(), size, sender,
-						receiver);
-				pickingService.newPicking(picking);
+					@Override
+					protected void process() {
+						PickingSize size = new PickingSize(
+								pickingRequest.getPickingWidth(),
+								pickingRequest.getPickingHeight(),
+								pickingRequest.getPickingLength());
+						Client sender = new Client(
+								pickingRequest.getSenderName(),
+								pickingRequest.getSenderAddress(),
+								ClientType.SENDER);
+						Client receiver = new Client(
+								pickingRequest.getReceiverName(),
+								pickingRequest.getReceiverAddress(),
+								ClientType.RECEIVER);
+						Picking picking = new Picking(loggedUser.getId(), size,
+								sender, receiver);
+						pickingService.newPicking(picking);
+					}
+
+				}.process();
+
 				return "new-picking";
 			}
 
