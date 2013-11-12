@@ -18,7 +18,7 @@ bin/
 /maps-widget/.settings
 /maps-widget/.project
 /maps-widget/.classpath
-/maps-widget/.target
+/maps-widget/target
 /Servers
 /.metadata
 /RemoteSystemsTempFiles
