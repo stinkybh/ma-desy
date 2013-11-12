@@ -1,6 +1,7 @@
 package madesy.web.servlets.client;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,9 +28,8 @@ public class NewPickingServlet extends HttpServlet {
 
 	public void doPost(final HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
 		new RequestManager(request, response) {
-
+			
 			@Override
 			public String request() {
 				final NewPickingRequest pickingRequest = ParametersToBeanConverter
@@ -70,7 +70,7 @@ public class NewPickingServlet extends HttpServlet {
 
 			@Override
 			public String request() {
-				return "client/client.jsp";
+				return "client/new-picking.jsp";
 			}
 		}.forward();
 	}

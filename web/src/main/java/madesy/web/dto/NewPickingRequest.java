@@ -8,6 +8,8 @@ public class NewPickingRequest {
 	private int pickingWidth;
 	private int pickingLength;
 	private int pickingHeight;
+	
+	public NewPickingRequest() { }
 
 	public NewPickingRequest(String senderName, String senderAddress,
 			String receiverName, String receiverAddress, int pickingWidth,
