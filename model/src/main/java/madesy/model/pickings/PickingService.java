@@ -1,5 +1,7 @@
 package madesy.model.pickings;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -21,7 +23,7 @@ public class PickingService {
 	private EventLog eventLog;
 	private static final Lock lock = new ReentrantLock();
 	private static int count = 0;
-	
+
 	public PickingService(EventLog eventLog, PickingStorage pickingStorage) {
 		this.eventLog = eventLog;
 		this.pickingStorage = pickingStorage;
@@ -34,7 +36,7 @@ public class PickingService {
 	 * @param barcodes
 	 */
 	public void newPicking(final Picking picking) {
-		if(picking == null)
+		if (picking == null)
 			throw new NullPointerException("Picking is null");
 		new Synchronizator<Void>() {
 
@@ -50,7 +52,7 @@ public class PickingService {
 
 		}.executeWithLock();
 	}
-	
+
 	/**
 	 * Manages the distribution of new pickings to all couriers.
 	 * 
@@ -65,11 +67,11 @@ public class PickingService {
 				String courierId = courierSupervisor
 						.getCourierWithLowestPickingsNumber();
 				courierSupervisor.incrementCarriedPickings(courierId);
-				
-//				  System.out.println("Dispatched to: " + courierId +
-//				  " Number of pickings:" +
-//				  courierSupervisor.getPickingsNumber(courierId));
-				 
+
+				// System.out.println("Dispatched to: " + courierId +
+				// " Number of pickings:" +
+				// courierSupervisor.getPickingsNumber(courierId));
+
 				picking.setPickingStates(PickingStatus.DISPATCHED);
 				picking.setCourierId(courierId);
 				String metaData = picking.getId() + ", "
@@ -77,7 +79,7 @@ public class PickingService {
 				eventLog.add(new Event(EventType.DISPATCH_PICKING, metaData));
 				return null;
 			}
-			
+
 		}.executeWithLock();
 	}
 
@@ -94,13 +96,39 @@ public class PickingService {
 			Picking execute() {
 				for (Picking p : pickingStorage.getPickings()) {
 					String dispatchedTo = p.getCourierId();
-					if ( dispatchedTo != null )
+					if (dispatchedTo != null)
 						if (dispatchedTo.equals(courierId)
 								&& p.getPickingStates() == PickingStatus.DISPATCHED)
 							return p;
 				}
 				return null;
 			}
+		}.executeWithLock();
+	}
+
+	/**
+	 * Finds all occurrences in the list of pickings, carried by the courier
+	 * with the specified id.
+	 * 
+	 * @param courierId
+	 * @return List of {@link madesy.model.pickings.Picking}
+	 */
+	public List<Picking> getDispatchedPickings(final String courierId) {
+		return new Synchronizator<List<Picking>>() {
+
+			@Override
+			List<Picking> execute() {
+				List<Picking> pickings = new ArrayList<Picking>();
+				for (Picking p : pickingStorage.getPickings()) {
+					String dispatchedTo = p.getCourierId();
+					if (dispatchedTo != null)
+						if (dispatchedTo.equals(courierId)
+								&& p.getPickingStates() == PickingStatus.DISPATCHED)
+							pickings.add(p);
+				}
+				return pickings;
+			}
+
 		}.executeWithLock();
 	}
 
@@ -120,7 +148,8 @@ public class PickingService {
 						.getCourierId());
 				String metaData = pickingId + ", " + picking.getCourierId();
 				eventLog.add(new Event(EventType.TAKE_PICKING, metaData));
-				//System.out.println("Courier with id: " + courierId + " deliver picking with id: " + pickingId);
+				// System.out.println("Courier with id: " + courierId +
+				// " deliver picking with id: " + pickingId);
 				return null;
 			}
 
