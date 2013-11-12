@@ -17,15 +17,16 @@ import madesy.web.utils.PickingServiceManager;
 @WebServlet("/deliver")
 public class DeliverServlet extends HttpServlet {
 	private static final long serialVersionUID = 4692953249933523263L;
-	private PickingService pickingService;
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
+	
+	public void doPost(final HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		new PickingServiceManager(request) {
 			
 			@Override
 			protected void service() {
-				//pickingService.setTaken(loggedUser.getId(), pickingId);
+				//	request.getAttribute ???
+				pickingService.setTaken(loggedUser.getId(), request.getParameter("pickingId"));
 			}
 		}.process();
 		

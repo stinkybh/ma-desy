@@ -9,21 +9,24 @@ import madesy.storage.PickingStorage;
 
 public abstract class PickingServiceManager {
 	private HttpServletRequest request;
-	private PickingService pickingService;
-	private User loggedUser;
+	protected PickingService pickingService;
+	protected User loggedUser;
+	
+	private EventLog eventLog;
+	private PickingStorage pickingStorage;
 	
 	public PickingServiceManager(HttpServletRequest request) {
 		this.request = request;
-		
+		this.eventLog = (EventLog) request.getServletContext().getAttribute("eventLog");
+		this.pickingStorage = (PickingStorage) request.getServletContext().getAttribute("pickingStorage");
+		this.pickingService = new PickingService(eventLog, pickingStorage);
+		this.loggedUser = (User)request.getSession(false).getAttribute("user");
 	}
 	
 	protected abstract void service();
 
 	public void process() {
-		EventLog eventLog = (EventLog) request.getServletContext().getAttribute("eventLog");
-		PickingStorage pickingStorage = (PickingStorage) request.getServletContext().getAttribute("pickingStorage");
-		pickingService = new PickingService(eventLog, pickingStorage);
-		loggedUser = (User)request.getSession(false).getAttribute("user");
+		
 	
 		service();
 	}
