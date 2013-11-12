@@ -3,6 +3,7 @@ package madesy.web.listeners;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import madesy.model.pickings.PickingService;
 import madesy.simulation.SimulationBase;
 import madesy.simulation.SimulationFactory;
 import madesy.simulation.SimulationType;
@@ -22,9 +23,9 @@ public class ContextListener implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent event) {
 		EventLog eventLog = new EventLog();
 		PickingStorage pickingStorage = new PickingStorage();
-		event.getServletContext().setAttribute("eventLog", eventLog);
-		event.getServletContext()
-				.setAttribute("pickingStorage", pickingStorage);
+		PickingService pickingService = new PickingService(eventLog, pickingStorage);
+		System.out.println(pickingService);
+		event.getServletContext().setAttribute("pickingService", pickingService);
 
 		// Run simulation
 		simulation = SimulationFactory.createSimulation(

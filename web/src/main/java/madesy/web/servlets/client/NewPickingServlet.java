@@ -1,7 +1,6 @@
 package madesy.web.servlets.client;
 
 import java.io.IOException;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,13 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import madesy.model.Client;
 import madesy.model.ClientType;
-import madesy.model.User;
-import madesy.web.dto.NewPickingRequest;
 import madesy.model.pickings.Picking;
-import madesy.model.pickings.PickingService;
 import madesy.model.pickings.PickingSize;
-import madesy.storage.EventLog;
-import madesy.storage.PickingStorage;
+import madesy.web.dto.NewPickingRequest;
 import madesy.web.utils.ParametersToBeanConverter;
 import madesy.web.utils.PickingServiceManager;
 import madesy.web.utils.RequestManager;
@@ -56,7 +51,6 @@ public class NewPickingServlet extends HttpServlet {
 					}
 
 				}.process();
-
 				return "new-picking";
 			}
 

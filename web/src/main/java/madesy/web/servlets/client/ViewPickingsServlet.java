@@ -20,6 +20,7 @@ public class ViewPickingsServlet extends HttpServlet {
 			
 			@Override
 			public String request() {
+				
 				return "client/view_pickings.jsp";
 			}
 		}.forward();

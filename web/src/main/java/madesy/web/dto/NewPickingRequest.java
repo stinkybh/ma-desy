@@ -12,8 +12,8 @@ public class NewPickingRequest {
 	public NewPickingRequest() { }
 
 	public NewPickingRequest(String senderName, String senderAddress,
-			String receiverName, String receiverAddress, int pickingWidth,
-			int pickingLength, int pickingHeight) {
+			int pickingWidth,
+			int pickingLength, String receiverName, String receiverAddress, int pickingHeight) {
 		super();
 		this.senderName = senderName;
 		this.senderAddress = senderAddress;

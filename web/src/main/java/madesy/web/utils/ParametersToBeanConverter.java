@@ -19,15 +19,14 @@ public class ParametersToBeanConverter {
 			});
 
 	public static <T> T populate(Class<T> c, HttpServletRequest request) {
-		T object = null;
 		try {
-			object = (T) c.newInstance();
+			T object = (T) c.newInstance();
 			beanUtilsBean.populate(object, request.getParameterMap());
+			
+			return object;
 		} catch (InstantiationException | IllegalAccessException
 				| InvocationTargetException e) {
 			throw new ConvertException(e.getMessage());
 		}
-
-		return object;
 	}
 }
