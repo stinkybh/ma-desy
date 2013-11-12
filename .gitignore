@@ -15,7 +15,10 @@ bin/
 /workers/.classpath
 /workers/target
 /workers/.settings
-/maps-widget
+/maps-widget/.settings
+/maps-widget/.project
+/maps-widget/.classpath
+/maps-widget/target
 /Servers
 /.metadata
 /RemoteSystemsTempFiles
