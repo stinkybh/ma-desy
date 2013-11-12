@@ -1,4 +1,4 @@
-package madesy.model.workers;
+package madesy.workers;
 
 import madesy.model.pickings.Picking;
 import madesy.model.pickings.PickingService;

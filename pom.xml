@@ -10,7 +10,7 @@
 	<modules>
         	<module>model</module>
         	<module>web</module>
-		
+			<module>workers</module>
 	</modules>
 
 	<name>ma-desy</name>

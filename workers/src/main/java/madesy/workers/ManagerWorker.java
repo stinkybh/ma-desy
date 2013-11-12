@@ -1,4 +1,4 @@
-package madesy.model.workers;
+package madesy.workers;
 
 import java.util.ArrayList;
 import java.util.Date;

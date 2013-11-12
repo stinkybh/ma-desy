@@ -1,5 +1,5 @@
 package madesy.model;
 
-public enum PersonType {
+public enum ClientType {
 	SENDER, RECEIVER;
 }

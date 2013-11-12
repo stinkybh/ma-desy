@@ -1,4 +1,4 @@
-package madesy.model.dto;
+package madesy.web.dto;
 
 public class LoginRequest {
 	private String username;

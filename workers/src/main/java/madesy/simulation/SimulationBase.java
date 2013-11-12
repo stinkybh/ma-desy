@@ -3,10 +3,10 @@ package madesy.simulation;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
-import madesy.model.workers.BaseWorker;
-import madesy.model.workers.WorkersGenerator;
 import madesy.storage.EventLog;
 import madesy.storage.PickingStorage;
+import madesy.workers.BaseWorker;
+import madesy.workers.WorkersGenerator;
 
 public abstract class SimulationBase {
 	protected PickingStorage pickingStorage;

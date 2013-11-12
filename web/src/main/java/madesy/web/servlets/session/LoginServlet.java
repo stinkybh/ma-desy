@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import madesy.model.User;
 import madesy.model.dao.UsersDAO;
-import madesy.model.dto.LoginRequest;
+import madesy.web.dto.LoginRequest;
 import madesy.web.utils.ParametersToBeanConverter;
 import madesy.web.utils.RequestManager;
 

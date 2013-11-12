@@ -1,9 +1,9 @@
-package madesy.model.workers;
+package madesy.workers;
 
 import java.util.Random;
 
-import madesy.model.Person;
-import madesy.model.PersonType;
+import madesy.model.Client;
+import madesy.model.ClientType;
 import madesy.model.pickings.Picking;
 import madesy.model.pickings.PickingService;
 import madesy.model.pickings.PickingSize;
@@ -32,15 +32,15 @@ public class ClientWorker extends BaseWorker {
 	private Picking generatePicking() {
 		Random random = new Random();
 
-		Person sender = new Person("SENDER_NAME" + random.nextInt(100000),
+		Client sender = new Client("SENDER_NAME" + random.nextInt(100000),
 				"Sender_Address_" + random.nextInt(10000),
-				PersonType.SENDER);
+				ClientType.SENDER);
 		
-		Person reveiver = new Person("RECEIVER_NAME" + random.nextInt(100000),
+		Client receiver = new Client("RECEIVER_NAME" + random.nextInt(100000),
 				"Receiver_Address_" + random.nextInt(10000),
-				PersonType.RECEIVER);
+				ClientType.RECEIVER);
 		
-		return new Picking(this.id, PickingSize.generateRandomPickingSize(), sender, reveiver);
+		return new Picking(this.id, PickingSize.generateRandomPickingSize(), sender, receiver);
 	}
 
 }

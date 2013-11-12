@@ -2,8 +2,8 @@ package madesy.simulation;
 
 import java.util.concurrent.ExecutorService;
 
-import madesy.model.workers.BaseWorker;
 import madesy.storage.EventLog;
+import madesy.workers.BaseWorker;
 
 /**
  * Manages the simulation process, based on the manager reports

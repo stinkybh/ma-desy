@@ -1,4 +1,4 @@
-package madesy.model.workers;
+package madesy.workers;
 
 
 public abstract class BaseWorker implements Runnable {

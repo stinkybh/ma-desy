@@ -23,4 +23,8 @@ public abstract class RequestManager {
 		rd.forward(request, response);
 		return;
 	}
+	
+	public void redirect() throws IOException {
+		response.sendRedirect(request());
+	}
 }

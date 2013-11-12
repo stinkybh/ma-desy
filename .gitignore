@@ -11,3 +11,7 @@ bin/
 /web/.project
 /web/.settings
 /web/target
+/workers/.project
+/workers/.classpath
+/workers/target
+/workers/.settings
