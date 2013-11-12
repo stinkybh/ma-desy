@@ -13,7 +13,7 @@ import madesy.model.types.UserTypes;
 public class Users {
 	private static List<User> users = new ArrayList<User>();
 
-	public Users() {
+	static {
 		for (int i = 0; i < 8; i++) {
 			users.add(new User(UUID.randomUUID().toString(), "client" + i,
 					"client" + i, UserTypes.CLIENT));
@@ -25,17 +25,21 @@ public class Users {
 				UserTypes.MANAGER));
 	}
 
-	public static List<User> getCouriers() {
-		List<User> couriers = new ArrayList<User>();
-		for (User u : users) {
-			if (u.getType() == UserTypes.COURIER)
-				couriers.add(u);
-		}
+	public Users() {
 
-		return couriers;
 	}
 
 	public List<User> getUsers() {
 		return Users.users;
+	}
+	
+	public static List<User> getCouriers() {
+		List<User> couriers = new ArrayList<User>();
+		for(User u : users) {
+			if(u.getType() == UserTypes.COURIER)
+				couriers.add(u);
+		}
+		
+		return couriers;
 	}
 }

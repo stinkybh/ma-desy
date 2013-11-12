@@ -1,4 +1,4 @@
-package madesy.web.servlets.client;
+package madesy.web.servlets.manager;
 
 import java.io.IOException;
 
@@ -8,13 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/track-picking")
-public class TrackPickingServlet extends HttpServlet {
-	private static final long serialVersionUID = 9201624660696571253L;
+import madesy.web.utils.RequestManager;
+
+@WebServlet("/manager")
+public class ManagerServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		new RequestManager(request, response) {
 
+			@Override
+			public String request() {
+				return "manager/manager.jsp";
+			}
+		}.forward();
 	}
-
 }

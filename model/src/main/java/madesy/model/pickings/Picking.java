@@ -2,8 +2,8 @@ package madesy.model.pickings;
 
 import java.util.UUID;
 
-import madesy.model.Person;
-import madesy.model.PersonType;
+import madesy.model.Client;
+import madesy.model.ClientType;
 import madesy.model.types.PickingStatus;
 
 /**
@@ -20,13 +20,13 @@ public class Picking {
 	private String senderId;
 	private String courierId;
 
-	private Person sender;
-	private Person receiver;
+	private Client sender;
+	private Client receiver;
 
 	private PickingSize size;
 
-	public Picking(String senderId, PickingSize size, Person sender,
-			Person receiver) {
+	public Picking(String senderId, PickingSize size, Client sender,
+			Client receiver) {
 		validateParameters(senderId, size, sender, receiver);
 
 		this.senderId = senderId;
@@ -38,7 +38,9 @@ public class Picking {
 	@Override
 	public String toString() {
 		return "Picking [id=" + id + ", pickingStatus=" + pickingStatus
-				+ ", clientId=" + senderId + ", courierId" + courierId + "]";
+				+ ", senderId=" + senderId + ", courierId=" + courierId
+				+ ", sender=" + sender + ", receiver=" + receiver + ", size="
+				+ size + "]";
 	}
 
 	@Override
@@ -93,16 +95,16 @@ public class Picking {
 		return this.size;
 	}
 
-	public Person getSender() {
+	public Client getSender() {
 		return this.sender;
 	}
 
-	public Person getReceiver() {
+	public Client getReceiver() {
 		return this.receiver;
 	}
 
 	private void validateParameters(String senderId, PickingSize size,
-			Person sender, Person receiver) {
+			Client sender, Client receiver) {
 		if (senderId == null)
 			throw new NullPointerException("SenderId cannot be null");
 
@@ -115,10 +117,10 @@ public class Picking {
 		if (receiver == null)
 			throw new NullPointerException("Receiver cannot be null");
 
-		if (sender.getType() != PersonType.SENDER)
+		if (sender.getType() != ClientType.SENDER)
 			throw new IllegalArgumentException("Sender is from type RECEIVER");
 
-		if (receiver.getType() != PersonType.RECEIVER)
+		if (receiver.getType() != ClientType.RECEIVER)
 			throw new IllegalArgumentException("Receiver is from type SENDER");
 	}
 }

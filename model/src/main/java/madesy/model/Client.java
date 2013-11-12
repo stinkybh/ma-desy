@@ -1,11 +1,11 @@
 package madesy.model;
 
-public class Person {
+public class Client {
 	private String name;
 	private String address;
-	private PersonType type;
+	private ClientType type;
 
-	public Person(String name, String address, PersonType type) {
+	public Client(String name, String address, ClientType type) {
 		validateParameters(name, address);
 
 		this.name = name;
@@ -29,11 +29,11 @@ public class Person {
 		this.address = address;
 	}
 
-	public PersonType getType() {
+	public ClientType getType() {
 		return type;
 	}
 
-	public void setType(PersonType type) {
+	public void setType(ClientType type) {
 		this.type = type;
 	}
 
@@ -55,7 +55,7 @@ public class Person {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Person other = (Person) obj;
+		Client other = (Client) obj;
 		if (address == null) {
 			if (other.address != null)
 				return false;
@@ -76,7 +76,7 @@ public class Person {
 			.append(this.name)
 			.append(" Address: ")
 			.append(this.address)
-			.append((this.type == PersonType.SENDER) ? " Type: Sender" : "Type: Receiver")
+			.append((this.type == ClientType.SENDER) ? " Type: Sender" : "Type: Receiver")
 			.toString();
 	}
 

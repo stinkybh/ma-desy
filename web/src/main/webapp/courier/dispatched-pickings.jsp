@@ -7,10 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="POST" action="login" >
-		<input type="text" name="username" id="username"><br/>
-		<input type="password" name="password"><br/>
-		<input type="submit" value="Login">
-	</form>
+	<h1>Courier view pickings</h1>
 </body>
 </html>

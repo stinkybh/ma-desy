@@ -1,4 +1,4 @@
-package madesy.web.servlets.client;
+package madesy.web.servlets.courier;
 
 import java.io.IOException;
 
@@ -10,19 +10,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import madesy.web.utils.RequestManager;
 
-@WebServlet("/view-pickings")
-public class ViewPickingsServlet extends HttpServlet {
-	private static final long serialVersionUID = -7682281396626429728L;
-
+@WebServlet("/dispatched-pickings")
+public class DispatchedPickingsServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		new RequestManager(request, response) {
 			
 			@Override
 			public String request() {
-				return "client/view_pickings.jsp";
+				return "courier/dispatched-pickings.jsp";
 			}
 		}.forward();
 	}
-
 }
