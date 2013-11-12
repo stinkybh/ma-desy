@@ -35,11 +35,11 @@ public class MainServlet extends HttpServlet {
 				public String request() {
 					User loggedUser = (User) session.getAttribute("user");
 					if (loggedUser.getType() == UserTypes.CLIENT)
-						forwardURL = CLIENT_HOME_PAGE;
+						forwardURL = "new-picking";
 					else if (loggedUser.getType() == UserTypes.COURIER)
-						forwardURL = COURIER_HOME_PAGE;
+						forwardURL = "dispatched-pickings";
 					else
-						forwardURL = MANAGER_HOME_PAGE;
+						forwardURL = "manager";
 					return forwardURL;
 				}
 			}.forward();

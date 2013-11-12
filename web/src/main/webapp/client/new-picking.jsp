@@ -7,9 +7,9 @@
 	<form method="POST" action="new-picking">
 		<div class="sender_panel">
 			<div class="controls">
-				<input type="text" name="sender" id="senderName" placeholder="Sender">
+				<input type="text" name="senderName" id="senderName" placeholder="Sender">
 				<br>
-				<input type="text" name="address" id="senderAddress">
+				<input type="text" name="senderAddress" id="senderAddress">
 			</div>
 			<div class="map">
 			
@@ -17,9 +17,9 @@
 		</div>
 		<div class="receiver_panel">
 			<div class="controls">
-				<input type="text" name="receiver" id="receiverName" placeholder="Receiver">
+				<input type="text" name="receiverName" id="receiverName" placeholder="Receiver">
 				<br>
-				<input type="text" name="address" id="receiverAddress">
+				<input type="text" name="receiverAddress" id="receiverAddress">
 			</div>
 			<div class="map">
 			
@@ -29,11 +29,11 @@
 			<h3>Picking size:</h3>
 			<br>
 			<label for="picking_width">width:</label>
-			<input type="text" id="pickingWidth">
+			<input type="text" name="pickingWidth" id="pickingWidth">
 			<label for="picking_length">length:</label>
-			<input type="text" id="pickingLength">
+			<input type="text" name="pickingLength" id="pickingLength">
 			<label for="picking_height">height:</label>
-			<input type="text" id="pickingHeight">
+			<input type="text" name="pickingHeight" id="pickingHeight">
 		</div>
 		<input type="submit" value="Save">
 	</form>

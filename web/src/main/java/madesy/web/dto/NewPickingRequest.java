@@ -1,6 +1,5 @@
 package madesy.web.dto;
 
-
 public class NewPickingRequest {
 	private String senderName;
 	private String senderAddress;
@@ -10,6 +9,8 @@ public class NewPickingRequest {
 	private int pickingLength;
 	private int pickingHeight;
 	
+	public NewPickingRequest() { }
+
 	public NewPickingRequest(String senderName, String senderAddress,
 			int pickingWidth,
 			int pickingLength, String receiverName, String receiverAddress, int pickingHeight) {
@@ -22,11 +23,7 @@ public class NewPickingRequest {
 		this.pickingLength = pickingLength;
 		this.pickingHeight = pickingHeight;
 	}
-	
-	public NewPickingRequest() {
-		
-	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -44,6 +41,7 @@ public class NewPickingRequest {
 				+ ((senderName == null) ? 0 : senderName.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -134,6 +132,5 @@ public class NewPickingRequest {
 	public void setPickingHeight(int pickingHeight) {
 		this.pickingHeight = pickingHeight;
 	}
-	
-	
+
 }

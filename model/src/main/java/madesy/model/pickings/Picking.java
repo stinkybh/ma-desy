@@ -38,7 +38,9 @@ public class Picking {
 	@Override
 	public String toString() {
 		return "Picking [id=" + id + ", pickingStatus=" + pickingStatus
-				+ ", clientId=" + senderId + ", courierId" + courierId + "]";
+				+ ", senderId=" + senderId + ", courierId=" + courierId
+				+ ", sender=" + sender + ", receiver=" + receiver + ", size="
+				+ size + "]";
 	}
 
 	@Override

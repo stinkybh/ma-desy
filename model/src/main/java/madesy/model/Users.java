@@ -32,4 +32,14 @@ public class Users {
 	public List<User> getUsers() {
 		return Users.users;
 	}
+	
+	public static List<User> getCouriers() {
+		List<User> couriers = new ArrayList<User>();
+		for(User u : users) {
+			if(u.getType() == UserTypes.COURIER)
+				couriers.add(u);
+		}
+		
+		return couriers;
+	}
 }

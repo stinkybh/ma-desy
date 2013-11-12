@@ -13,7 +13,6 @@ public abstract class PickingServiceManager {
 		this.pickingService = (PickingService) request.getServletContext().getAttribute("pickingService");
 		this.loggedUser = (User)request.getSession(false).getAttribute("user");
 	}
-	
+
 	protected abstract void process();
 }
-

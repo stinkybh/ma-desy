@@ -12,6 +12,12 @@ import java.util.Set;
  */
 public class CourierSupervisor {
 	private static Map<String, Integer> couriers = new HashMap<String, Integer>();
+	
+	static {
+		for(User u : Users.getCouriers()) {
+			couriers.put(u.getId(), 0);
+		}
+	}
 
 	public CourierSupervisor() {
 
