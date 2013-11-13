@@ -173,6 +173,22 @@ public class PickingService {
 
 		}.executeWithLock();
 	}
+	
+	/**
+	 * If found, returns the picking with the specified id, otherwise returns null
+	 * @param pickingId
+	 * @return
+	 */
+	public Picking getPicking(final String pickingId) {
+		return new Synchronizator<Picking>() {
+
+			@Override
+			Picking execute() {
+				return pickingStorage.getPicking(pickingId);
+			}
+			
+		}.executeWithLock();
+	}
 
 	private abstract class Synchronizator<T> {
 		abstract T execute();
