@@ -19,5 +19,8 @@
 		</li>
 	</c:forEach>
 	</ul>
+	<br />
+	<br />
+	<a href="create-report">Create report</a>
 </body>
 </html>

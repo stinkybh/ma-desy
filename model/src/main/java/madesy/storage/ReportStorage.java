@@ -36,4 +36,9 @@ public class ReportStorage {
 		
 		return null;
 	}
+	
+	public Report getLastReport() {
+		int indexOfLastReport = this.reports.size() - 1;
+		return (indexOfLastReport >= 0) ? this.reports.get(indexOfLastReport) : null;
+	}
 }

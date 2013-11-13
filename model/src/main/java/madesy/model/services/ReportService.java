@@ -52,4 +52,10 @@ public class ReportService extends BaseService {
 	public ReportStorage getReportStorage() {
 		return this.reportStorage;
 	}
+	
+	
+	
+	public Date getDateOfLastReport() {
+		return this.reportStorage.getLastReport().getToDate();
+	}
 }
