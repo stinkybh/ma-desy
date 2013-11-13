@@ -9,7 +9,7 @@
     		<c:when test="${picking != null}">
     	<b><c:out value="Picking id: ${picking.id}" /></b>
 		<br />
-    	<c:out value="Size: ${picking.size.width}:${picking.size.height}:${picking.size.depth}" />
+    	<c:out value="Size: ${picking.size.width}:${picking.size.height}:${picking.size.length}" />
 		<br />
 		<c:out value="Sender: ${picking.sender.name}" /> <br />
 		<c:out value="Sender address: ${picking.sender.address}" /> <br />

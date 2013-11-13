@@ -37,6 +37,7 @@
 		<form method="POST" action="deliver">
 			<input type="hidden" name="pickingId" value="${dispatchedPicking.id}">
 			<input type="submit" value="Deliver">
+			<a href="dispatched-pickings" class="back">Go back</a>
 		</form>
 	</div>
 </body>
