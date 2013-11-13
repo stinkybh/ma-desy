@@ -11,6 +11,7 @@ import madesy.EventLogAnalyzer;
 import madesy.model.CourierSupervisor;
 import madesy.model.Events;
 import madesy.model.Report;
+import madesy.model.services.ReportService;
 import madesy.model.types.ReportType;
 import madesy.storage.EventLog;
 
@@ -26,11 +27,13 @@ public class ManagerWorker extends BaseWorker {
 	private Date fromDate;
 	private Date toDate;
 	private EventLogAnalyzer analyzer;
+	private ReportService reportService;
 	private CourierSupervisor courierSupervisor = new CourierSupervisor();
 
-	public ManagerWorker(String id, EventLog eventLog, int sleepTime) {
+	public ManagerWorker(String id, EventLog eventLog, ReportService reportService, int sleepTime) {
 		super(id, sleepTime);
 		this.eventLog = eventLog;
+		this.reportService = reportService;
 		fromDate = new Date();
 		analyzer = new EventLogAnalyzer(eventLog, fromDate, toDate);
 	}
@@ -46,6 +49,7 @@ public class ManagerWorker extends BaseWorker {
 		
 		report.getCourrierPickings().putAll(makeReportForCourriers());
 		addToEventLog(report);
+		this.reportService.addReport(report);
 		
 		System.out.println(report);
 		fromDate = toDate;

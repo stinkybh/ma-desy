@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import madesy.model.User;
-import madesy.model.pickings.PickingService;
+import madesy.model.services.PickingService;
 import madesy.web.utils.RequestManager;
 
 @WebServlet("/view-pickings")

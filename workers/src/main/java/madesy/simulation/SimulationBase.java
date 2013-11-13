@@ -3,21 +3,27 @@ package madesy.simulation;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
+import madesy.model.services.ReportService;
 import madesy.storage.EventLog;
 import madesy.storage.PickingStorage;
 import madesy.workers.BaseWorker;
 import madesy.workers.WorkersGenerator;
 
 public abstract class SimulationBase {
+	protected ReportService reportService;
 	protected PickingStorage pickingStorage;
 	protected ExecutorService pool = new DesyThreadPoolExecutor();
 	protected EventLog eventLog;
 	protected WorkersGenerator workersGenerator;
 	
-	public SimulationBase(PickingStorage pickingStorage, EventLog eventLog) {
+	public SimulationBase(PickingStorage pickingStorage, EventLog eventLog, 
+			ReportService reportService) {
+		
 		this.pickingStorage = pickingStorage;
 		this.eventLog = eventLog;
-		this.workersGenerator = new WorkersGenerator(pickingStorage, eventLog);
+		this.reportService = reportService;
+		this.workersGenerator = new WorkersGenerator(pickingStorage, eventLog,
+				reportService);
 	}
 	
 	public abstract List<BaseWorker> process();

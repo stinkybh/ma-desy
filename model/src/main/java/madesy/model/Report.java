@@ -10,8 +10,8 @@ import java.util.UUID;
 import madesy.model.types.ReportType;
 
 /**
- * Contains information created by the manager worker,
- * describing the work for a period of time.
+ * Contains information created by the manager worker, describing the work for a
+ * period of time.
  * 
  */
 public class Report {
@@ -29,9 +29,8 @@ public class Report {
 
 	@Override
 	public String toString() {
-		return "Report [id=" + id + ", pickingsReport=" + pickingsReport
-				+ ", courrierPickings=" + courrierPickings + ", fromDate="
-				+ fromDate + ", toDate=" + toDate + "]";
+		return "Report: " + pickingsReport.get(0) + " " + pickingsReport.get(1)
+				+ " From date: " + fromDate + "  To date: " + toDate;
 	}
 
 	public void add(ReportType element) {
@@ -63,7 +62,7 @@ public class Report {
 	public String getId() {
 		return id;
 	}
-
+	
 	public List<ReportType> getPickingsReport() {
 		return pickingsReport;
 	}
@@ -72,4 +71,11 @@ public class Report {
 		return courrierPickings;
 	}
 
+	public Date getFromDate() {
+		return this.fromDate;
+	}
+
+	public Date getToDate() {
+		return this.toDate;
+	}
 }

@@ -1,7 +1,7 @@
 package madesy.workers;
 
 import madesy.model.pickings.Picking;
-import madesy.model.pickings.PickingService;
+import madesy.model.services.PickingService;
 import madesy.storage.EventLog;
 import madesy.storage.PickingStorage;
 

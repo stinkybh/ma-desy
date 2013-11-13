@@ -8,16 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Hello manager!</h1>
-	<b>Reports</b>
-	<ul>
-	<c:forEach var="report" items="${reports}">
-		<li>
-			<a href="report?id=${report.id}">
-				<c:out value=" ${report}"/>
-			</a>
-		</li>
-	</c:forEach>
-	</ul>
+	<h1>Report details</h1>
+	<b>Report ${report.id}</b>
+	
+	<c:out value=" ${report}"/>
+	<a href="manager">Back</a>
 </body>
 </html>

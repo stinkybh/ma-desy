@@ -3,7 +3,7 @@ package madesy.web.utils;
 import javax.servlet.http.HttpServletRequest;
 
 import madesy.model.User;
-import madesy.model.pickings.PickingService;
+import madesy.model.services.PickingService;
 
 public abstract class PickingServiceManager {
 	protected PickingService pickingService;

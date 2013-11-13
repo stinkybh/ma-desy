@@ -1,12 +1,11 @@
-package madesy.model.pickings;
+package madesy.model.services;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 import madesy.model.CourierSupervisor;
 import madesy.model.Event;
+import madesy.model.pickings.Picking;
 import madesy.model.types.EventType;
 import madesy.model.types.PickingStatus;
 import madesy.storage.EventLog;
@@ -17,11 +16,10 @@ import madesy.storage.PickingsQueue;
  * Provides operations on the pickings, used by the relevant worker processes
  * 
  */
-public class PickingService {
+public class PickingService extends BaseService {
 	private PickingStorage pickingStorage;
 	private CourierSupervisor courierSupervisor = new CourierSupervisor();
 	private EventLog eventLog;
-	private static final Lock lock = new ReentrantLock();
 	private static int count = 0;
 
 	public PickingService(EventLog eventLog, PickingStorage pickingStorage) {
@@ -187,16 +185,11 @@ public class PickingService {
 		}.executeWithLock();
 	}
 
-	private abstract class Synchronizator<T> {
-		abstract T execute();
-
-		T executeWithLock() {
-			lock.lock();
-			try {
-				return execute();
-			} finally {
-				lock.unlock();
-			}
-		}
+	public EventLog getEventLog() {
+		return this.eventLog;
+	}
+	
+	public PickingStorage getPickingStorage() {
+		return this.pickingStorage;
 	}
 }

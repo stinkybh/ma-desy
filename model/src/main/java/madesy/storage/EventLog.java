@@ -47,7 +47,18 @@ public class EventLog {
 
 		return eventsForPeriod;
 	}
-
+	
+	public List<Event> getEventsByType(EventType type) {
+		List<Event> eventsToReturn = new ArrayList<Event>();
+		
+		for(Event e : this.eventLog) {
+			if(e.getEventType() == type)
+				eventsToReturn.add(e);
+		}
+		
+		return eventsToReturn;
+	}
+	
 	/**
 	 * 
 	 * @param picikingId
