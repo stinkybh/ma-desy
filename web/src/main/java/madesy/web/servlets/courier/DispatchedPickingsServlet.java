@@ -29,6 +29,7 @@ public class DispatchedPickingsServlet extends HttpServlet {
 					protected void process() {
 						List<Picking> pickings = pickingService
 								.getDispatchedPickings(loggedUser.getId());
+						request.setAttribute("dispatchedPickings", pickings);
 					}
 				}.process();
 				return "courier/dispatched-pickings.jsp";

@@ -22,8 +22,9 @@ public class DeliverServlet extends HttpServlet {
 			@Override
 			protected void process() {
 				// request.getAttribute ???
-				pickingService.setTaken(loggedUser.getId(),
-						request.getParameter("pickingId"));
+				System.out.println(request.getParameterMap().toString());
+				//pickingService.setTaken(loggedUser.getId(),
+				//		request.getParameter("pickingId"));
 			}
 		}.process();
 

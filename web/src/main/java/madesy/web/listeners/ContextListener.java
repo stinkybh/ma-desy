@@ -30,7 +30,7 @@ public class ContextListener implements ServletContextListener {
 		// Run simulation
 		simulation = SimulationFactory.createSimulation(
 				SimulationType.PICKINGS_NUMBER, pickingStorage, eventLog);
-		//simulation.run();
+		simulation.run();
 	}
 
 }
