@@ -45,6 +45,7 @@ public class CourierSupervisor {
 	public void incrementCarriedPickings(String courierId) {
 		int dispatchedPickings = couriers.get(courierId);
 		couriers.put(courierId, ++dispatchedPickings);
+		System.out.println(couriers.get(courierId));
 	}
 
 	/**
@@ -72,7 +73,7 @@ public class CourierSupervisor {
 				courierPickings = couriers.get(id);
 			}
 		}
-
+		System.out.println(courierId);
 		return courierId;
 	}
 

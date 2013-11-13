@@ -107,10 +107,11 @@ public class PickingService extends BaseService {
 			Picking execute() {
 				for (Picking p : pickingStorage.getPickings()) {
 					String dispatchedTo = p.getCourierId();
-					if (dispatchedTo != null)
-						if (dispatchedTo.equals(courierId)
-								&& p.getPickingStates() == PickingStatus.DISPATCHED)
-							return p;
+					if (dispatchedTo != null) {
+						if (dispatchedTo.equals(courierId))
+								if(p.getPickingStates() == PickingStatus.DISPATCHED)
+									return p;
+					}
 				}
 				return null;
 			}
@@ -177,8 +178,8 @@ public class PickingService extends BaseService {
 						.getCourierId());
 				String metaData = pickingId + ", " + picking.getCourierId();
 				eventLog.add(new Event(EventType.TAKE_PICKING, metaData));
-				// System.out.println("Courier with id: " + courierId +
-				// " deliver picking with id: " + pickingId);
+				 System.out.println("Courier with id: " + courierId +
+				 " deliver picking with id: " + pickingId);
 				return null;
 			}
 

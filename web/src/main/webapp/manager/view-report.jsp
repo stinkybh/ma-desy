@@ -11,7 +11,7 @@
 	<h1>Report details</h1>
 	<b>Report ${report.id}</b>
 	
-	<c:out value=" ${report}"/>
+	<c:out value=" ${report.courrierPickings}"/>
 	<a href="manager">Back</a>
 </body>
 </html>

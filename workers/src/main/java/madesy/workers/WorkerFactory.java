@@ -20,7 +20,7 @@ public class WorkerFactory {
 	public static BaseWorker createCourier(PickingStorage pickingStorage,
 			EventLog eventLog) {
 		
-		return new CourrierWorker(UUID.randomUUID().toString(), pickingStorage,
+		return new CourierWorker(UUID.randomUUID().toString(), pickingStorage,
 				eventLog, rand.nextInt(60));
 	}
 	
