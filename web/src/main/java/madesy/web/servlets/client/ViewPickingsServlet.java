@@ -22,13 +22,14 @@ public class ViewPickingsServlet extends HttpServlet {
 
 			@Override
 			public String request() {
-				User loggedUser = (User) request.getSession().getAttribute("user");
+				User loggedUser = (User) request.getSession().getAttribute(
+						"user");
 				PickingService pickingService = (PickingService) request
 						.getServletContext().getAttribute("pickingService");
 
 				request.setAttribute("pickings", pickingService
 						.getPickingsByClientId(loggedUser.getId()));
-				
+
 				return "client/view_pickings.jsp";
 			}
 		}.forward();
