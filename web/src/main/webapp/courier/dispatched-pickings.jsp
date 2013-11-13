@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h1>Dispatched pickings</h1>
-	<ul>
+	<ol>
 		<c:forEach var="picking" items="${dispatchedPickings}">
 			<li>
 				<input type="hidden" id="pickingId" name="${picking.id}" value="${picking.id}">
@@ -19,6 +19,6 @@
 				<a href="details?pickingId=${picking.id}" class="details">View details</a>
 			</li>
 		</c:forEach>
-	</ul>
+	</ol>
 </body>
 </html>

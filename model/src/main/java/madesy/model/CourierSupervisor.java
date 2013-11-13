@@ -32,6 +32,10 @@ public class CourierSupervisor {
 		return couriers.keySet();
 	}
 
+	/**
+	 * Adds new courier to track
+	 * @param courierId
+	 */
 	public static void addCourier(String courierId) {
 		couriers.put(courierId, 0);
 	}
@@ -85,15 +89,6 @@ public class CourierSupervisor {
 	 */
 	public int getPickingsNumber(String courierId) {
 		return couriers.get(courierId);
-	}
-
-	/**
-	 * Adds a new courier to track
-	 * 
-	 * @param courierId
-	 */
-	public void addNewCourier(String courierId) {
-		couriers.put(courierId, 0);
 	}
 
 	/**

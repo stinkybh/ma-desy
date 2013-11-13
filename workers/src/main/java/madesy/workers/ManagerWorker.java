@@ -51,7 +51,7 @@ public class ManagerWorker extends BaseWorker {
 		addToEventLog(report);
 		this.reportService.addReport(report);
 		
-		System.out.println(report);
+		//System.out.println(report);
 		fromDate = toDate;
 	}
 

@@ -8,7 +8,7 @@
 	<c:forEach var="picking" items="${pickings}">
     	<li>
     	<c:out value="Picking id: ${picking.id}, " />
-    	<c:out value="Size: ${picking.size.width}:${picking.size.height}:${picking.size.depth}"/>
+    	<c:out value="Size: ${picking.size.width}:${picking.size.height}:${picking.size.length}"/>
     	<c:out value="Receiver: ${picking.receiver.name}, Receiver address: ${picking.receiver.address}"/>
     	<a href="track-picking?id=${picking.id}">Track</a>
     	</li>

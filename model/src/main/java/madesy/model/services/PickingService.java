@@ -66,9 +66,9 @@ public class PickingService extends BaseService {
 						.getCourierWithLowestPickingsNumber();
 				courierSupervisor.incrementCarriedPickings(courierId);
 
-				// System.out.println("Dispatched to: " + courierId +
-				// " Number of pickings:" +
-				// courierSupervisor.getPickingsNumber(courierId));
+				//System.out.println("Dispatched to: " + courierId +
+				//" Number of pickings:" +
+				//courierSupervisor.getPickingsNumber(courierId));
 
 				picking.setPickingStates(PickingStatus.DISPATCHED);
 				picking.setCourierId(courierId);
@@ -174,12 +174,12 @@ public class PickingService extends BaseService {
 			Void execute() {
 				Picking picking = pickingStorage.getPicking(pickingId);
 				picking.setPickingStates(PickingStatus.TAKEN);
-				courierSupervisor.decrementCarriedPickings(picking
-						.getCourierId());
+				courierSupervisor.decrementCarriedPickings(courierId);
 				String metaData = pickingId + ", " + picking.getCourierId();
 				eventLog.add(new Event(EventType.TAKE_PICKING, metaData));
 				 System.out.println("Courier with id: " + courierId +
 				 " deliver picking with id: " + pickingId);
+
 				return null;
 			}
 
