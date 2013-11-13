@@ -16,9 +16,6 @@ import madesy.web.utils.RequestManager;
 @WebServlet("/main")
 public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1285140711416523203L;
-	private final String CLIENT_HOME_PAGE = "client/client.jsp";
-	private final String COURIER_HOME_PAGE = "courier/courier.jsp";
-	private final String MANAGER_HOME_PAGE = "manager/manager.jsp";
 	private String forwardURL;
 
 	public MainServlet() {
