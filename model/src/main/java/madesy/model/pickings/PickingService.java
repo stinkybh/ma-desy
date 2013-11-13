@@ -132,6 +132,24 @@ public class PickingService {
 		}.executeWithLock();
 	}
 
+	public List<Picking> getPickingsByClientId(final String clientId) {
+		return new Synchronizator<List<Picking>>() {
+			@Override
+			List<Picking> execute() {
+				List<Picking> allPickings = pickingStorage.getPickings();
+				List<Picking> clientPickings = new ArrayList<Picking>();
+				
+				for (Picking p : allPickings) {
+					if(p.getSenderId().equals(clientId))
+						clientPickings.add(p);
+				}
+				
+				return clientPickings;
+			}
+		}.executeWithLock();
+		
+	}
+	
 	/**
 	 * Marks the picking with the given id as taken.
 	 * 

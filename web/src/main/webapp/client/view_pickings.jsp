@@ -11,7 +11,7 @@
     	<c:out value="Size: ${picking.size.width}:${picking.size.height}:${picking.size.depth}"/>
     	<c:out value="Receiver: ${picking.receiver.name}, Receiver address: ${picking.receiver.address}"/>
     	<c:out value="Status: ${picking.pickingStates}"/>
-    	<button>Track</button>
+    	<a href="/track-picking?id=${picking.id}">Track</a>
     	</li>
 	</c:forEach>
 	</ul>
