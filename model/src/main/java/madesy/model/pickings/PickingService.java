@@ -82,7 +82,20 @@ public class PickingService {
 
 		}.executeWithLock();
 	}
-
+	
+	public Picking getPickingById(final String id) {
+		return new Synchronizator<Picking>() {
+			@Override
+			Picking execute() {
+				for (Picking p : pickingStorage.getPickings())
+					if(p.getId().equals(id))
+						return p;
+				
+				return null;
+			}
+		}.executeWithLock();
+	}
+	
 	/**
 	 * Finds the first occurrence in the list of pickings, carried by the
 	 * courier with the specified id.
