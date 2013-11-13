@@ -36,12 +36,13 @@ public class EventLog {
 		List<Event> eventsForPeriod = new ArrayList<Event>();
 
 		for (Event event : eventLog) {
-			if (event.getEventType() == type
-					&& ((event.getDate().after(fromDate) && event.getDate()
-							.before(toDate))
-							|| event.getDate().equals(fromDate) || event
-							.getDate().equals(toDate))) {
-				eventsForPeriod.add(event);
+			if(event.getEventType() == type) {
+				if (((event.getDate().after(fromDate) && event.getDate()
+								.before(toDate))
+								|| event.getDate().equals(fromDate) || event
+								.getDate().equals(toDate))) {
+					eventsForPeriod.add(event);
+				}
 			}
 		}
 
