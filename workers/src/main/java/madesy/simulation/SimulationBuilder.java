@@ -13,9 +13,13 @@ public class SimulationBuilder {
 	private EventLog eventLog;
 	private ReportService reportService;
 	private SimulationType simulationType;
-
+	private ExecutorService pool;
+	
+	
 	public SimulationBuilder() {
-
+		this.pickingStorage = new PickingStorage();
+		this.eventLog = new EventLog();
+		this.reportService = new ReportService(new ReportStorage());
 	}
 
 	public SimulationBuilder addPickingStorage(PickingStorage pickingStorage) {
@@ -38,19 +42,17 @@ public class SimulationBuilder {
 		return this;
 	}
 
+	public SimulationBuilder addExecutorService(ExecutorService executorService) {
+		this.pool = executorService;
+		return this;
+	}
+	
 	public SimulationBase build() {
 		if (this.simulationType == null)
 			throw new IllegalStateException("Simulation type not specified");
-
-		if (this.pickingStorage == null)
-			this.pickingStorage = new PickingStorage();
-		if (this.eventLog == null)
-			this.eventLog = new EventLog();
-		if (this.reportService == null)
-			this.reportService = new ReportService(new ReportStorage());
-
-		ExecutorService pool = new DesyThreadPoolExecutor();
-
+		if (this.pool == null)
+			throw new IllegalStateException("ExecutorService not added");
+		
 		this.simulation = (this.simulationType == SimulationType.PICKINGS_NUMBER) 
 				? new PickingsSimulation(pool, pickingStorage, eventLog, 
 						reportService)
