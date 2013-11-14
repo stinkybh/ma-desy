@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import madesy.model.User;
-import madesy.model.services.PickingService;
-import madesy.web.utils.RequestManager;
+import madesy.web.requests.PickingServiceRequest;
 
 @WebServlet("/view-pickings")
 public class ViewPickingsServlet extends HttpServlet {
@@ -18,15 +16,11 @@ public class ViewPickingsServlet extends HttpServlet {
 
 	public void doGet(final HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		new RequestManager(request, response) {
+
+		new PickingServiceRequest(request, response) {
 
 			@Override
 			public String request() {
-				User loggedUser = (User) request.getSession().getAttribute(
-						"user");
-				PickingService pickingService = (PickingService) request
-						.getServletContext().getAttribute("pickingService");
-
 				request.setAttribute("pickings", pickingService
 						.getPickingsByClientId(loggedUser.getId()));
 

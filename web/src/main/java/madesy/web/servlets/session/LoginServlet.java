@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import madesy.model.User;
 import madesy.model.dao.UsersDAO;
 import madesy.web.dto.LoginRequest;
+import madesy.web.requests.Request;
 import madesy.web.utils.ParametersToBeanConverter;
-import madesy.web.utils.RequestManager;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		new RequestManager(request, response) {
+		new Request(request, response) {
 
 			@Override
 			public String request() {

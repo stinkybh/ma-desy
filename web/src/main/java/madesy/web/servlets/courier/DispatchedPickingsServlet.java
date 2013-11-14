@@ -10,8 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import madesy.model.pickings.Picking;
-import madesy.web.utils.PickingServiceManager;
-import madesy.web.utils.RequestManager;
+import madesy.web.requests.PickingServiceRequest;
 
 @WebServlet("/dispatched-pickings")
 public class DispatchedPickingsServlet extends HttpServlet {
@@ -19,19 +18,15 @@ public class DispatchedPickingsServlet extends HttpServlet {
 
 	public void doGet(final HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		new RequestManager(request, response) {
+
+		new PickingServiceRequest(request, response) {
 
 			@Override
 			public String request() {
-				new PickingServiceManager(request) {
+				List<Picking> pickings = pickingService
+						.getDispatchedPickings(loggedUser.getId());
+				request.setAttribute("dispatchedPickings", pickings);
 
-					@Override
-					protected void process() {
-						List<Picking> pickings = pickingService
-								.getDispatchedPickings(loggedUser.getId());
-						request.setAttribute("dispatchedPickings", pickings);
-					}
-				}.process();
 				return "courier/dispatched-pickings.jsp";
 			}
 		}.forward();

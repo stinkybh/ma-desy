@@ -15,7 +15,7 @@ import madesy.model.reports.ReportGenerator;
 import madesy.model.services.PickingService;
 import madesy.model.services.ReportService;
 import madesy.storage.EventLog;
-import madesy.web.utils.RequestManager;
+import madesy.web.requests.Request;
 
 @WebServlet("/create-report")
 public class CreateReportServlet extends HttpServlet {
@@ -23,7 +23,7 @@ public class CreateReportServlet extends HttpServlet {
 
 	public void doPost(final HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		new RequestManager(request, response) {
+		new Request(request, response) {
 
 			@Override
 			public String request() {
