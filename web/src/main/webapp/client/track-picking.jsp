@@ -21,7 +21,7 @@
     		<c:out value="Courier id: ${picking.courierId}" />
     		<br />
     	</c:if>
-    	<c:out value="Status: ${picking.pickingStates}" />
+    	<c:out value="Status: ${picking.pickingStatus}" />
     		</c:when>
     	<c:otherwise>
     		<b>Picking not found!</b>
