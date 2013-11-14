@@ -27,7 +27,6 @@ public class CreateReportServlet extends HttpServlet {
 
 			@Override
 			public String request() {
-				// TODO: Create report
 				PickingService pickingService = (PickingService) request
 						.getServletContext().getAttribute("pickingService");
 				EventLog eventLog = pickingService.getEventLog();
