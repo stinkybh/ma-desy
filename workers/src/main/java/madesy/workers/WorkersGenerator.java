@@ -2,7 +2,6 @@ package madesy.workers;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import madesy.model.services.ReportService;
 import madesy.storage.EventLog;
@@ -35,9 +34,6 @@ public class WorkersGenerator {
 		for (int i = 0; i < managersCount; i++) {
 			workers.add(WorkerFactory.createManager(pickingStorage, eventLog, reportService));
 		}
-
-		workers.add(new PickingDispatcherWorker(UUID.randomUUID().toString(),
-				50, pickingStorage, eventLog));
 
 		return workers;
 	}
