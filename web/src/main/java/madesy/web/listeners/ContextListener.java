@@ -9,22 +9,19 @@ import javax.servlet.ServletContextListener;
 import madesy.model.services.PickingService;
 import madesy.model.services.ReportService;
 import madesy.simulation.DesyThreadPoolExecutor;
-import madesy.simulation.SimulationBase;
-import madesy.simulation.SimulationFactory;
-import madesy.simulation.SimulationType;
 import madesy.storage.EventLog;
 import madesy.storage.PickingStorage;
 import madesy.storage.ReportStorage;
+import madesy.workers.BaseWorker;
 import madesy.workers.PickingDispatcherWorker;
+import madesy.workers.WorkersConfigurator;
+import madesy.workers.WorkersGenerator;
 
 public class ContextListener implements ServletContextListener {
-	private static SimulationBase simulation;
 
 	@Override
 	public void contextDestroyed(ServletContextEvent event) {
-		if (simulation != null)
-			simulation.stop();
-
+		
 	}
 
 	@Override
@@ -41,12 +38,12 @@ public class ContextListener implements ServletContextListener {
 		event.getServletContext()
 				.setAttribute("pickingService", pickingService);
 		event.getServletContext().setAttribute("reportService", reportService);
+		WorkersGenerator generator = new WorkersGenerator(pickingStorage, eventLog, reportService);
 		ExecutorService pool = new DesyThreadPoolExecutor();
+		for(BaseWorker worker : generator.generate(3, 3, 1)) {
+			pool.submit(worker);
+		}
 		pool.submit(new PickingDispatcherWorker(UUID.randomUUID().toString(),
-				50, pickingStorage, eventLog));
-		simulation = SimulationFactory.createSimulation(
-				SimulationType.PICKINGS_NUMBER, pool, pickingStorage, eventLog,
-				reportService);
-		simulation.run();
+				WorkersConfigurator.PICKINGS_DISPATCHER_SLEEP_TIME, pickingStorage, eventLog));
 	}
 }

@@ -12,11 +12,11 @@ import madesy.workers.WorkersGenerator;
 public abstract class SimulationBase {
 	protected ReportService reportService;
 	protected PickingStorage pickingStorage;
-	protected ExecutorService pool;
+	protected ExecutorService pool = new DesyThreadPoolExecutor();
 	protected EventLog eventLog;
 	protected WorkersGenerator workersGenerator;
 	
-	public SimulationBase(ExecutorService pool, PickingStorage pickingStorage, EventLog eventLog, 
+	public SimulationBase(PickingStorage pickingStorage, EventLog eventLog, 
 			ReportService reportService) {
 		
 		this.pickingStorage = pickingStorage;
@@ -24,7 +24,6 @@ public abstract class SimulationBase {
 		this.reportService = reportService;
 		this.workersGenerator = new WorkersGenerator(pickingStorage, eventLog,
 				reportService);
-		this.pool = pool;
 	}
 	
 	public abstract List<BaseWorker> process();
@@ -42,5 +41,9 @@ public abstract class SimulationBase {
 		for(BaseWorker worker : workers) {
 			pool.submit(worker);
 		}
+	}
+	
+	public ExecutorService getThreadPool() {
+		return this.pool;
 	}
 }
