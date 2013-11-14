@@ -21,7 +21,7 @@ import madesy.web.utils.RequestManager;
 public class CreateReportServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public void doGet(final HttpServletRequest request,
+	public void doPost(final HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		new RequestManager(request, response) {
 
@@ -40,8 +40,8 @@ public class CreateReportServlet extends HttpServlet {
 				reportService.addReport(report);
 				pickingService.getEventLog().add(Events.managerReport(report.getId()));
 				
-				return "/report?id=" + report.getId();
+				return "report?id=" + report.getId();
 			}
-		}.forward();
+		}.redirect();
 	}
 }

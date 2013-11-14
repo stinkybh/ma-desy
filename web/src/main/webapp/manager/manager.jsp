@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -11,16 +11,18 @@
 	<h1>Hello manager!</h1>
 	<b>Reports</b>
 	<ul>
-	<c:forEach var="report" items="${reports}">
-		<li>
-			<a href="report?id=${report.id}">
-				<c:out value=" ${report}"/>
-			</a>
-		</li>
-	</c:forEach>
+		<c:forEach var="report" items="${reports}">
+			<li><a href="report?id=${report.id}"> <c:out
+						value=" ${report}" />
+			</a></li>
+		</c:forEach>
 	</ul>
 	<br />
 	<br />
-	<a href="create-report">Create report</a>
+	
+	<form name="input" action="create-report" method="post"> 
+		<input type="submit" value="Create Report">
+	</form>
+	
 </body>
 </html>
