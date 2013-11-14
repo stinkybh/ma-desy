@@ -9,6 +9,7 @@
 
 	<tag-file>
 		<name>map-widget</name>
-		<path>/WEB-INF/tags/map-widget.tag</path>
+		<path>tags/map-widget.tag</path>
 	</tag-file>
+	
 </taglib>

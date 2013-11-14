@@ -14,7 +14,7 @@
     </parent>
 
 	<name>maps-widget</name>
-	<url>http://maps-widget.be</url>
+	<url>http://maven.apache.org</url>
 
 	<dependencies>
 		<dependency>
@@ -23,4 +23,5 @@
     		<version>1.2</version>
 		</dependency>
 	</dependencies>
+	
 </project>

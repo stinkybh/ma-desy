@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="maps" uri="http://ma-desy.com/maps" %>
+
 <t:genericpage>
 <jsp:body>
 	<h1>New picking</h1>
@@ -9,7 +11,8 @@
 			<div class="controls">
 				<input type="text" name="senderName" id="senderName" placeholder="Sender">
 				<br>
-				<input type="text" name="senderAddress" id="senderAddress">
+				<maps:map-widget widgetId = "sender" mapId="senderMap" textId="senderSearchAddress"
+					buttonId="senderSearchBtn" hiddenId="senderHidden" />
 			</div>
 			<div class="map">
 			
@@ -19,7 +22,8 @@
 			<div class="controls">
 				<input type="text" name="receiverName" id="receiverName" placeholder="Receiver">
 				<br>
-				<input type="text" name="receiverAddress" id="receiverAddress">
+				<maps:map-widget widgetId = "receiver" mapId="recvMap" textId="recvSearchAddress"
+					buttonId="recvSearchBtn" hiddenId="recvHidden" />
 			</div>
 			<div class="map">
 			
