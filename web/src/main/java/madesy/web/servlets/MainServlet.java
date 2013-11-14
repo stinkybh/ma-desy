@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import madesy.model.User;
 import madesy.model.types.UserTypes;
-import madesy.web.utils.RequestManager;
+import madesy.web.requests.Request;
 
 @WebServlet("/main")
 public class MainServlet extends HttpServlet {
@@ -26,7 +26,7 @@ public class MainServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		final HttpSession session = request.getSession(false);
 		if (session != null) {
-			new RequestManager(request, response) {
+			new Request(request, response) {
 
 				@Override
 				public String request() {

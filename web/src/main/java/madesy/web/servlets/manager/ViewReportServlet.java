@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import madesy.model.services.ReportService;
-import madesy.web.utils.RequestManager;
+import madesy.web.requests.Request;
 
 @WebServlet("/manager/report")
 public class ViewReportServlet extends HttpServlet {
@@ -17,7 +17,7 @@ public class ViewReportServlet extends HttpServlet {
 
 	public void doGet(final HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		new RequestManager(request, response) {
+		new Request(request, response) {
 
 			@Override
 			public String request() {

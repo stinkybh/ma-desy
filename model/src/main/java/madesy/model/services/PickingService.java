@@ -70,7 +70,7 @@ public class PickingService extends BaseService {
 				//" Number of pickings:" +
 				//courierSupervisor.getPickingsNumber(courierId));
 
-				picking.setPickingStates(PickingStatus.DISPATCHED);
+				picking.setPickingStatus(PickingStatus.DISPATCHED);
 				picking.setCourierId(courierId);
 				String metaData = picking.getId() + ", "
 						+ picking.getCourierId();
@@ -109,7 +109,7 @@ public class PickingService extends BaseService {
 					String dispatchedTo = p.getCourierId();
 					if (dispatchedTo != null) {
 						if (dispatchedTo.equals(courierId))
-								if(p.getPickingStates() == PickingStatus.DISPATCHED)
+								if(p.getPickingStatus() == PickingStatus.DISPATCHED)
 									return p;
 					}
 				}
@@ -135,7 +135,7 @@ public class PickingService extends BaseService {
 					String dispatchedTo = p.getCourierId();
 					if (dispatchedTo != null)
 						if (dispatchedTo.equals(courierId)
-								&& p.getPickingStates() == PickingStatus.DISPATCHED)
+								&& p.getPickingStatus() == PickingStatus.DISPATCHED)
 							pickings.add(p);
 				}
 				return pickings;
@@ -173,7 +173,7 @@ public class PickingService extends BaseService {
 			@Override
 			Void execute() {
 				Picking picking = pickingStorage.getPicking(pickingId);
-				picking.setPickingStates(PickingStatus.TAKEN);
+				picking.setPickingStatus(PickingStatus.TAKEN);
 				courierSupervisor.decrementCarriedPickings(courierId);
 				String metaData = pickingId + ", " + picking.getCourierId();
 				eventLog.add(new Event(EventType.TAKE_PICKING, metaData));

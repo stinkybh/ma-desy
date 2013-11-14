@@ -15,19 +15,18 @@ import madesy.model.reports.ReportGenerator;
 import madesy.model.services.PickingService;
 import madesy.model.services.ReportService;
 import madesy.storage.EventLog;
-import madesy.web.utils.RequestManager;
+import madesy.web.requests.Request;
 
 @WebServlet("/manager/create-report")
 public class CreateReportServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public void doGet(final HttpServletRequest request,
+	public void doPost(final HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		new RequestManager(request, response) {
+		new Request(request, response) {
 
 			@Override
 			public String request() {
-				// TODO: Create report
 				PickingService pickingService = (PickingService) request
 						.getServletContext().getAttribute("pickingService");
 				EventLog eventLog = pickingService.getEventLog();
@@ -42,6 +41,6 @@ public class CreateReportServlet extends HttpServlet {
 				
 				return "report?id=" + report.getId();
 			}
-		}.forward();
+		}.redirect();
 	}
 }
