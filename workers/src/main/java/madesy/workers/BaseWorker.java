@@ -1,7 +1,10 @@
 package madesy.workers;
 
+import java.util.Random;
+
 
 public abstract class BaseWorker implements Runnable {
+	private Random rand = new Random();
 	protected String id;
 	protected int sleepTime;
 	
@@ -22,7 +25,7 @@ public abstract class BaseWorker implements Runnable {
 
 	protected void threadToSleep() {
 		try {
-			Thread.sleep(sleepTime);
+			Thread.sleep(rand.nextInt(1000) + sleepTime);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 		}
