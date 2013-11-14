@@ -1,15 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<link rel="stylesheet" href="courier/picking-details.css">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Picking details</title>
-</head>
-<body>
-	<div class="container">
+<t:genericpage>
+	<jsp:attribute name="css">
+		<link rel="stylesheet" href="picking-details.css">
+	</jsp:attribute>
+	<jsp:body>
+		<div class="container">
 		<div class="receiverDetails">
 			<span class="label">Receiver name: </span>
 			<span class="personName">${dispatchedPicking.receiver.name}</span> <br>
@@ -40,5 +37,5 @@
 			<a href="dispatched-pickings" class="back">Go back</a>
 		</form>
 	</div>
-</body>
-</html>
+	</jsp:body>
+</t:genericpage>

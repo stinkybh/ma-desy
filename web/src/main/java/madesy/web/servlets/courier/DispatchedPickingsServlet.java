@@ -13,7 +13,7 @@ import madesy.model.pickings.Picking;
 import madesy.web.utils.PickingServiceManager;
 import madesy.web.utils.RequestManager;
 
-@WebServlet("/dispatched-pickings")
+@WebServlet("/courier/dispatched-pickings")
 public class DispatchedPickingsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -32,7 +32,7 @@ public class DispatchedPickingsServlet extends HttpServlet {
 						request.setAttribute("dispatchedPickings", pickings);
 					}
 				}.process();
-				return "courier/dispatched-pickings.jsp";
+				return "dispatched-pickings.jsp";
 			}
 		}.forward();
 	}

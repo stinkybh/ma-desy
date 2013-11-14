@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import madesy.web.utils.PickingServiceManager;
 import madesy.web.utils.RequestManager;
 
-@WebServlet("/deliver")
+@WebServlet("/courier/deliver")
 public class DeliverServlet extends HttpServlet {
 	private static final long serialVersionUID = 4692953249933523263L;
 	

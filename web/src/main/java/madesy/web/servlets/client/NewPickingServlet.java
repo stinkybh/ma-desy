@@ -17,7 +17,7 @@ import madesy.web.utils.ParametersToBeanConverter;
 import madesy.web.utils.PickingServiceManager;
 import madesy.web.utils.RequestManager;
 
-@WebServlet("/new-picking")
+@WebServlet("/client/new-picking")
 public class NewPickingServlet extends HttpServlet {
 	private static final long serialVersionUID = -8281953502188692277L;
 
@@ -64,7 +64,7 @@ public class NewPickingServlet extends HttpServlet {
 
 			@Override
 			public String request() {
-				return "client/new-picking.jsp";
+				return "new-picking.jsp";
 			}
 		}.forward();
 	}

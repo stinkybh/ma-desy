@@ -12,7 +12,7 @@ import madesy.model.User;
 import madesy.model.services.PickingService;
 import madesy.web.utils.RequestManager;
 
-@WebServlet("/view-pickings")
+@WebServlet("/client/view-pickings")
 public class ViewPickingsServlet extends HttpServlet {
 	private static final long serialVersionUID = -7682281396626429728L;
 
@@ -30,7 +30,7 @@ public class ViewPickingsServlet extends HttpServlet {
 				request.setAttribute("pickings", pickingService
 						.getPickingsByClientId(loggedUser.getId()));
 
-				return "client/view_pickings.jsp";
+				return "view_pickings.jsp";
 			}
 		}.forward();
 	}
