@@ -5,6 +5,7 @@
 <head>
 	<jsp:invoke fragment="css"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>ma-desy</title>
 </head>
 <body>
 	<div id="pageheader">

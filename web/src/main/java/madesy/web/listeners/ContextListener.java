@@ -40,7 +40,7 @@ public class ContextListener implements ServletContextListener {
 		event.getServletContext().setAttribute("reportService", reportService);
 		WorkersGenerator generator = new WorkersGenerator(pickingStorage, eventLog, reportService);
 		ExecutorService pool = new DesyThreadPoolExecutor();
-		for(BaseWorker worker : generator.generate(3, 3, 2)) {
+		for(BaseWorker worker : generator.generate(3, 3, 1)) {
 			pool.submit(worker);
 		}
 		pool.submit(new PickingDispatcherWorker(UUID.randomUUID().toString(),
