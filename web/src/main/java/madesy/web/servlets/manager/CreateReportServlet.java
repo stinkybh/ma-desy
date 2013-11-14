@@ -16,7 +16,7 @@ import madesy.model.services.ReportService;
 import madesy.storage.EventLog;
 import madesy.web.requests.PickingServiceRequest;
 
-@WebServlet("/create-report")
+@WebServlet("/manager/create-report")
 public class CreateReportServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

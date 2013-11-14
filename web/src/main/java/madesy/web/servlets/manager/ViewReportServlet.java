@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import madesy.model.services.ReportService;
 import madesy.web.requests.Request;
 
-@WebServlet("/report")
+@WebServlet("/manager/report")
 public class ViewReportServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -26,7 +26,7 @@ public class ViewReportServlet extends HttpServlet {
 				String id = request.getParameter("id");
 				request.setAttribute("report", reportService.getReportById(id));
 				
-				return "manager/view-report.jsp";
+				return "view-report.jsp";
 			}
 		}.forward();
 	}

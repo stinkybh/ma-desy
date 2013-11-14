@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import madesy.model.pickings.Picking;
 import madesy.web.requests.PickingServiceRequest;
 
-@WebServlet("/details")
+@WebServlet("/courier/details")
 public class PickingDetailsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -27,7 +27,7 @@ public class PickingDetailsServlet extends HttpServlet {
 						.getParameter("pickingId"));
 				if (picking != null) {
 					request.setAttribute("dispatchedPicking", picking);
-					return "courier/picking-details.jsp";
+					return "picking-details.jsp";
 				}
 
 				return "error.jsp";

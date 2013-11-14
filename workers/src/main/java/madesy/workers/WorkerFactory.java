@@ -31,6 +31,6 @@ public class WorkerFactory {
 			EventLog eventLog, ReportService reportService) {
 		
 		return new ManagerWorker(UUID.randomUUID().toString(), eventLog, 
-				reportService, rand.nextInt(500));
+				reportService, rand.nextInt(1500));
 	}
 }

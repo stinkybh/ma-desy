@@ -1,14 +1,15 @@
 <%@tag description="Overall Page template" pageEncoding="UTF-8"%>
+<%@attribute name="menu" fragment="true" %>
+<%@attribute name="css" fragment="true" %>
 <html>
 <head>
+	<jsp:invoke fragment="css"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
 	<div id="pageheader">
-		<ul>
-			<li><a href="new-picking">New picking</a></li>
-			<li><a href="view-pickings">View pickings</a></li>
-		</ul>
-		<form method="POST" action="logout">
+		<jsp:invoke fragment="menu"/>
+		<form method="POST" action="../logout">
 			<input type="submit" value="Logout">
 		</form>
 	</div>

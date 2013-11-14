@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import madesy.web.requests.PickingServiceRequest;
 
-@WebServlet("/track-picking")
+@WebServlet("/client/track-picking")
 public class TrackPickingServlet extends HttpServlet {
 	private static final long serialVersionUID = 9201624660696571253L;
 
 	public void doGet(final HttpServletRequest request,
 			final HttpServletResponse response) throws ServletException,
 			IOException {
-		
+
 		new PickingServiceRequest(request, response) {
 			@Override
 			public String request() {
@@ -25,7 +25,7 @@ public class TrackPickingServlet extends HttpServlet {
 				request.setAttribute("picking",
 						pickingService.getPickingById(pickingId));
 
-				return "client/track-picking.jsp";
+				return "track-picking.jsp";
 			}
 		}.forward();
 	}

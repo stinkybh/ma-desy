@@ -32,17 +32,17 @@ public class MainServlet extends HttpServlet {
 				public String request() {
 					User loggedUser = (User) session.getAttribute("user");
 					if (loggedUser.getType() == UserTypes.CLIENT)
-						forwardURL = "new-picking";
+						forwardURL = "client/new-picking";
 					else if (loggedUser.getType() == UserTypes.COURIER)
-						forwardURL = "dispatched-pickings";
+						forwardURL = "courier/dispatched-pickings";
 					else
-						forwardURL = "manager";
+						forwardURL = "manager/manager";
 					return forwardURL;
 				}
-			}.forward();
+			}.redirect();
 			return;
 		}
 		
-		response.sendRedirect("login");
+		response.sendRedirect("");
 	}
 }
