@@ -8,26 +8,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import madesy.web.utils.PickingServiceManager;
+import madesy.web.requests.PickingServiceRequest;
 
-@WebServlet("/deliver")
+@WebServlet("/courier/deliver")
 public class DeliverServlet extends HttpServlet {
 	private static final long serialVersionUID = 4692953249933523263L;
 
+	public DeliverServlet() {
+		super();
+	}
+
 	public void doPost(final HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
-		new PickingServiceManager(request) {
+		
+		new PickingServiceRequest(request, response) {
 
 			@Override
-			protected void process() {
-				// request.getAttribute ???
+			public String request() {
 				pickingService.setTaken(loggedUser.getId(),
 						request.getParameter("pickingId"));
-			}
-		}.process();
 
-		
+				return "dispatched-pickings";
+			}
+		}.redirect();
 	}
 
 }

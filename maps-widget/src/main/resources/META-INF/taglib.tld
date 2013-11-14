@@ -9,7 +9,7 @@
 
 	<tag-file>
 		<name>map-widget</name>
-		<path>tags/map-widget.tag</path>
+		<path>/META-INF/tags/map-widget.tag</path>
 	</tag-file>
 	
 </taglib>

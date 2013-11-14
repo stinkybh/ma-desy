@@ -67,11 +67,11 @@ public class Picking {
 		return id;
 	}
 	
-	public PickingStatus getPickingStates() {
+	public PickingStatus getPickingStatus() {
 		return pickingStatus;
 	}
 
-	public void setPickingStates(PickingStatus pickingStatus) {
+	public void setPickingStatus(PickingStatus pickingStatus) {
 		this.pickingStatus = pickingStatus;
 	}
 

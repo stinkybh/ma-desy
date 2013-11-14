@@ -11,14 +11,11 @@ import javax.servlet.http.HttpSession;
 
 import madesy.model.User;
 import madesy.model.types.UserTypes;
-import madesy.web.utils.RequestManager;
+import madesy.web.requests.Request;
 
 @WebServlet("/main")
 public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1285140711416523203L;
-	private final String CLIENT_HOME_PAGE = "client/client.jsp";
-	private final String COURIER_HOME_PAGE = "courier/courier.jsp";
-	private final String MANAGER_HOME_PAGE = "manager/manager.jsp";
 	private String forwardURL;
 
 	public MainServlet() {
@@ -29,23 +26,23 @@ public class MainServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		final HttpSession session = request.getSession(false);
 		if (session != null) {
-			new RequestManager(request, response) {
+			new Request(request, response) {
 
 				@Override
 				public String request() {
 					User loggedUser = (User) session.getAttribute("user");
 					if (loggedUser.getType() == UserTypes.CLIENT)
-						forwardURL = "new-picking";
+						forwardURL = "client/new-picking";
 					else if (loggedUser.getType() == UserTypes.COURIER)
-						forwardURL = "dispatched-pickings";
+						forwardURL = "courier/dispatched-pickings";
 					else
-						forwardURL = "manager";
+						forwardURL = "manager/manager";
 					return forwardURL;
 				}
-			}.forward();
+			}.redirect();
 			return;
 		}
 		
-		response.sendRedirect("login");
+		response.sendRedirect("");
 	}
 }

@@ -32,6 +32,10 @@ public class CourierSupervisor {
 		return couriers.keySet();
 	}
 
+	/**
+	 * Adds new courier to track
+	 * @param courierId
+	 */
 	public static void addCourier(String courierId) {
 		couriers.put(courierId, 0);
 	}
@@ -45,6 +49,7 @@ public class CourierSupervisor {
 	public void incrementCarriedPickings(String courierId) {
 		int dispatchedPickings = couriers.get(courierId);
 		couriers.put(courierId, ++dispatchedPickings);
+		System.out.println(couriers.get(courierId));
 	}
 
 	/**
@@ -72,7 +77,7 @@ public class CourierSupervisor {
 				courierPickings = couriers.get(id);
 			}
 		}
-
+		System.out.println(courierId);
 		return courierId;
 	}
 
@@ -84,15 +89,6 @@ public class CourierSupervisor {
 	 */
 	public int getPickingsNumber(String courierId) {
 		return couriers.get(courierId);
-	}
-
-	/**
-	 * Adds a new courier to track
-	 * 
-	 * @param courierId
-	 */
-	public void addNewCourier(String courierId) {
-		couriers.put(courierId, 0);
 	}
 
 	/**

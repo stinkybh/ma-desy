@@ -8,13 +8,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/track-picking")
+import madesy.web.requests.PickingServiceRequest;
+
+@WebServlet("/client/track-picking")
 public class TrackPickingServlet extends HttpServlet {
 	private static final long serialVersionUID = 9201624660696571253L;
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void doGet(final HttpServletRequest request,
+			final HttpServletResponse response) throws ServletException,
+			IOException {
 
+		new PickingServiceRequest(request, response) {
+			@Override
+			public String request() {
+				String pickingId = request.getParameter("id");
+				request.setAttribute("picking",
+						pickingService.getPickingById(pickingId));
+
+				return "track-picking.jsp";
+			}
+		}.forward();
 	}
-
 }

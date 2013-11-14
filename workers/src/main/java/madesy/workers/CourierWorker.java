@@ -1,7 +1,7 @@
 package madesy.workers;
 
 import madesy.model.pickings.Picking;
-import madesy.model.pickings.PickingService;
+import madesy.model.services.PickingService;
 import madesy.storage.EventLog;
 import madesy.storage.PickingStorage;
 
@@ -9,10 +9,10 @@ import madesy.storage.PickingStorage;
  * Worker process used to simulate basic duties of a courier, which are
  * dispatching and taking a picking.
  */
-public class CourrierWorker extends BaseWorker {
+public class CourierWorker extends BaseWorker {
 	private PickingService pickingService;
 
-	public CourrierWorker(String id, PickingStorage pickingStorage,
+	public CourierWorker(String id, PickingStorage pickingStorage,
 			EventLog eventLog, int sleepTime) {
 		super(id, sleepTime);
 		this.pickingService = new PickingService(eventLog, pickingStorage);

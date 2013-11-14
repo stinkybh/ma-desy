@@ -22,3 +22,6 @@ bin/
 /Servers
 /.metadata
 /RemoteSystemsTempFiles
+.settings
+.classpath
+.project

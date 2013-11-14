@@ -2,8 +2,10 @@ package madesy.simulation;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ExecutorService;
 
 import madesy.model.Event;
+import madesy.model.services.ReportService;
 import madesy.model.types.EventType;
 import madesy.storage.EventLog;
 import madesy.storage.PickingStorage;
@@ -11,8 +13,9 @@ import madesy.workers.BaseWorker;
 
 public class PickingsSimulation extends SimulationBase {
 	
-	public PickingsSimulation(PickingStorage pickingStorage, EventLog eventLog) {
-		super(pickingStorage, eventLog);
+	public PickingsSimulation(ExecutorService pool, PickingStorage pickingStorage, EventLog eventLog,
+			ReportService reportService) {
+		super(pool, pickingStorage, eventLog, reportService);
 	}
 	
 	@Override

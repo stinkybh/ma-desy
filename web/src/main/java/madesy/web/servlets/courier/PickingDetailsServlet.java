@@ -1,7 +1,6 @@
 package madesy.web.servlets.courier;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,22 +11,26 @@ import javax.servlet.http.HttpServletResponse;
 import madesy.model.pickings.Picking;
 import madesy.web.requests.PickingServiceRequest;
 
-@WebServlet("/courier/dispatched-pickings")
-public class DispatchedPickingsServlet extends HttpServlet {
+@WebServlet("/courier/details")
+public class PickingDetailsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public void doGet(final HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+			final HttpServletResponse response) throws ServletException,
+			IOException {
 
 		new PickingServiceRequest(request, response) {
 
 			@Override
 			public String request() {
-				List<Picking> pickings = pickingService
-						.getDispatchedPickings(loggedUser.getId());
-				request.setAttribute("dispatchedPickings", pickings);
+				Picking picking = pickingService.getPicking(request
+						.getParameter("pickingId"));
+				if (picking != null) {
+					request.setAttribute("dispatchedPicking", picking);
+					return "picking-details.jsp";
+				}
 
-				return "dispatched-pickings.jsp";
+				return "error.jsp";
 			}
 		}.forward();
 	}

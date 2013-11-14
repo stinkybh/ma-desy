@@ -36,18 +36,30 @@ public class EventLog {
 		List<Event> eventsForPeriod = new ArrayList<Event>();
 
 		for (Event event : eventLog) {
-			if (event.getEventType() == type
-					&& ((event.getDate().after(fromDate) && event.getDate()
-							.before(toDate))
-							|| event.getDate().equals(fromDate) || event
-							.getDate().equals(toDate))) {
-				eventsForPeriod.add(event);
+			if(event.getEventType() == type) {
+				if (((event.getDate().after(fromDate) && event.getDate()
+								.before(toDate))
+								|| event.getDate().equals(fromDate) || event
+								.getDate().equals(toDate))) {
+					eventsForPeriod.add(event);
+				}
 			}
 		}
 
 		return eventsForPeriod;
 	}
-
+	
+	public List<Event> getEventsByType(EventType type) {
+		List<Event> eventsToReturn = new ArrayList<Event>();
+		
+		for(Event e : this.eventLog) {
+			if(e.getEventType() == type)
+				eventsToReturn.add(e);
+		}
+		
+		return eventsToReturn;
+	}
+	
 	/**
 	 * 
 	 * @param picikingId
@@ -61,9 +73,7 @@ public class EventLog {
 			String picId = splitMetaData(e.getMetaData())[0];
 
 			if (picId.equals(picikingId)) {
-				if (type == EventType.NEW_PICKING
-						|| type == EventType.DISPATCH_PICKING
-						|| type == EventType.TAKE_PICKING) {
+				if (type != EventType.MANAGER_REPORT) {
 					events.add(e);
 				}
 			}
