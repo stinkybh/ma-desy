@@ -73,9 +73,7 @@ public class EventLog {
 			String picId = splitMetaData(e.getMetaData())[0];
 
 			if (picId.equals(picikingId)) {
-				if (type == EventType.NEW_PICKING
-						|| type == EventType.DISPATCH_PICKING
-						|| type == EventType.TAKE_PICKING) {
+				if (type != EventType.MANAGER_REPORT) {
 					events.add(e);
 				}
 			}
