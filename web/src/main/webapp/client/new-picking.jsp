@@ -17,7 +17,7 @@
 				<div class="controls">
 					<input type="text" name="senderName" id="senderName" placeholder="Sender">
 					<br>
-					<maps:map-widget widgetId = "sender" mapId="senderMap" textId="senderSearchAddress"
+					<maps:map-widget widgetId = "sender" mapId="senderMap" textId="senderAddress"
 						buttonId="senderSearchBtn" hiddenId="senderHidden" />
 				</div>
 
@@ -26,7 +26,7 @@
 				<div class="controls">
 					<input type="text" name="receiverName" id="receiverName" placeholder="Receiver">
 					<br>
-					<maps:map-widget widgetId = "receiver" mapId="recvMap" textId="recvSearchAddress"
+					<maps:map-widget widgetId = "receiver" mapId="recvMap" textId="receiverAddress"
 					buttonId="recvSearchBtn" hiddenId="recvHidden" />
 				</div>
 
