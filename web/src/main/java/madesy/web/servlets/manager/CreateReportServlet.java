@@ -12,10 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import madesy.model.Events;
 import madesy.model.Report;
 import madesy.model.reports.ReportGenerator;
-import madesy.model.services.PickingService;
 import madesy.model.services.ReportService;
 import madesy.storage.EventLog;
-import madesy.web.requests.Request;
+import madesy.web.requests.PickingServiceRequest;
 
 @WebServlet("/manager/create-report")
 public class CreateReportServlet extends HttpServlet {
@@ -23,24 +22,26 @@ public class CreateReportServlet extends HttpServlet {
 
 	public void doPost(final HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		new Request(request, response) {
+
+		new PickingServiceRequest(request, response) {
 
 			@Override
 			public String request() {
-				PickingService pickingService = (PickingService) request
-						.getServletContext().getAttribute("pickingService");
 				EventLog eventLog = pickingService.getEventLog();
 				ReportService reportService = (ReportService) request
 						.getServletContext().getAttribute("reportService");
 				Date from = reportService.getDateOfLastReport();
 				Date to = new Date();
-				Report report = new ReportGenerator(eventLog, from, to).generateReport();
-				
+				Report report = new ReportGenerator(eventLog, from, to)
+						.generateReport();
+
 				reportService.addReport(report);
-				pickingService.getEventLog().add(Events.managerReport(report.getId()));
-				
+				pickingService.getEventLog().add(
+						Events.managerReport(report.getId()));
+
 				return "report?id=" + report.getId();
 			}
 		}.redirect();
+
 	}
 }
