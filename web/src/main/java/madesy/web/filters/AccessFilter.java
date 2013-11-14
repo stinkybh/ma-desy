@@ -45,7 +45,6 @@ public class AccessFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession(false);
 
-		System.out.println("Access Filter");
 		String path = req.getServletPath();
 
 		if (session == null) {

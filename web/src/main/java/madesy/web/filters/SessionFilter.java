@@ -28,7 +28,6 @@ public class SessionFilter implements Filter {
 		HttpServletResponse resp = (HttpServletResponse) response;
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession(false);
-		System.out.println("Session Filter");
 		String path = req.getServletPath();
 
 		if (session == null && path.trim().equalsIgnoreCase("/main")) {

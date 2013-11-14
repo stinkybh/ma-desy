@@ -1,7 +1,6 @@
 package madesy.web.servlets.courier;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,11 +23,14 @@ public class PickingDetailsServlet extends HttpServlet {
 
 			@Override
 			public String request() {
-				List<Picking> pickings = pickingService
-						.getDispatchedPickings(loggedUser.getId());
-				request.setAttribute("dispatchedPickings", pickings);
+				Picking picking = pickingService.getPicking(request
+						.getParameter("pickingId"));
+				if (picking != null) {
+					request.setAttribute("dispatchedPicking", picking);
+					return "picking-details.jsp";
+				}
 
-				return "dispatched-pickings.jsp";
+				return "error.jsp";
 			}
 		}.forward();
 	}

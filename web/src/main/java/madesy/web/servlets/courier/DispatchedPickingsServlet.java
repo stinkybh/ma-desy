@@ -21,14 +21,14 @@ public class DispatchedPickingsServlet extends HttpServlet {
 
 		new PickingServiceRequest(request, response) {
 
-            @Override
-            public String request() {
-                    List<Picking> pickings = pickingService
-                                    .getDispatchedPickings(loggedUser.getId());
-                    request.setAttribute("dispatchedPickings", pickings);
+			@Override
+			public String request() {
+				List<Picking> pickings = pickingService
+						.getDispatchedPickings(loggedUser.getId());
+				request.setAttribute("dispatchedPickings", pickings);
 
-                    return "dispatched-pickings.jsp";
-            }
-    }.forward();
+				return "dispatched-pickings.jsp";
+			}
+		}.forward();
 	}
 }
