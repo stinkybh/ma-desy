@@ -76,7 +76,7 @@ public class Picking {
 	}
 
 	public String getSenderId() {
-		return senderId;g
+		return senderId;
 	}
 
 	public void setSenderId(String senderId) {
