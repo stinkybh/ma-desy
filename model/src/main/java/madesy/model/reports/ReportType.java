@@ -1,4 +1,4 @@
-package madesy.model.types;
+package madesy.model.reports;
 
 public enum ReportType {
 	DISPATCH_PROPERLY("The new pickings are dispatched properly."),

@@ -2,13 +2,13 @@ package madesy.workers;
 
 import java.util.Random;
 
-import madesy.model.Client;
-import madesy.model.ClientType;
+import madesy.model.client.Client;
+import madesy.model.client.ClientType;
+import madesy.model.events.EventLog;
 import madesy.model.pickings.Picking;
+import madesy.model.pickings.PickingService;
 import madesy.model.pickings.PickingSize;
-import madesy.model.services.PickingService;
-import madesy.storage.EventLog;
-import madesy.storage.PickingStorage;
+import madesy.model.pickings.PickingStorage;
 
 /**
  * Worker process used to simulate a client, requesting to send a new picking.

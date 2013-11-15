@@ -1,10 +1,9 @@
-package madesy.model.services;
+package madesy.model.reports;
 
 import java.util.Date;
 import java.util.List;
 
-import madesy.model.Report;
-import madesy.storage.ReportStorage;
+import madesy.model.BaseService;
 
 public class ReportService extends BaseService {
 	private ReportStorage reportStorage;
@@ -17,6 +16,7 @@ public class ReportService extends BaseService {
 		new Synchronizator<Void>() {
 
 			@Override
+			protected
 			Void execute() {
 				reportStorage.add(report);
 				
@@ -33,6 +33,7 @@ public class ReportService extends BaseService {
 		return new Synchronizator<List<Report>>() {
 
 			@Override
+			protected
 			List<Report> execute() {
 				return reportStorage.getReportsForPeriod(from, to);
 			}
@@ -43,6 +44,7 @@ public class ReportService extends BaseService {
 		return new Synchronizator<Report>() {
 
 			@Override
+			protected
 			Report execute() {
 				return reportStorage.getReportById(id);
 			}

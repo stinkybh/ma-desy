@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import madesy.model.User;
-import madesy.model.dao.UsersDAO;
 import madesy.web.dto.LoginRequest;
+import madesy.web.model.User;
+import madesy.web.model.UsersDAO;
 import madesy.web.requests.Request;
 import madesy.web.utils.ParametersToBeanConverter;
 

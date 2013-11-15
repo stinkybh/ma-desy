@@ -1,6 +1,4 @@
-package madesy.model;
-
-import madesy.model.types.UserTypes;
+package madesy.web.model;
 
 /**
  * Represents a user, able to log with a username and password

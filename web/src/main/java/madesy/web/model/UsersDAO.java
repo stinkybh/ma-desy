@@ -1,9 +1,6 @@
-package madesy.model.dao;
+package madesy.web.model;
 
 import java.util.List;
-
-import madesy.model.User;
-import madesy.model.Users;
 
 public class UsersDAO {
 	private Users users;

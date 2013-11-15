@@ -1,6 +1,5 @@
-package madesy.model;
+package madesy.model.events;
 
-import madesy.model.types.EventType;
 
 /**
  * Factory class used to create Event objects

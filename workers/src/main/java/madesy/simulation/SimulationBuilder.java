@@ -1,9 +1,9 @@
 package madesy.simulation;
 
-import madesy.model.services.ReportService;
-import madesy.storage.EventLog;
-import madesy.storage.PickingStorage;
-import madesy.storage.ReportStorage;
+import madesy.model.events.EventLog;
+import madesy.model.pickings.PickingStorage;
+import madesy.model.reports.ReportService;
+import madesy.model.reports.ReportStorage;
 import madesy.workers.PickingDispatcherWorker;
 
 public class SimulationBuilder {

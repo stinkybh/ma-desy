@@ -1,12 +1,12 @@
-package madesy.storage;
+package madesy.model.events;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import madesy.model.Event;
-import madesy.model.types.EventType;
+import madesy.model.events.Event;
+import madesy.model.events.EventType;
 
 /**
  * Contains a list of events for all worker threads activities on the picking
@@ -27,10 +27,10 @@ public class EventLog {
 	 * on the arguments for from and to dates.
 	 * 
 	 * @param type
-	 *            - The type of the event {@link madesy.model.types.EventType}
+	 *            - The type of the event {@link madesy.model.events.EventType}
 	 * @param fromDate
 	 * @param toDate
-	 * @return List of {@link madesy.model.Event}
+	 * @return List of {@link madesy.model.events.Event}
 	 */
 	public List<Event> getEvents(EventType type, Date fromDate, Date toDate) {
 		List<Event> eventsForPeriod = new ArrayList<Event>();

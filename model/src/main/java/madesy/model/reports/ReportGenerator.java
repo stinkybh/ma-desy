@@ -7,21 +7,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import madesy.EventLogAnalyzer;
-import madesy.model.CourierSupervisor;
-import madesy.model.Report;
-import madesy.model.types.ReportType;
-import madesy.storage.EventLog;
+import madesy.model.courier.CourierStatus;
+import madesy.model.events.EventLog;
+import madesy.model.events.EventLogAnalyzer;
 
 public class ReportGenerator {
-	private CourierSupervisor courierSupervisor;
+	private CourierStatus courierSupervisor;
 	private EventLogAnalyzer analyzer;
 	private Date from;
 	private Date to;
 	
 	public ReportGenerator(EventLog eventLog, Date from, Date to) {
 		this.analyzer = new EventLogAnalyzer(eventLog, from, to);
-		this.courierSupervisor = new CourierSupervisor();
+		this.courierSupervisor = new CourierStatus();
 		this.from = from;
 		this.to = to;
 	}

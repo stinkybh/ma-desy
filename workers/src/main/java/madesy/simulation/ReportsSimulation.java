@@ -3,11 +3,11 @@ package madesy.simulation;
 import java.util.List;
 import java.util.UUID;
 
-import madesy.model.Event;
-import madesy.model.services.ReportService;
-import madesy.model.types.EventType;
-import madesy.storage.EventLog;
-import madesy.storage.PickingStorage;
+import madesy.model.events.Event;
+import madesy.model.events.EventLog;
+import madesy.model.events.EventType;
+import madesy.model.pickings.PickingStorage;
+import madesy.model.reports.ReportService;
 import madesy.workers.BaseWorker;
 
 public class ReportsSimulation extends SimulationBase {

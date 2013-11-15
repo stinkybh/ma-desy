@@ -2,7 +2,7 @@ package madesy.simulation;
 
 import java.util.concurrent.ExecutorService;
 
-import madesy.storage.EventLog;
+import madesy.model.events.EventLog;
 import madesy.workers.BaseWorker;
 
 /**

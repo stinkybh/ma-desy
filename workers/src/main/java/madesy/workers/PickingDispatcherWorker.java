@@ -1,11 +1,10 @@
 package madesy.workers;
 
+import madesy.model.events.EventLog;
 import madesy.model.pickings.Picking;
-import madesy.model.services.PickingService;
-import madesy.storage.EventLog;
-import madesy.storage.PickingStorage;
-import madesy.storage.PickingsQueue;
-import madesy.workers.BaseWorker;
+import madesy.model.pickings.PickingService;
+import madesy.model.pickings.PickingStorage;
+import madesy.model.pickings.PickingsQueue;
 
 /**
  * Executes the role of distributor who sends every new picking to the least

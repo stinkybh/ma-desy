@@ -1,4 +1,4 @@
-package madesy.model;
+package madesy.model.client;
 
 public class Client {
 	private String name;
