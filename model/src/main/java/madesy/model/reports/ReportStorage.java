@@ -1,11 +1,11 @@
-package madesy.storage;
+package madesy.model.reports;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import madesy.model.Report;
+import madesy.model.reports.Report;
 
 public class ReportStorage {
 	private List<Report> reports = new CopyOnWriteArrayList<Report>();

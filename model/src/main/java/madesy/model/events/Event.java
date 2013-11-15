@@ -1,9 +1,7 @@
-package madesy.model;
+package madesy.model.events;
 
 import java.util.Date;
 import java.util.UUID;
-
-import madesy.model.types.EventType;
 
 /**
  * Contains information describing each event

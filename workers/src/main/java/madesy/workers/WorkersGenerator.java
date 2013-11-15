@@ -3,9 +3,9 @@ package madesy.workers;
 import java.util.ArrayList;
 import java.util.List;
 
-import madesy.model.services.ReportService;
-import madesy.storage.EventLog;
-import madesy.storage.PickingStorage;
+import madesy.model.events.EventLog;
+import madesy.model.pickings.PickingStorage;
+import madesy.model.reports.ReportService;
 
 public class WorkersGenerator {
 	private PickingStorage pickingStorage;

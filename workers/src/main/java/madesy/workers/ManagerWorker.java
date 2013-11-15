@@ -2,11 +2,11 @@ package madesy.workers;
 
 import java.util.Date;
 
-import madesy.model.Events;
-import madesy.model.Report;
+import madesy.model.events.EventLog;
+import madesy.model.events.Events;
+import madesy.model.reports.Report;
 import madesy.model.reports.ReportGenerator;
-import madesy.model.services.ReportService;
-import madesy.storage.EventLog;
+import madesy.model.reports.ReportService;
 
 /**
  * Class used to generate reports, based on status of all available in

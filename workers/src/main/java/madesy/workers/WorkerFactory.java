@@ -2,10 +2,10 @@ package madesy.workers;
 
 import java.util.UUID;
 
-import madesy.model.CourierSupervisor;
-import madesy.model.services.ReportService;
-import madesy.storage.EventLog;
-import madesy.storage.PickingStorage;
+import madesy.model.courier.CourierStatus;
+import madesy.model.events.EventLog;
+import madesy.model.pickings.PickingStorage;
+import madesy.model.reports.ReportService;
 
 public class WorkerFactory {
 
@@ -21,7 +21,7 @@ public class WorkerFactory {
 		
 		CourierWorker courier = new CourierWorker(UUID.randomUUID().toString(), pickingStorage,
 				eventLog, WorkersConfigurator.COURIER_WORKER_SLEEP_TIME);
-		CourierSupervisor.addCourier(courier.getId());
+		CourierStatus.addCourier(courier.getId());
 		return courier;
 	}
 	

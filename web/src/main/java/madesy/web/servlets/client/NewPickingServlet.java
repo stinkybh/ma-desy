@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import madesy.model.Client;
-import madesy.model.ClientType;
+import madesy.model.client.Client;
+import madesy.model.client.ClientType;
 import madesy.model.pickings.Picking;
 import madesy.model.pickings.PickingSize;
 import madesy.web.dto.NewPickingRequest;

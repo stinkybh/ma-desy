@@ -3,9 +3,9 @@ package madesy.simulation;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
-import madesy.model.services.ReportService;
-import madesy.storage.EventLog;
-import madesy.storage.PickingStorage;
+import madesy.model.events.EventLog;
+import madesy.model.pickings.PickingStorage;
+import madesy.model.reports.ReportService;
 import madesy.workers.BaseWorker;
 import madesy.workers.WorkersGenerator;
 

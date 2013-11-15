@@ -1,9 +1,9 @@
 package madesy.workers;
 
+import madesy.model.events.EventLog;
 import madesy.model.pickings.Picking;
-import madesy.model.services.PickingService;
-import madesy.storage.EventLog;
-import madesy.storage.PickingStorage;
+import madesy.model.pickings.PickingService;
+import madesy.model.pickings.PickingStorage;
 
 /**
  * Worker process used to simulate basic duties of a courier, which are

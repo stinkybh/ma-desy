@@ -1,4 +1,4 @@
-package madesy.storage;
+package madesy.model.pickings;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;

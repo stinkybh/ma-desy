@@ -1,4 +1,4 @@
-package madesy.storage;
+package madesy.model.pickings;
 
 import java.util.ArrayList;
 import java.util.List;

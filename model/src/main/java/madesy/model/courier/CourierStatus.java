@@ -1,4 +1,4 @@
-package madesy.model;
+package madesy.model.courier;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +10,7 @@ import java.util.Set;
  * @author hristo
  * 
  */
-public class CourierSupervisor {
+public class CourierStatus {
 	private static Map<String, Integer> couriers = new HashMap<String, Integer>();
 	
 	static {
@@ -19,7 +19,7 @@ public class CourierSupervisor {
 		}
 	}
 
-	public CourierSupervisor() {
+	public CourierStatus() {
 
 	}
 

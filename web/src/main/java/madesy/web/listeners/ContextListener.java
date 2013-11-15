@@ -6,12 +6,12 @@ import java.util.concurrent.ExecutorService;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import madesy.model.services.PickingService;
-import madesy.model.services.ReportService;
+import madesy.model.events.EventLog;
+import madesy.model.pickings.PickingService;
+import madesy.model.pickings.PickingStorage;
+import madesy.model.reports.ReportService;
+import madesy.model.reports.ReportStorage;
 import madesy.simulation.DesyThreadPoolExecutor;
-import madesy.storage.EventLog;
-import madesy.storage.PickingStorage;
-import madesy.storage.ReportStorage;
 import madesy.workers.BaseWorker;
 import madesy.workers.PickingDispatcherWorker;
 import madesy.workers.WorkersConfigurator;

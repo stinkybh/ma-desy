@@ -1,16 +1,13 @@
-package madesy.model.services;
+package madesy.model.pickings;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import madesy.model.CourierSupervisor;
-import madesy.model.Event;
-import madesy.model.pickings.Picking;
-import madesy.model.types.EventType;
-import madesy.model.types.PickingStatus;
-import madesy.storage.EventLog;
-import madesy.storage.PickingStorage;
-import madesy.storage.PickingsQueue;
+import madesy.model.BaseService;
+import madesy.model.courier.CourierStatus;
+import madesy.model.events.Event;
+import madesy.model.events.EventLog;
+import madesy.model.events.EventType;
 
 /**
  * Provides operations on the pickings, used by the relevant worker processes
@@ -18,7 +15,7 @@ import madesy.storage.PickingsQueue;
  */
 public class PickingService extends BaseService {
 	private PickingStorage pickingStorage;
-	private CourierSupervisor courierSupervisor = new CourierSupervisor();
+	private CourierStatus courierSupervisor = new CourierStatus();
 	private EventLog eventLog;
 	private static int count = 0;
 
@@ -39,6 +36,7 @@ public class PickingService extends BaseService {
 		new Synchronizator<Void>() {
 
 			@Override
+			protected
 			Void execute() {
 				pickingStorage.add(picking);
 				System.out.println(String.valueOf(++count) + " - New picking");
@@ -61,6 +59,7 @@ public class PickingService extends BaseService {
 		new Synchronizator<Void>() {
 
 			@Override
+			protected
 			Void execute() {
 				String courierId = courierSupervisor
 						.getCourierWithLowestPickingsNumber();
@@ -84,6 +83,7 @@ public class PickingService extends BaseService {
 	public Picking getPickingById(final String id) {
 		return new Synchronizator<Picking>() {
 			@Override
+			protected
 			Picking execute() {
 				for (Picking p : pickingStorage.getPickings())
 					if(p.getId().equals(id))
@@ -104,6 +104,7 @@ public class PickingService extends BaseService {
 	public Picking getPickingByCourierId(final String courierId) {
 		return new Synchronizator<Picking>() {
 			@Override
+			protected
 			Picking execute() {
 				for (Picking p : pickingStorage.getPickings()) {
 					String dispatchedTo = p.getCourierId();
@@ -129,6 +130,7 @@ public class PickingService extends BaseService {
 		return new Synchronizator<List<Picking>>() {
 
 			@Override
+			protected
 			List<Picking> execute() {
 				List<Picking> pickings = new ArrayList<Picking>();
 				for (Picking p : pickingStorage.getPickings()) {
@@ -147,6 +149,7 @@ public class PickingService extends BaseService {
 	public List<Picking> getPickingsByClientId(final String clientId) {
 		return new Synchronizator<List<Picking>>() {
 			@Override
+			protected
 			List<Picking> execute() {
 				List<Picking> allPickings = pickingStorage.getPickings();
 				List<Picking> clientPickings = new ArrayList<Picking>();
@@ -171,6 +174,7 @@ public class PickingService extends BaseService {
 		new Synchronizator<Void>() {
 
 			@Override
+			protected
 			Void execute() {
 				Picking picking = pickingStorage.getPicking(pickingId);
 				picking.setPickingStatus(PickingStatus.TAKEN);
@@ -195,6 +199,7 @@ public class PickingService extends BaseService {
 		return new Synchronizator<Picking>() {
 
 			@Override
+			protected
 			Picking execute() {
 				return pickingStorage.getPicking(pickingId);
 			}

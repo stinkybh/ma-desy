@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import madesy.model.Events;
-import madesy.model.Report;
+import madesy.model.events.EventLog;
+import madesy.model.events.Events;
+import madesy.model.reports.Report;
 import madesy.model.reports.ReportGenerator;
-import madesy.model.services.ReportService;
-import madesy.storage.EventLog;
+import madesy.model.reports.ReportService;
 import madesy.web.requests.PickingServiceRequest;
 
 @WebServlet("/manager/create-report")

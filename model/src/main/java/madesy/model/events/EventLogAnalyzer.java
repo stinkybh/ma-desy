@@ -1,11 +1,7 @@
-package madesy;
+package madesy.model.events;
 
 import java.util.Date;
 import java.util.List;
-
-import madesy.model.Event;
-import madesy.model.types.EventType;
-import madesy.storage.EventLog;
 
 public class EventLogAnalyzer {
 	private EventLog eventLog;

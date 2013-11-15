@@ -2,9 +2,8 @@ package madesy.model.pickings;
 
 import java.util.UUID;
 
-import madesy.model.Client;
-import madesy.model.ClientType;
-import madesy.model.types.PickingStatus;
+import madesy.model.client.Client;
+import madesy.model.client.ClientType;
 
 /**
  * Represents a new picking for delivering and contains of ID of the sender, ID

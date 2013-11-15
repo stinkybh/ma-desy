@@ -13,7 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(urlPatterns = { "/*" }, description = "SessionFilter")
+// TODO: fix session filter
+@WebFilter(urlPatterns = { "/asdasd/*" }, description = "SessionFilter")
 public class SessionFilter implements Filter {
 
 	@Override

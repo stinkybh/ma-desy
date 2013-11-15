@@ -1,10 +1,8 @@
-package madesy.model;
+package madesy.web.model;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
-import madesy.model.types.UserTypes;
 
 /**
  * Contains a list of users, able to log in
