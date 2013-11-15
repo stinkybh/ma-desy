@@ -4,61 +4,33 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import madesy.model.client.Client;
-import madesy.model.client.ClientType;
-import madesy.model.pickings.Picking;
-import madesy.model.pickings.PickingSize;
 import madesy.web.dto.NewPickingRequest;
-import madesy.web.requests.PickingServiceRequest;
-import madesy.web.requests.Request;
+import madesy.web.servlets.BaseServlet;
 import madesy.web.utils.ParametersToBeanConverter;
+import madesy.web.utils.PickingBuilder;
 
 @WebServlet("/client/new-picking")
-public class NewPickingServlet extends HttpServlet {
+public class NewPickingServlet extends BaseServlet {
 	private static final long serialVersionUID = -8281953502188692277L;
 
 	public void doPost(final HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		
-		final NewPickingRequest pickingRequest = ParametersToBeanConverter
-				.populate(NewPickingRequest.class, request);
-		System.out.println(request.getParameter("receiverAddress"));
-		new PickingServiceRequest(request, response) {
 
-			@Override
-			public String request() {
-				PickingSize size = new PickingSize(
-						pickingRequest.getPickingWidth(),
-						pickingRequest.getPickingHeight(),
-						pickingRequest.getPickingLength());
-				Client sender = new Client(pickingRequest.getSenderName(),
-						pickingRequest.getSenderAddress(), ClientType.SENDER);
-				Client receiver = new Client(pickingRequest.getReceiverName(),
-						pickingRequest.getReceiverAddress(),
-						ClientType.RECEIVER);
-				Picking picking = new Picking(loggedUser.getId(), size, sender,
-						receiver);
-				pickingService.newPicking(picking);
+		NewPickingRequest pickingRequest = ParametersToBeanConverter.populate(
+				NewPickingRequest.class, request);
 
-				return "new-picking";
-			}
+		pickingService.newPicking(new PickingBuilder(pickingRequest, loggedUser
+				.getId()).build());
 
-		}.redirect();
+		redirect("new-picking");
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		new Request(request, response) {
-
-			@Override
-			public String request() {
-				return "new-picking.jsp";
-			}
-		}.forward();
+		forward("new-picking.jsp");
 	}
 
 }

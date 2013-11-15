@@ -4,30 +4,22 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import madesy.model.reports.ReportService;
-import madesy.web.requests.Request;
+import madesy.web.servlets.BaseServlet;
 
 @WebServlet("/manager/manager")
-public class ManagerServlet extends HttpServlet {
+public class ManagerServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
 
-	public void doGet(final HttpServletRequest request,
+	public void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		new Request(request, response) {
+		ReportService reportService = (ReportService) request
+				.getServletContext().getAttribute("reportService");
 
-			@Override
-			public String request() {
-				ReportService reportService = (ReportService) request
-						.getServletContext().getAttribute("reportService");
-				
-				request.setAttribute("reports", reportService.getReports());
-				
-				return "manager.jsp";
-			}
-		}.forward();
+		request.setAttribute("reports", reportService.getReports());
+		forward("manager.jsp");
 	}
 }

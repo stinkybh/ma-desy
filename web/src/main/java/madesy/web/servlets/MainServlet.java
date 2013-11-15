@@ -4,19 +4,14 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import madesy.web.model.User;
 import madesy.web.model.UserTypes;
-import madesy.web.requests.Request;
 
 @WebServlet("/main")
-public class MainServlet extends HttpServlet {
+public class MainServlet extends BaseServlet {
 	private static final long serialVersionUID = 1285140711416523203L;
-	private String forwardURL;
 
 	public MainServlet() {
 		super();
@@ -24,25 +19,17 @@ public class MainServlet extends HttpServlet {
 
 	public void doGet(final HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		final HttpSession session = request.getSession(false);
-		if (session != null) {
-			new Request(request, response) {
 
-				@Override
-				public String request() {
-					User loggedUser = (User) session.getAttribute("user");
-					if (loggedUser.getType() == UserTypes.CLIENT)
-						forwardURL = "client/new-picking";
-					else if (loggedUser.getType() == UserTypes.COURIER)
-						forwardURL = "courier/dispatched-pickings";
-					else
-						forwardURL = "manager/manager";
-					return forwardURL;
-				}
-			}.redirect();
+		if (request.getSession(false) != null) {
+			if (loggedUser.getType() == UserTypes.CLIENT)
+				redirect("client/new-picking");
+			else if (loggedUser.getType() == UserTypes.COURIER)
+				redirect("courier/dispatched-pickings");
+			else
+				redirect("manager/manager");
+			
 			return;
 		}
-		
-		response.sendRedirect("");
+		redirect("");
 	}
 }
