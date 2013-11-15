@@ -26,7 +26,7 @@ public class NewPickingServlet extends HttpServlet {
 		
 		final NewPickingRequest pickingRequest = ParametersToBeanConverter
 				.populate(NewPickingRequest.class, request);
-
+		System.out.println(request.getParameter("receiverAddress"));
 		new PickingServiceRequest(request, response) {
 
 			@Override
