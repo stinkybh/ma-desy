@@ -1,16 +1,16 @@
 package madesy.workers;
 
 import java.util.Random;
+import java.util.UUID;
 
 
 public abstract class BaseWorker implements Runnable {
 	private Random rand = new Random();
-	protected String id;
+	protected String id = UUID.randomUUID().toString();
 	protected int sleepTime;
 	
-	public BaseWorker(String id, int sleepTime) {
+	public BaseWorker(int sleepTime) {
 		this.sleepTime = sleepTime;
-		this.id = id;
 	}
 	
 	public abstract void  doWork();

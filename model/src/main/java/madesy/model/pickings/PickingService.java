@@ -2,6 +2,7 @@ package madesy.model.pickings;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import madesy.model.BaseService;
 import madesy.model.courier.CourierStatus;
@@ -31,8 +32,8 @@ public class PickingService extends BaseService {
 	 * @param barcodes
 	 */
 	public void newPicking(final Picking picking) {
-		if (picking == null)
-			throw new NullPointerException("Picking is null");
+		Objects.requireNonNull(picking, "Picking is null");
+		
 		new Synchronizator<Void>() {
 
 			@Override
@@ -63,7 +64,7 @@ public class PickingService extends BaseService {
 			Void execute() {
 				String courierId = courierSupervisor
 						.getCourierWithLowestPickingsNumber();
-				courierSupervisor.incrementCarriedPickings(courierId);
+				courierSupervisor.onNewPicking(courierId);
 
 				//System.out.println("Dispatched to: " + courierId +
 				//" Number of pickings:" +
@@ -178,7 +179,7 @@ public class PickingService extends BaseService {
 			Void execute() {
 				Picking picking = pickingStorage.getPicking(pickingId);
 				picking.setPickingStatus(PickingStatus.TAKEN);
-				courierSupervisor.decrementCarriedPickings(courierId);
+				courierSupervisor.setTaken(courierId);
 				String metaData = pickingId + ", " + picking.getCourierId();
 				eventLog.add(new Event(EventType.TAKE_PICKING, metaData));
 				 System.out.println("Courier with id: " + courierId +

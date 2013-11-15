@@ -14,9 +14,9 @@ import madesy.model.pickings.PickingsQueue;
 public class PickingDispatcherWorker extends BaseWorker {
 	private PickingService pickingService;
 
-	public PickingDispatcherWorker(String id, int sleepTime,
+	public PickingDispatcherWorker(int sleepTime,
 			PickingStorage pickingStorage, EventLog eventLog) {
-		super(id, sleepTime);
+		super(sleepTime);
 		this.pickingService = new PickingService(eventLog, pickingStorage);
 	}
 

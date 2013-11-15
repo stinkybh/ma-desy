@@ -1,7 +1,6 @@
 package madesy.simulation;
 
 import java.util.List;
-import java.util.UUID;
 
 import madesy.model.events.Event;
 import madesy.model.events.EventLog;
@@ -11,18 +10,17 @@ import madesy.model.reports.ReportService;
 import madesy.workers.BaseWorker;
 
 public class PickingsSimulation extends SimulationBase {
-	
+
 	public PickingsSimulation(PickingStorage pickingStorage, EventLog eventLog,
 			ReportService reportService) {
 		super(pickingStorage, eventLog, reportService);
 	}
-	
+
 	@Override
 	public List<BaseWorker> process() {
 
 		List<BaseWorker> workers = workersGenerator.generate(3, 3, 2);
-		workers.add(new SimulationSupervisor(UUID.randomUUID().toString(),
-				pool, eventLog, 50) {
+		workers.add(new SimulationSupervisor(pool, eventLog, 50) {
 
 			@Override
 			public boolean checkForTermination() {

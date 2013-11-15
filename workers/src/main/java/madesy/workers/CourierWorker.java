@@ -12,9 +12,9 @@ import madesy.model.pickings.PickingStorage;
 public class CourierWorker extends BaseWorker {
 	private PickingService pickingService;
 
-	public CourierWorker(String id, PickingStorage pickingStorage,
-			EventLog eventLog, int sleepTime) {
-		super(id, sleepTime);
+	public CourierWorker(PickingStorage pickingStorage, EventLog eventLog,
+			int sleepTime) {
+		super(sleepTime);
 		this.pickingService = new PickingService(eventLog, pickingStorage);
 	}
 

@@ -15,9 +15,9 @@ public abstract class SimulationSupervisor extends BaseWorker {
 	protected EventLog eventLog;
 	private ExecutorService service;
 
-	public SimulationSupervisor(String id, ExecutorService service,
+	public SimulationSupervisor(ExecutorService service,
 			EventLog eventLog, int sleepTime) {
-		super(id, sleepTime);
+		super(sleepTime);
 		this.eventLog = eventLog;
 		this.service = service;
 	}

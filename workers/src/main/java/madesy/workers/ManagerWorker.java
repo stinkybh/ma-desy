@@ -21,8 +21,9 @@ public class ManagerWorker extends BaseWorker {
 	private Date toDate;
 	private ReportService reportService;
 
-	public ManagerWorker(String id, EventLog eventLog, ReportService reportService, int sleepTime) {
-		super(id, sleepTime);
+	public ManagerWorker(EventLog eventLog, ReportService reportService,
+			int sleepTime) {
+		super(sleepTime);
 		this.eventLog = eventLog;
 		this.reportService = reportService;
 		fromDate = new Date();
@@ -31,18 +32,20 @@ public class ManagerWorker extends BaseWorker {
 	@Override
 	public void doWork() {
 		toDate = new Date();
-		ReportGenerator generator = new ReportGenerator(eventLog, fromDate, toDate);
+		ReportGenerator generator = new ReportGenerator(eventLog, fromDate,
+				toDate);
 		Report report = generator.generateReport();
-		
+
 		addToEventLog(report);
 		this.reportService.addReport(report);
-		
-		//System.out.println(report);
+
+		// System.out.println(report);
 		fromDate = toDate;
 	}
-	
+
 	/**
 	 * Adds the report creation event to the event log.
+	 * 
 	 * @param report
 	 */
 	private void addToEventLog(Report report) {

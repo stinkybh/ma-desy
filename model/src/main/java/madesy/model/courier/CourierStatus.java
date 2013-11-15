@@ -46,7 +46,7 @@ public class CourierStatus {
 	 * 
 	 * @param courierId
 	 */
-	public void incrementCarriedPickings(String courierId) {
+	public void onNewPicking(String courierId) {
 		int dispatchedPickings = couriers.get(courierId);
 		couriers.put(courierId, ++dispatchedPickings);
 		System.out.println(couriers.get(courierId));
@@ -58,7 +58,7 @@ public class CourierStatus {
 	 * 
 	 * @param courierId
 	 */
-	public void decrementCarriedPickings(String courierId) {
+	public void setTaken(String courierId) {
 		int dispatchedPickings = couriers.get(courierId);
 		couriers.put(courierId, --dispatchedPickings);
 	}

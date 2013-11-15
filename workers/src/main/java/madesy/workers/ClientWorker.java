@@ -17,9 +17,9 @@ import madesy.model.pickings.PickingStorage;
 public class ClientWorker extends BaseWorker {
 	private PickingService pickingService;
 
-	public ClientWorker(String id, PickingStorage pickingStorage,
+	public ClientWorker(PickingStorage pickingStorage,
 			EventLog eventLog, int sleepTime) {
-		super(id, sleepTime);
+		super(sleepTime);
 		this.pickingService = new PickingService(eventLog, pickingStorage);
 	}
 
