@@ -2,7 +2,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="maps" uri="http://ma-desy.com/maps" %>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
 <t:genericpage>
 	<jsp:attribute name="menu">
 		<ul>
@@ -17,8 +17,7 @@
 				<div class="controls">
 					<input type="text" name="senderName" id="senderName" placeholder="Sender">
 					<br>
-					<maps:map-widget widgetId = "sender" mapId="senderMap" textId="senderAddress"
-						buttonId="senderSearchBtn" hiddenId="senderHidden" />
+					<maps:map-widget widgetId = "sender" />
 				</div>
 
 			</div>
@@ -26,8 +25,7 @@
 				<div class="controls">
 					<input type="text" name="receiverName" id="receiverName" placeholder="Receiver">
 					<br>
-					<maps:map-widget widgetId = "receiver" mapId="recvMap" textId="receiverAddress"
-					buttonId="recvSearchBtn" hiddenId="recvHidden" />
+					<maps:map-widget widgetId = "receiver" />
 				</div>
 
 			</div>
