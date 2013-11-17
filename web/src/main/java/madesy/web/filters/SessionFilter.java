@@ -13,8 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-// TODO: fix session filter
-@WebFilter(urlPatterns = { "/asdasd/*" }, description = "SessionFilter")
+@WebFilter(urlPatterns = { "/main/*", "/client/*", "/courier/*", "/manager/*" }, description = "SessionFilter")
 public class SessionFilter implements Filter {
 
 	@Override
@@ -33,12 +32,6 @@ public class SessionFilter implements Filter {
 
 		if (session == null && path.trim().equalsIgnoreCase("/main")) {
 			resp.sendRedirect("");
-			return;
-		}
-
-		if (path.trim().equalsIgnoreCase("/index.jsp")
-				|| path.trim().equalsIgnoreCase("/login")) {
-			chain.doFilter(request, response);
 			return;
 		}
 

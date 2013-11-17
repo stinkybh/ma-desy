@@ -10,16 +10,16 @@ import java.util.Set;
  * @author hristo
  * 
  */
-public class CourierStatus {
+public class CourierPickingsInfo {
 	private static Map<String, Integer> couriers = new HashMap<String, Integer>();
 	
 	static {
-		for(User u : Users.getCouriers()) {
-			couriers.put(u.getId(), 0);
-		}
+		//for(User u : Users.getCouriers()) {
+		//	couriers.put(u.getId(), 0);
+		//}
 	}
 
-	public CourierStatus() {
+	public CourierPickingsInfo() {
 
 	}
 

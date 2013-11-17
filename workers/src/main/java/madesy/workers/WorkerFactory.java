@@ -1,6 +1,6 @@
 package madesy.workers;
 
-import madesy.model.courier.CourierStatus;
+import madesy.model.courier.CourierPickingsInfo;
 import madesy.model.events.EventLog;
 import madesy.model.pickings.PickingStorage;
 import madesy.model.reports.ReportService;
@@ -19,7 +19,7 @@ public class WorkerFactory {
 
 		CourierWorker courier = new CourierWorker(pickingStorage, eventLog,
 				WorkersConfigurator.COURIER_WORKER_SLEEP_TIME);
-		CourierStatus.addCourier(courier.getId());
+		CourierPickingsInfo.addCourier(courier.getId());
 		return courier;
 	}
 

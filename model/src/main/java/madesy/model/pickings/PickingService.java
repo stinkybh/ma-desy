@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 import madesy.model.BaseService;
-import madesy.model.courier.CourierStatus;
+import madesy.model.courier.CourierPickingsInfo;
 import madesy.model.events.Event;
 import madesy.model.events.EventLog;
 import madesy.model.events.EventType;
@@ -16,7 +16,7 @@ import madesy.model.events.EventType;
  */
 public class PickingService extends BaseService {
 	private PickingStorage pickingStorage;
-	private CourierStatus courierSupervisor = new CourierStatus();
+	private CourierPickingsInfo courierSupervisor = new CourierPickingsInfo();
 	private EventLog eventLog;
 	private static int count = 0;
 
