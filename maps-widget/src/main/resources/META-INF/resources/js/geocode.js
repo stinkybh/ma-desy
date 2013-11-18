@@ -1,14 +1,14 @@
 function MapWidget(content, text, button, hidden) {
-	var geocoder;
-	var map;
-	var marker;
-	var input;
-	var autocomplete;
+	var geocoder = null;
+	var map = null;
+	var marker = null;
+	var input = null;
+	var autocomplete = null;
 	var mapContent = content;
 	var searchText = text;
 	var searchButton = button;
 	var searchHidden = hidden;
-	var infowindow;
+	var infowindow = null;
 
 	this.initialize = function() {
 		geocoder = new google.maps.Geocoder();
@@ -37,8 +37,7 @@ function MapWidget(content, text, button, hidden) {
 				country : 'BG'
 			}
 		};
-		autocomplete = new google.maps.places.Autocomplete(
-				input, options);
+		autocomplete = new google.maps.places.Autocomplete(input, options);
 		autocomplete.bindTo('bounds', map);
 
 		bind();
@@ -67,8 +66,7 @@ function MapWidget(content, text, button, hidden) {
 						function(results, status) {
 							if (status == google.maps.GeocoderStatus.OK) {
 								if (results[1]) {
-									infowindow
-											.setContent(results[0].formatted_address);
+									infowindow.setContent(results[0].formatted_address);
 									infowindow.open(map, marker);
 									document.getElementById(searchText).value = results[0].formatted_address;
 									document.getElementById(searchHidden).value = results[0].geometry.location;
@@ -94,6 +92,7 @@ function MapWidget(content, text, button, hidden) {
 			} else {
 				alert('Geocode was not successful for the following reason: '
 						+ status);
+				
 			}
 		});
 	};
