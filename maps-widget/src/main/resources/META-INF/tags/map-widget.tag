@@ -1,8 +1,8 @@
 <%@ tag pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ attribute name="widgetId" required="true" %>
 
-<link type="text/css" rel="stylesheet" href="/css/style.css"></link>
-<script type="text/javascript" src="/js/geocode.js"></script>
+<link type="text/css" rel="stylesheet" href="/maps-widget/css/style.css"></link>
+<script type="text/javascript" src="/maps-widget/js/geocode.js"></script>
 
 <div id="${widgetId}">
 	<div class="panel">

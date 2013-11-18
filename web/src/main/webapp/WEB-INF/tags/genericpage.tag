@@ -1,12 +1,12 @@
-<%@tag description="Overall Page template" pageEncoding="UTF-8"%>
-<%@attribute name="menu" fragment="true" %>
-<%@attribute name="css" fragment="true" %>
+<%@ tag description="Overall Page template" pageEncoding="UTF-8" %>
+<%@ attribute name="googleMapScript" fragment="true" %>
+<%@ attribute name="menu" fragment="true" %>
+<%@ attribute name="css" fragment="true" %>
 <html>
 <head>
 	<jsp:invoke fragment="css"/>
+	<jsp:invoke fragment="googleMapScript" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-	<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
 	<title>ma-desy</title>
 </head>
 <body>
