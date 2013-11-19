@@ -10,13 +10,11 @@
 	<title>ma-desy</title>
 </head>
 <body>
-	<div id="pageheader">
+	<div id="pageheader" class="pageheader">
 		<jsp:invoke fragment="menu"/>
-		<div id="logout" class="logout">
-			<form method="POST" action="../logout">
-				<input type="submit" value="Logout">
-			</form>
-		</div>
+		<form method="POST" action="../logout">
+			<input type="submit" value="Logout" id="logout">
+		</form>
 	</div>
 	<div id="body">
 		<jsp:doBody />

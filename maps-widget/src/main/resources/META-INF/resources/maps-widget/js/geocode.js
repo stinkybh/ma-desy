@@ -46,7 +46,7 @@ function MapWidget(content, text, button, hidden) {
 	function bind() {
 		document.getElementById(searchButton).onclick = function() {
 			codeAddress();
-			document.getElementById(mapContent).style.opacity = "1";
+			document.getElementById(mapContent).style.opacity = "0.5";
 		};
 		
 		google.maps.event.addListener(marker, "mouseup", function(event) {
