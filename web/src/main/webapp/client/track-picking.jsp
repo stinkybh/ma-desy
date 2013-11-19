@@ -3,6 +3,10 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <t:genericpage>
+	<jsp:attribute name="css">
+		<link rel="stylesheet" type="text/css" href="/resources/css/style.css"></link>
+	</jsp:attribute>
+	
 	<jsp:body>
 	<h1>Track picking ${picking.id}</h1>
     	<c:choose>
