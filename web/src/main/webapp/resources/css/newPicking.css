@@ -1,29 +1,56 @@
-.map-canvas {
-	position: relative;
-	height: 200px;
-	width: 45%;
-	top: 30px;
-	padding: 5px;
-	margin-left: 450px;
+h1 {
+	margin-left: 1.5%;
+	margin-bottom: 5px;
 }
 
-.panel {
-	float: left;
-	position: relative;
-	width: 430px;
-	top: 30px;
-	background-color: #fff;
-	padding: 5px;
-	background-color: rgba(255, 255, 255, 0.0);
+.clientInfo h3 {
+	margin-left: 1%;
 }
 
-.panel input[type="text"] {
+.clientInfo {
+	display: inline-block;
+	width: 70%;
+	height: 630px;
+	background-color: rgba(255, 255, 255, 0.3);
+	margin-left: 1%;
+}
+
+.pickingInfo {
+	display: inline-block;
+	margin-right: 2%;
+	float: right;
+	background-color: rgba(255, 255, 255, 0.3);
+	height: 250px;
+	width: 25%;
+}
+
+.sender_panel #senderName, .receiver_panel #receiverName {
+	margin-left: 5px;
 	width: 320px;
 	height: 25px;
 	outline: none;
+	margin-top: 15px;
 }
 
-.panel input[type="button"] {
+.pickingInfo label {
+	margin-left: 5px;
+}
+
+.pickingInfo input[type="text"] {
+	margin-left: 5px;
+	width: 220px;
+	height: 25px;
+	outline: none;
+	margin-top: 15px;
+}
+
+.save {
+	margin-left: 45%;
+	padding-bottom: 20px;
+	padding-top: 20px;
+}
+
+.save #saveBtn {
 	outline: none;
 	-moz-box-shadow: inset 0px 1px 0px 0px #a6827e;
 	-webkit-box-shadow: inset 0px 1px 0px 0px #a6827e;
@@ -62,7 +89,7 @@
 	text-shadow: 1px 1px 0px #7d5d3b;
 }
 
-.panel input[type="button"]:hover {
+.save #saveBtn:hover {
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #634b30
 		), color-stop(1, #7d5d3b));
 	background: -moz-linear-gradient(center top, #634b30 5%, #7d5d3b 100%);
@@ -71,7 +98,8 @@
 	background-color: #634b30;
 }
 
-.panel input[type="button"]:active {
+.save #saveBtn:active {
 	position: relative;
 	top: 1px;
 }
+

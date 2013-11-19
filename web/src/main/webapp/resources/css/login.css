@@ -1,0 +1,75 @@
+html,body {
+	font-family: Georgia, Times, serif;
+	font-size: 16px;
+	font-style: italic;
+	height: 100%;
+	min-height: 100%;
+	background: url(../images/10.jpg);
+	background-size: 100%;
+	color: #333;
+	text-shadow: 1px 1px 1px #fff;
+}
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+.loginForm {
+	position: relative;
+	margin-left: 65%;
+}
+
+.loginForm h1 {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.loginForm form {
+	paddgin-right: 20px !important;
+}
+
+.loginForm form input[type=text],.loginForm form input[type=password] {
+	width: 60%;
+	height: 40px;
+	margin-bottom: 10px;
+	padding-left: 15px;
+	background: #fff;
+	border: none;
+	color: #136899;
+	outline: none;
+}
+
+.loginForm input[type="submit"] {
+	outline: none;
+    border: none;
+    display: block;
+    background: #136899;
+    height: 40px;
+    width: 80px;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 5px;
+  	-webkit-transition: all 0.15s linear;
+	  -moz-transition: all 0.15s linear;
+	  transition: all 0.15s linear;
+}
+
+.loginForm input[type="submit"]:hover {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #03234F
+		), color-stop(1, #136899));
+	background: -moz-linear-gradient(top, #03234F 5%, #136899 100%);
+	background: -webkit-linear-gradient(top, #03234F 5%, #136899 100%);
+	background: -o-linear-gradient(top, #03234F 5%, #136899 100%);
+	background: -ms-linear-gradient(top, #03234F 5%, #136899 100%);
+	background: linear-gradient(to bottom, #03234F 5%, #136899 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#03234F',
+		endColorstr='#136899', GradientType=0);
+	background-color: #03234F;
+	cursor: pointer;
+}
+
+.loginForm input[type="submit"]:active {
+	position: relative;
+	top: 1px;
+}
