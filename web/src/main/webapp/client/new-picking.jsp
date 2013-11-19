@@ -4,7 +4,7 @@
 <%@ taglib prefix="maps" uri="http://ma-desy.com/maps" %>
 
 <t:genericpage>
-	<jsp:attribute name="googleMapScript">
+	<jsp:attribute name="script">
 		<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
 	</jsp:attribute>
 	<jsp:attribute name="css">
