@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Class used to overseer the work of the couriers
+ * Class used to track the current amount of carried pickings by every courier
  * 
  * @author hristo
  * 
@@ -28,6 +28,7 @@ public class CourierPickingsInfo {
 
 	/**
 	 * Adds new courier to track
+	 * 
 	 * @param courierId
 	 */
 	public void addCourier(String courierId) {

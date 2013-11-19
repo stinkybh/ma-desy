@@ -104,11 +104,9 @@ public class PickingService extends BaseService {
 			@Override
 			protected Picking execute() {
 				for (Picking p : pickingStorage.getPickings()) {
-					String dispatchedTo = p.getCourierId();
-					if (dispatchedTo != null) {
-						if (dispatchedTo.equals(courierId))
-							if (p.getPickingStatus() == PickingStatus.DISPATCHED)
-								return p;
+					if (p.getPickingStatus() == PickingStatus.DISPATCHED) {
+						if (p.getCourierId().equals(courierId))
+							return p;
 					}
 				}
 				return null;
@@ -130,11 +128,10 @@ public class PickingService extends BaseService {
 			protected List<Picking> execute() {
 				List<Picking> pickings = new ArrayList<Picking>();
 				for (Picking p : pickingStorage.getPickings()) {
-					String dispatchedTo = p.getCourierId();
-					if (dispatchedTo != null)
-						if (dispatchedTo.equals(courierId)
-								&& p.getPickingStatus() == PickingStatus.DISPATCHED)
+					if (p.getPickingStatus() == PickingStatus.DISPATCHED) {
+						if (p.getCourierId().equals(courierId))
 							pickings.add(p);
+					}
 				}
 				return pickings;
 			}
@@ -146,10 +143,8 @@ public class PickingService extends BaseService {
 		return new Synchronizator<List<Picking>>() {
 			@Override
 			protected List<Picking> execute() {
-				List<Picking> allPickings = pickingStorage.getPickings();
 				List<Picking> clientPickings = new ArrayList<Picking>();
-
-				for (Picking p : allPickings) {
+				for (Picking p : pickingStorage.getPickings()) {
 					if (p.getSenderId().equals(clientId))
 						clientPickings.add(p);
 				}
@@ -173,7 +168,8 @@ public class PickingService extends BaseService {
 				Picking picking = pickingStorage.getPicking(pickingId);
 				picking.setPickingStatus(PickingStatus.TAKEN);
 				courierPickings.setTaken(courierId);
-				eventLog.add(new Event(EventType.TAKE_PICKING, pickingId, picking.getCourierId()));
+				eventLog.add(new Event(EventType.TAKE_PICKING, pickingId,
+						picking.getCourierId()));
 				System.out.println("Courier with id: " + courierId
 						+ " deliver picking with id: " + pickingId);
 
