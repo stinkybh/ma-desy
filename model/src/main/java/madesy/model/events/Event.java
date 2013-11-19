@@ -1,14 +1,14 @@
 package madesy.model.events;
 
 import java.util.Date;
-import java.util.UUID;
+
+import madesy.model.BaseModel;
 
 /**
  * Contains information describing each event
  * 
  */
-public class Event {
-	private String eventId = UUID.randomUUID().toString();
+public class Event extends BaseModel {
 	private Date date = new Date();
 	private String metaData = "";
 	private EventType eventType;
@@ -21,9 +21,23 @@ public class Event {
 		this(eventType);
 		this.metaData = metaData;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Event))
+			return false;
+		Event other = (Event) obj;
+		if (id.equals(other.id))
+			return false;
+		return true;
+	}
 
-	public String getEventId() {
-		return eventId;
+	public String getId() {
+		return this.id;
 	}
 
 	public EventType getEventType() {
@@ -39,27 +53,8 @@ public class Event {
 	}
 	
 	@Override
-	public int hashCode() {
-		return eventId.hashCode();
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Event other = (Event) obj;
-		if (eventId.equals(other.eventId))
-			return false;
-		return true;
-	}
-	
-	@Override
 	public String toString() {
-		return "Event [eventId=" + eventId + ", eventType=" + eventType + ", date="
+		return "Event [eventId=" + this.id + ", eventType=" + eventType + ", date="
 				+ date + ", metaData=" + metaData + "]\n";
 	}
 }

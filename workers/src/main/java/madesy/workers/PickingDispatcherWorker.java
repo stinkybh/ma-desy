@@ -1,30 +1,26 @@
 package madesy.workers;
 
-import madesy.model.events.EventLog;
 import madesy.model.pickings.Picking;
 import madesy.model.pickings.PickingService;
-import madesy.model.pickings.PickingStorage;
-import madesy.model.pickings.PickingsQueue;
 
 /**
  * Executes the role of distributor who sends every new picking to the least
  * busy courier
  * 
  */
-public class PickingDispatcherWorker extends BaseWorker {
+public class PickingDispatcherWorker extends PickingsWorker {
 	private PickingService pickingService;
 
-	public PickingDispatcherWorker(int sleepTime,
-			PickingStorage pickingStorage, EventLog eventLog) {
-		super(sleepTime);
-		this.pickingService = new PickingService(eventLog, pickingStorage);
+	public PickingDispatcherWorker(PickingService pickingService, int sleepTime) {
+		super(pickingService, sleepTime);
+		this.pickingService = pickingService;
 	}
 
 	@Override
 	public void doWork() {
 		Picking picking;
 		do {
-			picking = PickingsQueue.getPicking();
+			picking = pickingService.getPickingsQueue().getPicking();
 			if (picking != null)
 				pickingService.dispatchPicking(picking);
 		} while (picking != null);

@@ -11,13 +11,13 @@ import madesy.model.pickings.Picking;
  *
  */
 public class PickingsQueue {
-	private static BlockingQueue<Picking> newPickings = new ArrayBlockingQueue<Picking>(30);
+	private BlockingQueue<Picking> newPickings = new ArrayBlockingQueue<Picking>(30);
 	
 	/**
 	 * Adds a new picking to the queue
 	 * @param picking
 	 */
-	public static void add(Picking picking) {
+	public void add(Picking picking) {
 		newPickings.offer(picking);
 	}
 	
@@ -25,7 +25,7 @@ public class PickingsQueue {
 	 * Gets the first available picking.
 	 * @return {@link madesy.model.pickings.Picking} if the container is not empty, otherwise returns NULL.
 	 */
-	public static Picking getPicking() {
+	public Picking getPicking() {
 		return newPickings.poll();
 	}
 

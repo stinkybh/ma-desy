@@ -11,13 +11,7 @@ import java.util.Set;
  * 
  */
 public class CourierPickingsInfo {
-	private static Map<String, Integer> couriers = new HashMap<String, Integer>();
-	
-	static {
-		//for(User u : Users.getCouriers()) {
-		//	couriers.put(u.getId(), 0);
-		//}
-	}
+	private Map<String, Integer> couriers = new HashMap<String, Integer>();
 
 	public CourierPickingsInfo() {
 
@@ -36,7 +30,7 @@ public class CourierPickingsInfo {
 	 * Adds new courier to track
 	 * @param courierId
 	 */
-	public static void addCourier(String courierId) {
+	public void addCourier(String courierId) {
 		couriers.put(courierId, 0);
 	}
 
@@ -49,7 +43,6 @@ public class CourierPickingsInfo {
 	public void onNewPicking(String courierId) {
 		int dispatchedPickings = couriers.get(courierId);
 		couriers.put(courierId, ++dispatchedPickings);
-		System.out.println(couriers.get(courierId));
 	}
 
 	/**
@@ -68,7 +61,7 @@ public class CourierPickingsInfo {
 	 * 
 	 * @return courierId
 	 */
-	public String getCourierWithLowestPickingsNumber() {
+	public String getCourier() {
 		int courierPickings = (int) couriers.values().toArray()[0];
 		String courierId = (String) couriers.keySet().toArray()[0];
 		for (String id : couriers.keySet()) {
@@ -77,7 +70,6 @@ public class CourierPickingsInfo {
 				courierPickings = couriers.get(id);
 			}
 		}
-		System.out.println(courierId);
 		return courierId;
 	}
 

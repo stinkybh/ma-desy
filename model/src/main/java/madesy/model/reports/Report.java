@@ -5,22 +5,21 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
+
+import madesy.model.BaseModel;
 
 /**
  * Contains information created by the manager worker, describing the work for a
  * period of time.
  * 
  */
-public class Report {
-	private String id;
+public class Report extends BaseModel {
 	private List<ReportType> pickingsReport = new ArrayList<ReportType>();
 	private Map<String, Integer> courrierPickings = new HashMap<String, Integer>();
 	private Date fromDate;
 	private Date toDate;
 
 	public Report(Date fromDate, Date toDate) {
-		this.id = UUID.randomUUID().toString();
 		this.fromDate = fromDate;
 		this.toDate = toDate;
 	}
@@ -33,11 +32,6 @@ public class Report {
 
 	public void add(ReportType element) {
 		this.pickingsReport.add(element);
-	}
-
-	@Override
-	public int hashCode() {
-		return id.hashCode();
 	}
 
 	@Override

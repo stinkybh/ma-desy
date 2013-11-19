@@ -1,15 +1,19 @@
 package madesy.simulation;
 
+import madesy.model.courier.CourierPickingsInfo;
 import madesy.model.events.EventLog;
-import madesy.model.pickings.PickingStorage;
+import madesy.model.pickings.PickingService;
 import madesy.model.reports.ReportService;
 
 public class SimulationFactory {
 	public static SimulationBase createSimulation(SimulationType type,
-			PickingStorage pickingStorage, EventLog eventLog, ReportService reportService) {
+			PickingService pickingService, EventLog eventLog,
+			ReportService reportService, CourierPickingsInfo courierPickings) {
 		if (type == SimulationType.REPORT_NUMBER)
-			return new ReportsSimulation(pickingStorage, eventLog, reportService);
+			return new ReportsSimulation(pickingService, reportService,
+					courierPickings);
 
-		return new PickingsSimulation(pickingStorage, eventLog, reportService);
+		return new PickingsSimulation(pickingService, reportService,
+				courierPickings);
 	}
 }

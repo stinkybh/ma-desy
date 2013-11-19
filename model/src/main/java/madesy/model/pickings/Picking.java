@@ -1,7 +1,6 @@
 package madesy.model.pickings;
 
-import java.util.UUID;
-
+import madesy.model.BaseModel;
 import madesy.model.client.Client;
 import madesy.model.client.ClientType;
 
@@ -12,8 +11,7 @@ import madesy.model.client.ClientType;
  * @author hristo
  * 
  */
-public class Picking {
-	private String id = UUID.randomUUID().toString();
+public class Picking extends BaseModel{
 	private PickingStatus pickingStatus = PickingStatus.NEW;
 
 	private String senderId;
@@ -40,12 +38,6 @@ public class Picking {
 				+ ", senderId=" + senderId + ", courierId=" + courierId
 				+ ", sender=" + sender + ", receiver=" + receiver + ", size="
 				+ size + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		;
-		return id.hashCode();
 	}
 
 	@Override

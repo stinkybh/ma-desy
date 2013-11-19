@@ -22,6 +22,6 @@ public class DeliverServlet extends BaseServlet {
 		pickingService.setTaken(loggedUser.getId(),
 				request.getParameter("pickingId"));
 
-		redirect("dispached-pickings");
+		redirect("dispatched-pickings");
 	}
 }

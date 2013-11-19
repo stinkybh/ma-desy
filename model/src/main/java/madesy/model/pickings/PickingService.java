@@ -16,13 +16,16 @@ import madesy.model.events.EventType;
  */
 public class PickingService extends BaseService {
 	private PickingStorage pickingStorage;
-	private CourierPickingsInfo courierSupervisor = new CourierPickingsInfo();
 	private EventLog eventLog;
-	private static int count = 0;
+	private CourierPickingsInfo courierPickings;
+	private PickingsQueue pickingsQueue = new PickingsQueue();
+	private int count = 0;
 
-	public PickingService(EventLog eventLog, PickingStorage pickingStorage) {
+	public PickingService(EventLog eventLog, PickingStorage pickingStorage,
+			CourierPickingsInfo courierPickings) {
 		this.eventLog = eventLog;
 		this.pickingStorage = pickingStorage;
+		this.courierPickings = courierPickings;
 	}
 
 	/**
@@ -33,17 +36,16 @@ public class PickingService extends BaseService {
 	 */
 	public void newPicking(final Picking picking) {
 		Objects.requireNonNull(picking, "Picking is null");
-		
+
 		new Synchronizator<Void>() {
 
 			@Override
-			protected
-			Void execute() {
+			protected Void execute() {
 				pickingStorage.add(picking);
 				System.out.println(String.valueOf(++count) + " - New picking");
 				String data = picking.getId();
 				eventLog.add(new Event(EventType.NEW_PICKING, data));
-				PickingsQueue.add(picking);
+				pickingsQueue.add(picking);
 				return null;
 			}
 
@@ -60,15 +62,14 @@ public class PickingService extends BaseService {
 		new Synchronizator<Void>() {
 
 			@Override
-			protected
-			Void execute() {
-				String courierId = courierSupervisor
-						.getCourierWithLowestPickingsNumber();
-				courierSupervisor.onNewPicking(courierId);
+			protected Void execute() {
+				String courierId = courierPickings
+						.getCourier();
+				courierPickings.onNewPicking(courierId);
 
-				//System.out.println("Dispatched to: " + courierId +
-				//" Number of pickings:" +
-				//courierSupervisor.getPickingsNumber(courierId));
+				System.out.println("Dispatched to: " + courierId +
+				" Number of pickings:" +
+				courierPickings.getPickingsNumber(courierId));
 
 				picking.setPickingStatus(PickingStatus.DISPATCHED);
 				picking.setCourierId(courierId);
@@ -80,21 +81,20 @@ public class PickingService extends BaseService {
 
 		}.executeWithLock();
 	}
-	
+
 	public Picking getPickingById(final String id) {
 		return new Synchronizator<Picking>() {
 			@Override
-			protected
-			Picking execute() {
+			protected Picking execute() {
 				for (Picking p : pickingStorage.getPickings())
-					if(p.getId().equals(id))
+					if (p.getId().equals(id))
 						return p;
-				
+
 				return null;
 			}
 		}.executeWithLock();
 	}
-	
+
 	/**
 	 * Finds the first occurrence in the list of pickings, carried by the
 	 * courier with the specified id.
@@ -105,14 +105,13 @@ public class PickingService extends BaseService {
 	public Picking getPickingByCourierId(final String courierId) {
 		return new Synchronizator<Picking>() {
 			@Override
-			protected
-			Picking execute() {
+			protected Picking execute() {
 				for (Picking p : pickingStorage.getPickings()) {
 					String dispatchedTo = p.getCourierId();
 					if (dispatchedTo != null) {
 						if (dispatchedTo.equals(courierId))
-								if(p.getPickingStatus() == PickingStatus.DISPATCHED)
-									return p;
+							if (p.getPickingStatus() == PickingStatus.DISPATCHED)
+								return p;
 					}
 				}
 				return null;
@@ -131,8 +130,7 @@ public class PickingService extends BaseService {
 		return new Synchronizator<List<Picking>>() {
 
 			@Override
-			protected
-			List<Picking> execute() {
+			protected List<Picking> execute() {
 				List<Picking> pickings = new ArrayList<Picking>();
 				for (Picking p : pickingStorage.getPickings()) {
 					String dispatchedTo = p.getCourierId();
@@ -150,22 +148,21 @@ public class PickingService extends BaseService {
 	public List<Picking> getPickingsByClientId(final String clientId) {
 		return new Synchronizator<List<Picking>>() {
 			@Override
-			protected
-			List<Picking> execute() {
+			protected List<Picking> execute() {
 				List<Picking> allPickings = pickingStorage.getPickings();
 				List<Picking> clientPickings = new ArrayList<Picking>();
-				
+
 				for (Picking p : allPickings) {
-					if(p.getSenderId().equals(clientId))
+					if (p.getSenderId().equals(clientId))
 						clientPickings.add(p);
 				}
-				
+
 				return clientPickings;
 			}
 		}.executeWithLock();
-		
+
 	}
-	
+
 	/**
 	 * Marks the picking with the given id as taken.
 	 * 
@@ -175,24 +172,25 @@ public class PickingService extends BaseService {
 		new Synchronizator<Void>() {
 
 			@Override
-			protected
-			Void execute() {
+			protected Void execute() {
 				Picking picking = pickingStorage.getPicking(pickingId);
 				picking.setPickingStatus(PickingStatus.TAKEN);
-				courierSupervisor.setTaken(courierId);
+				courierPickings.setTaken(courierId);
 				String metaData = pickingId + ", " + picking.getCourierId();
 				eventLog.add(new Event(EventType.TAKE_PICKING, metaData));
-				 System.out.println("Courier with id: " + courierId +
-				 " deliver picking with id: " + pickingId);
+				System.out.println("Courier with id: " + courierId
+						+ " deliver picking with id: " + pickingId);
 
 				return null;
 			}
 
 		}.executeWithLock();
 	}
-	
+
 	/**
-	 * If found, returns the picking with the specified id, otherwise returns null
+	 * If found, returns the picking with the specified id, otherwise returns
+	 * null
+	 * 
 	 * @param pickingId
 	 * @return
 	 */
@@ -200,19 +198,22 @@ public class PickingService extends BaseService {
 		return new Synchronizator<Picking>() {
 
 			@Override
-			protected
-			Picking execute() {
+			protected Picking execute() {
 				return pickingStorage.getPicking(pickingId);
 			}
-			
+
 		}.executeWithLock();
 	}
 
 	public EventLog getEventLog() {
 		return this.eventLog;
 	}
-	
+
 	public PickingStorage getPickingStorage() {
 		return this.pickingStorage;
+	}
+	
+	public PickingsQueue getPickingsQueue() {
+		return this.pickingsQueue;
 	}
 }
