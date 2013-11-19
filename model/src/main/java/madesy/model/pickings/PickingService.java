@@ -43,8 +43,7 @@ public class PickingService extends BaseService {
 			protected Void execute() {
 				pickingStorage.add(picking);
 				System.out.println(String.valueOf(++count) + " - New picking");
-				String data = picking.getId();
-				eventLog.add(new Event(EventType.NEW_PICKING, data));
+				eventLog.add(new Event(EventType.NEW_PICKING, picking.getId()));
 				pickingsQueue.add(picking);
 				return null;
 			}
@@ -63,19 +62,17 @@ public class PickingService extends BaseService {
 
 			@Override
 			protected Void execute() {
-				String courierId = courierPickings
-						.getCourier();
+				String courierId = courierPickings.getCourier();
 				courierPickings.onNewPicking(courierId);
 
-				System.out.println("Dispatched to: " + courierId +
-				" Number of pickings:" +
-				courierPickings.getPickingsNumber(courierId));
+				System.out.println("Dispatched to: " + courierId
+						+ " Number of pickings:"
+						+ courierPickings.getPickingsNumber(courierId));
 
 				picking.setPickingStatus(PickingStatus.DISPATCHED);
 				picking.setCourierId(courierId);
-				String metaData = picking.getId() + ", "
-						+ picking.getCourierId();
-				eventLog.add(new Event(EventType.DISPATCH_PICKING, metaData));
+				eventLog.add(new Event(EventType.DISPATCH_PICKING, picking
+						.getId(), picking.getCourierId()));
 				return null;
 			}
 
@@ -176,8 +173,7 @@ public class PickingService extends BaseService {
 				Picking picking = pickingStorage.getPicking(pickingId);
 				picking.setPickingStatus(PickingStatus.TAKEN);
 				courierPickings.setTaken(courierId);
-				String metaData = pickingId + ", " + picking.getCourierId();
-				eventLog.add(new Event(EventType.TAKE_PICKING, metaData));
+				eventLog.add(new Event(EventType.TAKE_PICKING, pickingId, picking.getCourierId()));
 				System.out.println("Courier with id: " + courierId
 						+ " deliver picking with id: " + pickingId);
 
@@ -212,7 +208,7 @@ public class PickingService extends BaseService {
 	public PickingStorage getPickingStorage() {
 		return this.pickingStorage;
 	}
-	
+
 	public PickingsQueue getPickingsQueue() {
 		return this.pickingsQueue;
 	}

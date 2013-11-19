@@ -12,16 +12,21 @@ public class Event extends BaseModel {
 	private Date date = new Date();
 	private String metaData = "";
 	private EventType eventType;
-	
+
 	public Event(EventType eventType) {
 		this.eventType = eventType;
 	}
-	
-	public Event(EventType eventType, String metaData) {
+
+	public Event(EventType eventType, String... metaData) {
 		this(eventType);
-		this.metaData = metaData;
+		for (String meta : metaData) {
+			this.metaData += meta + ", ";
+		}
+		// Remove last ", " from metaData
+		this.metaData = this.metaData.substring(0,
+				this.metaData.lastIndexOf(", ")).trim();
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -51,10 +56,10 @@ public class Event extends BaseModel {
 	public String getMetaData() {
 		return metaData;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Event [eventId=" + this.id + ", eventType=" + eventType + ", date="
-				+ date + ", metaData=" + metaData + "]\n";
+		return "Event [eventId=" + this.id + ", eventType=" + eventType
+				+ ", date=" + date + ", metaData=" + metaData + "]\n";
 	}
 }
